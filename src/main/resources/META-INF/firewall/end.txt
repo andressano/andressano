@@ -1,0 +1,11 @@
+### LOGGING ###
+-I ufw-user-logging-input -j RETURN
+-I ufw-user-logging-output -j RETURN
+-I ufw-user-logging-forward -j RETURN
+### END LOGGING ###
+
+### RATE LIMITING ###
+-A ufw-user-limit -j REJECT
+-A ufw-user-limit-accept -j ACCEPT
+### END RATE LIMITING ###
+COMMIT

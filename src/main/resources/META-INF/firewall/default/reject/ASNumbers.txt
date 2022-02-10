@@ -1,0 +1,68 @@
+AS4134 #China Telecom Backbone
+AS4808 #China Unicom Beijing Province Network
+AS4812 #China Telecom Backbone
+AS4837 #China Unicom Backbone
+AS6432 #Doubleclick.net
+AS7415 #302br.net
+AS9808 #Guangdong Mobile Communication Co.Ltd.
+AS9929 #China Netcom Backbone
+AS10620 #Telmex Colombia S.A.
+AS13414 #Twitter Inc.
+AS14571 #hge.com.br
+AS14720 #Gamma Networking Inc.
+AS17015 #Vibrant media inc
+AS19318 #NEW JERSEY INTERNATIONAL INTERNET EXCHANGE LLC
+AS19324 #Dosarrest Internet Security LTD
+AS20401 #Hostway Corporation
+#AS20940 #Akamai Technologies - Comment cloud providers
+#AS21342 #Akamai Technologies - Comment cloud providers
+AS21859 #Beijing JingTian Technology Co., Ltd.
+AS22384 #NationalNet, Inc
+AS23724	#IDC, China Telecommunications Corporation
+AS23650	#IDC, China Telecommunications Corporation
+AS25875 #FriendFinder Networks Inc
+AS24151 #China Internet Network Infomation Center
+AS25751 #Conversant, Inc.
+AS27257 #Webair Internet Development Company Inc.
+AS27810 #Merca.net.co
+AS29893 #Chatango LLC
+AS29990 #AppNexus, Inc
+AS29789 #Reflected Networks, Inc
+AS30361 #Swiftwill, Inc. - TOPPRIO
+AS30633 #LeASeweb USA, Inc.
+AS31080 #go2.pl
+AS33694 #24/7 Real Media, Inc.
+AS32934 #Facebook, Inc.
+AS33419 #Exponential Interactive, Inc.
+AS33612 #TUMBLR, INC.
+AS35995 #Twitter Inc.
+AS37958 #Beijing Blue I.T Technologies Co.,Ltd.
+AS38365 #Beijing Baidu Netcom Science and Technology Co., Ltd.
+AS39572 #Advanced Hosters B.V.
+AS45076 #Beijing Baidu Netcom Science and Technology Co., Ltd.
+AS45085 #Beijing Baidu Netcom Science and Technology Co., Ltd.
+AS46652 #ServerStack, Inc.
+AS48684 #Viking Host B.V.
+AS49587 #Adsmarket G.M LTD
+AS50974 #Ediciones El Pais, S.L.
+AS53292 #Barracuda Networks, Inc.
+AS53334 #Total Uptime Technologies, LLC
+AS54115 #Facebook, Inc.
+AS54888 #Twitter Inc.
+AS54967 #Beijing Baidu Netcom Science and Technology Co., Ltd.
+AS56127 #Beijing Shidaihongyuan Network Communication Co.,Ltd.
+AS56464 #Vibrant Media Ltd
+AS62355 #Network Dedicated SAS
+AS63179 #Twitter Inc.
+AS63293 #Facebook, Inc.
+AS8945  #Twitter Inc.
+AS9394 	#China TieTong Telecommunications Corporation
+AS63716 #China TieTong Telecommunications Corporation
+AS63714 #China TieTong Telecommunications Corporation
+AS63711 #China TieTong Telecommunications Corporation
+AS38370 #China TieTong Telecommunications Corporation
+AS24425 #China TieTong Telecommunications Corporation
+AS24138 #China TieTong Telecommunications Corporation
+AS23724 #IDC, China Telecommunications Corporation
+AS45106 #China Netcom Broadband Corporation Ltd.
+AS45060 #China Netcom Broadband Corporation Ltd.

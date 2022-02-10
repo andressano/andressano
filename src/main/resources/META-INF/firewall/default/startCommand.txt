@@ -1,0 +1,13 @@
+ufw disable
+
+iptables -F
+iptables -X
+iptables -Z
+ip6tables -F
+ip6tables -X
+ip6tables -Z
+
+ufw logging off
+
+ufw default allow outgoing
+ufw default deny incoming

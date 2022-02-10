@@ -1,0 +1,2 @@
+whois -h whois.radb.net -- '-i origin %s' | grep route: | sed 's/route: //gI' | sed 's/ //g'
+whois -h whois.ripe.net -T route %s -i origin | egrep "route: " | awk '{print $NF}'

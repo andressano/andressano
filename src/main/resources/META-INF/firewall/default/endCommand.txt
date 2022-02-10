@@ -1,0 +1,16 @@
+rm -f /etc/ufw/before6.rules.*
+rm -f /etc/ufw/after6.rules.*
+rm -f /etc/ufw/before.rules.*
+rm -f /etc/ufw/after.rules.*
+rm -f /lib/ufw/user.rules.*
+rm -f /lib/ufw/user6.rules.*
+
+ufw reload
+
+iptables -A INPUT -s 8.8.8.8 -j DROP
+iptables -A INPUT -s 8.8.4.4 -j DROP
+iptables-save > /etc/iptables.rules
+
+ufw enable
+
+service network-manager restart
