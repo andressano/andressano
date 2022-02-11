@@ -1,0 +1,2 @@
+# domainblocker
+Blocks specific domain
