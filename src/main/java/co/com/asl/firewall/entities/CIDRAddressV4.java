@@ -7,7 +7,8 @@ import java.util.Optional;
 import java.util.regex.Pattern;
 
 public class CIDRAddressV4 implements Comparable<CIDRAddressV4> {
-    public static final String REGEX_PATTERN = "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(\\d|[1-2]\\d|3[0-2]))?$";
+    private static final String NUMBER_PATTERN = "([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])";
+    public static final String REGEX_PATTERN = "^("+NUMBER_PATTERN+"\\.){3}"+NUMBER_PATTERN+"(\\/(\\d|[1-2]\\d|3[0-2]))?$";
     public static final short TOTAL_BYTES = 32;
     protected static final String MASK_SEPARATOR = "/";
     protected static final String GROUP_SEPARATOR = ".";
