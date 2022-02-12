@@ -46,7 +46,7 @@ public class App {
 				"classpath*:META-INF/spring/**/*.xml", "classpath*:META-INF/antiads/**/*.xml");
 		context.start();
 		AntiAdsController antiADSController = context.getBean(AntiAdsController.class);
-		antiADSController.process(new File(line.getOptionValue("file")), operation);
+		antiADSController.process(line.getOptionValue("file"), operation);
 		context.close();
 	}
 
