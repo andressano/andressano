@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -28,9 +29,11 @@ public class HostsFileTransformer {
     try {
       Resource hostsFileResource = resourceLoader.getResource(
           "classpath:/META-INF/hostsFiles/linux.txt");
-      return Files.lines(Paths.get(hostsFileResource.getURI()))
-          .map(LineFunctions.replaceHostName(hostName)).collect(
-              Collectors.toList());
+      try (Stream<String> stream = Files.lines(Paths.get(hostsFileResource.getURI()))) {
+        return stream
+            .map(LineFunctions.replaceHostName(hostName)).collect(
+                Collectors.toList());
+      }
     } catch (IOException e) {
       log.error(e.getMessage(), e);
     }

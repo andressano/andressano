@@ -18,17 +18,17 @@ public class CommandRunner {
       Process process = processBuilder.start();
       boolean result = process.waitFor(60, TimeUnit.SECONDS);
       Scanner scanner = new Scanner(process.getInputStream());
-      String line = "";
+      StringBuilder sb = new StringBuilder();
       while (scanner.hasNext()) {
-        line += scanner.next().replaceAll("\\s+", " ").trim();
+        sb.append(scanner.next().replaceAll("\\s+", " ").trim());
       }
       if (!result) {
         return null;
       }
       if (this.log.isDebugEnabled()) {
-        this.log.debug("{} -> {}", command, line);
+        this.log.debug("{} -> {}", command, sb);
       }
-      return line;
+      return sb.toString();
     } catch (Exception e) {
       this.log.error(e.getMessage(), e);
       Thread.currentThread().interrupt();

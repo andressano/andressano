@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.time.StopWatch;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,14 +57,14 @@ public class AntiAdsController {
       Path sitesPath = Path.of(
           resourceLoader.getResource("classpath:/META-INF/antiads/sites.txt").getURI());
 
-      Set<String> hosts =
-          Files.lines(sitesPath)
-              .filter(LinePredicates.isNotComment())
-              .map(urlToLinesTransformer::transform)
-              .flatMap(Set::stream)
-              .collect(Collectors.toSet());
-
-      hostsLines.addAll(hosts);
+      try (Stream<String> stream = Files.lines(sitesPath)) {
+        Set<String> hosts = stream
+            .filter(LinePredicates.isNotComment())
+            .map(urlToLinesTransformer::transform)
+            .flatMap(Set::stream)
+            .collect(Collectors.toSet());
+        hostsLines.addAll(hosts);
+      }
       hostsLines.addAll(blacklist);
     }
     hostsLines.addAll(blacklist);

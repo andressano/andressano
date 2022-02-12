@@ -29,13 +29,16 @@ public class URLToLinesTransformer {
     try {
       URL url = new URL(host);
       ReadableByteChannel channel = Channels.newChannel(url.openStream());
-      BufferedReader br = new BufferedReader(Channels.newReader(channel, Charset.defaultCharset()));
-      return br.lines()
-          .map(LineFunctions.replaceComments())
-          .filter(s -> !StringUtils.isBlank(s))
-          .map(LineFunctions.removeIp()).map(String::trim)
-          .filter(LinePredicates.hostPredicate())
-          .collect(Collectors.toSet());
+      try (BufferedReader br = new BufferedReader(
+          Channels.newReader(channel, Charset.defaultCharset()))) {
+        return br.lines()
+            .map(LineFunctions.replaceComments())
+            .filter(s -> !StringUtils.isBlank(s))
+            .map(LineFunctions.removeIp())
+            .map(String::trim)
+            .filter(LinePredicates.hostPredicate())
+            .collect(Collectors.toSet());
+      }
     } catch (FileNotFoundException e) {
       log.error(String.format("Host %s not found", host), e);
     } catch (IOException e) {
