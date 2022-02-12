@@ -1,42 +1,34 @@
 package co.com.asl.firewall.command;
 
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.io.IOException;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeSet;
 
 public final class Command {
-    private final Logger log = LoggerFactory.getLogger(getClass());
-    private String commandLine;
 
-    public Command() {
-        super();
-    }
+  private Command() {
+    super();
+  }
 
-    public Command(String commandLine) {
-        super();
-        setCommandLine(commandLine);
+  public static final Collection<String> execute(final String commandLine) {
+    try {
+      String[] commandSyntax = new String[]{"/bin/bash", "-c",
+          "timeout 10s ".concat(commandLine)};
+      Process process = Runtime.getRuntime().exec(commandSyntax);
+      Scanner scanner = new Scanner(process.getInputStream());
+      Set<String> response = new TreeSet<>();
+      while (scanner.hasNext()) {
+        response.add(scanner.next());
+      }
+      scanner.close();
+      return response;
+    } catch (IOException e) {
+      e.printStackTrace();
     }
-
-    public String getCommandLine() {
-        return commandLine;
-    }
-
-    private void setCommandLine(String commandLine) {
-        this.commandLine = commandLine;
-    }
-
-    public String execute() {
-        try {
-            String[] commandSyntax = new String[]{"/bin/bash", "-c", "timeout 10s ".concat(getCommandLine())};
-            Process process = Runtime.getRuntime().exec(commandSyntax);
-            String output = IOUtils.toString(process.getInputStream());
-            output = output.replaceAll("[\r\t\n]+", " ").trim();
-            if (log.isTraceEnabled()) log.trace("{}, Message: '{}'", getCommandLine(), output);
-            return output;
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-        }
-        return "";
-    }
+    return Collections.emptyList();
+  }
 
 }
