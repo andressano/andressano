@@ -12,7 +12,7 @@ import org.apache.logging.log4j.core.LoggerContext;
 import org.apache.logging.log4j.core.config.Configurator;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import co.com.asl.blocker.controller.AntiADSController;
+import co.com.asl.blocker.controller.AntiAdsController;
 import co.com.asl.blocker.enums.Operation;
 
 public class App {
@@ -45,8 +45,8 @@ public class App {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
 				"classpath*:META-INF/spring/**/*.xml", "classpath*:META-INF/antiads/**/*.xml");
 		context.start();
-		AntiADSController antiADSController = context.getBean(AntiADSController.class);
-		antiADSController.procesar(new File(line.getOptionValue("file")), operation);
+		AntiAdsController antiADSController = context.getBean(AntiAdsController.class);
+		antiADSController.process(new File(line.getOptionValue("file")), operation);
 		context.close();
 	}
 
@@ -55,11 +55,11 @@ public class App {
 		OptionBuilder.withArgName("hostsFile");
 		OptionBuilder.hasArg();
 		OptionBuilder.isRequired(true);
-		OptionBuilder.withDescription("Archivo de hosts.");
+		OptionBuilder.withDescription("Creates a new hosts file.");
 		options.addOption(OptionBuilder.create("file"));
-		options.addOption("disable", false, "Crea archivo de hosts por defecto.");
-		options.addOption("enable", false, "Crea archivo de hosts.");
-		options.addOption("nolog", false, "Crea archivo de hosts.");
+		options.addOption("disable", false, "Create a default smaller hosts file.");
+		options.addOption("enable", false, "Create a combined hosts file.");
+		options.addOption("nolog", false, "Disable logging.");
 		return options;
 	}
 }

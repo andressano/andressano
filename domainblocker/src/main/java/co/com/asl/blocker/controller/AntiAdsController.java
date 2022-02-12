@@ -24,7 +24,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Component
-public class AntiADSController {
+public class AntiAdsController {
     private final Logger logger = LoggerFactory.getLogger(getClass());
     @Value("#{ blacklist }")
     private List<String> blacklist;
@@ -35,7 +35,7 @@ public class AntiADSController {
     @Autowired
     private URLToLinesTransformer urlToLinesTransformer;
 
-    public void procesar(File hostsFile, Operation operation) throws IOException {
+    public void process(File hostsFile, Operation operation) throws IOException {
         Assert.notNull(hostsFile);
         Assert.notNull(operation);
 
@@ -65,6 +65,6 @@ public class AntiADSController {
     }
 
     private Set<String> createPreludeLines() {
-        return new HashSet<>(Arrays.asList("", "# Hosts generados"));
+        return new HashSet<>(Arrays.asList("", "# Generated hosts"));
     }
 }
