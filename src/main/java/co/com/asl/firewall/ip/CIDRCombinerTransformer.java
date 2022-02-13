@@ -16,6 +16,20 @@ public class CIDRCombinerTransformer {
 
   private final Logger log = LoggerFactory.getLogger(getClass());
 
+  private void combineIp(Set<CIDRAddressV4> toAddCidrs, Set<CIDRAddressV4> toRemoveCidrs,
+      CIDRAddressV4 originalCidr, CIDRAddressV4 modifyingCidr) {
+    Optional<CIDRAddressV4> combinedCidr = originalCidr.combineIfPossible(modifyingCidr);
+    if (combinedCidr.isPresent()) {
+      toRemoveCidrs.add(originalCidr);
+      toRemoveCidrs.add(modifyingCidr);
+      toAddCidrs.add(combinedCidr.get());
+      if (log.isDebugEnabled()) {
+        log.debug("IPs {} and {} combined into {}", originalCidr, modifyingCidr,
+            combinedCidr);
+      }
+    }
+  }
+
   public void transform(Collection<CIDRAddressV4> addresses) {
     if (CollectionUtils.isEmpty(addresses)) {
       return;
@@ -23,31 +37,21 @@ public class CIDRCombinerTransformer {
 
     int changes = 0;
     do {
-      changes = 0;
-
+      final int initialSize = addresses.size();
       Set<CIDRAddressV4> toAddCidrs = new HashSet<>();
       Set<CIDRAddressV4> toRemoveCidrs = new HashSet<>();
 
       CIDRAddressV4 originalCidr = null;
       for (CIDRAddressV4 modifyingCidr : addresses) {
         if (Objects.nonNull(originalCidr) && originalCidr.getMask() == modifyingCidr.getMask()) {
-          Optional<CIDRAddressV4> combinedCidr = originalCidr.combineIfPossible(modifyingCidr);
-          if (combinedCidr.isPresent()) {
-            toRemoveCidrs.add(originalCidr);
-            toRemoveCidrs.add(modifyingCidr);
-            toAddCidrs.add(combinedCidr.get());
-            if (log.isDebugEnabled()) {
-              log.debug("IPs {} and {} combined into {}", originalCidr, modifyingCidr,
-                  combinedCidr);
-            }
-            changes++;
-          }
+          combineIp(toAddCidrs, toRemoveCidrs, originalCidr, modifyingCidr);
         }
         originalCidr = modifyingCidr;
       }
 
       addresses.removeAll(toRemoveCidrs);
       addresses.addAll(toAddCidrs);
+      changes = initialSize - addresses.size();
     } while (changes > 0);
   }
 }

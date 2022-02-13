@@ -11,19 +11,23 @@ import java.io.IOException;
 
 public class Main {
     private static final Options options = new Options();
+    private static final String FIREWALL_OPTION = "firewall";
+    private static final String CONFIG_TYPE_OPTION = "configType";
+    private static final String FILE_OPTION = "file";
+    private static final String NOLOG_OPTION = "nolog";
 
     static {
-        options.addOption("firewall", true, "Location of user.rules");
-        options.addOption("file", true, "Redirect output into a file");
-        options.addOption("configType", true, "Configure UFW with an specific configuration");
-        options.addOption("nolog", false, "Turns off current logger");
+        options.addOption(FIREWALL_OPTION, true, "Location of user.rules");
+        options.addOption(FILE_OPTION, true, "Redirect output into a file");
+        options.addOption(CONFIG_TYPE_OPTION, true, "Configure UFW with an specific configuration");
+        options.addOption(NOLOG_OPTION, false, "Turns off current logger");
     }
 
     public static void main(String[] args) {
         try {
             Assert.notEmpty(args, "Not enough parameters");
             CommandLine cmd = new GnuParser().parse(options, args);
-            if (!cmd.hasOption("nolog")) Configurator.initialize("log4j2", "log4j2.xml");
+            if (!cmd.hasOption(NOLOG_OPTION)) Configurator.initialize("log4j2", "log4j2.xml");
             startSpring(cmd);
         } catch (ParseException e) {
             printHelp();
@@ -40,12 +44,12 @@ public class Main {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath*:META-INF/spring/app-context.xml");
         context.start();
 
-        if (cmd.hasOption("configType")) {
-            String configType = cmd.getOptionValue("configType");
-            if (cmd.hasOption("file")) {
-                context.getBean(FileConfigurator.class).configure(configType, cmd.getOptionValue("file"));
-            } else if (cmd.hasOption("firewall")) {
-                context.getBean(UFWConfigurator.class).configure(configType, cmd.getOptionValue("firewall"));
+        if (cmd.hasOption(CONFIG_TYPE_OPTION)) {
+            String configType = cmd.getOptionValue(CONFIG_TYPE_OPTION);
+            if (cmd.hasOption(FILE_OPTION)) {
+                context.getBean(FileConfigurator.class).configure(configType, cmd.getOptionValue(FILE_OPTION));
+            } else if (cmd.hasOption(FIREWALL_OPTION)) {
+                context.getBean(UFWConfigurator.class).configure(configType, cmd.getOptionValue(FIREWALL_OPTION));
             }
         } else {
             printHelp();

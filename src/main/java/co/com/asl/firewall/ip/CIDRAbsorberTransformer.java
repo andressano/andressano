@@ -29,7 +29,6 @@ public class CIDRAbsorberTransformer {
       iteration++;
       totalChanges += changes;
       changes = 0;
-      final int initialSize = addresses.size();
       List<CIDRAddressV4> toRemoveAddresses = new ArrayList<>();
 
       CIDRAddressV4 previousAddress = null;
@@ -45,9 +44,6 @@ public class CIDRAbsorberTransformer {
         previousAddress = address;
       }
       addresses.removeAll(toRemoveAddresses);
-      if (debugEnabled && changes > 0) {
-        log.debug("Absorption: Iteration {}, changes: {}", iteration, changes);
-      }
     } while (changes > 0);
     if (debugEnabled) {
       log.debug("There are {} CIDR address(es) after {} iterations and {} absorption(s)",
