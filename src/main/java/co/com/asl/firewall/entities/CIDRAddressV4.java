@@ -112,26 +112,17 @@ public class CIDRAddressV4 implements Comparable<CIDRAddressV4> {
         && (cidrAddressV4.getIp() & MAX_VALUE << (TOTAL_BYTES - this.getMask())) == this.getIp();
   }
 
-  public CIDRAddressV4 addMaskUnits(final short units) {
-    setMask((short) (getMask() + units));
-    return this;
-  }
-
   public String toString() {
-    final StringBuilder binaryString = new StringBuilder(
-        StringUtils.leftPad(Integer.toBinaryString(this.getIp()), TOTAL_BYTES, '0'));
     final StringBuilder sbToString = new StringBuilder();
     for (int i = 0; i < NUMBER_OF_GROUPS; i++) {
-      final String octet = binaryString.substring(BYTES_PER_GROUP * i, BYTES_PER_GROUP * (i + 1));
-      final short number = Short.parseShort(octet, 2);
+      int number = this.getIp() << (i * BYTES_PER_GROUP) >>> ((NUMBER_OF_GROUPS - 1) * BYTES_PER_GROUP);
       sbToString.append(number);
       if (i < NUMBER_OF_GROUPS - 1) {
         sbToString.append(GROUP_SEPARATOR);
       }
     }
     if (this.getMask() != 32) {
-      sbToString.append(MASK_SEPARATOR);
-      sbToString.append(mask);
+      sbToString.append(String.format("%s%s", MASK_SEPARATOR, mask));
     }
     return sbToString.toString();
   }

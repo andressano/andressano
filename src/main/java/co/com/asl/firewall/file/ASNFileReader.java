@@ -3,11 +3,12 @@ package co.com.asl.firewall.file;
 import co.com.asl.firewall.entities.ASNumber;
 import co.com.asl.firewall.resources.ASNResourceCaller;
 import io.vavr.CheckedFunction1;
+import io.vavr.control.Option;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
+import java.util.Objects;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -48,7 +49,6 @@ public class ASNFileReader implements HostsListFileResourceReader {
     Collection<String> whoisLines = ipListResourceTransformer.transform(whoisResource)
         .collect(Collectors.toUnmodifiableList());
     Collection<ASNResourceCaller> asnResourceCallers = new ArrayList<>();
-
     for (String asn : asnLines) {
       for (String whoisCommandLine : whoisLines) {
         asnResourceCallers.add(beanFactory.getBean(ASNResourceCaller.class,
@@ -64,11 +64,10 @@ public class ASNFileReader implements HostsListFileResourceReader {
       ExecutorService executorService = Executors.newFixedThreadPool(numberThreads);
       asNumbersList = executorService
           .invokeAll(asnResourceCallers)
-          .parallelStream()
+          .stream()
           .map(CheckedFunction1.lift(Future::get))
-          .map(f -> f.getOrElse(Optional.empty()))
-          .filter(Optional::isPresent)
-          .map(Optional::get)
+          .map(Option::getOrNull)
+          .filter(Objects::nonNull)
           .collect(Collectors.toList());
       executorService.shutdown();
     } catch (InterruptedException e) {
