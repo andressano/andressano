@@ -17,11 +17,15 @@ public class IPFileReader implements HostsListFileResourceReader {
   private static final Predicate<String> CIDR_PREDICATE = line -> Pattern.matches(
       CIDRAddressV4.REGEX_PATTERN, line);
   @Autowired
-  protected ResourceLinesTransformer resourceLinesTransformer;
+  protected IPListResourceTransformer ipListResourceTransformer;
 
   public Collection<ASNumber> loadResource(Resource resource) {
-    Collection<CIDRAddressV4> addresses = this.resourceLinesTransformer.transform(resource).stream()
-        .filter(CIDR_PREDICATE).map(CIDRAddressV4::new).collect(Collectors.toList());
+    Collection<CIDRAddressV4> addresses =
+        this.ipListResourceTransformer
+          .transform(resource)
+          .filter(CIDR_PREDICATE)
+          .map(CIDRAddressV4::new)
+          .collect(Collectors.toList());
     return List.of(new ASNumber(addresses));
   }
 }

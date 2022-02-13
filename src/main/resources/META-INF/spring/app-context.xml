@@ -6,6 +6,6 @@
 	<context:component-scan base-package="co.com.asl.firewall" />
 
 	<bean id="numberThreads" class="java.lang.Integer">
-		<constructor-arg value="8" />
+		<constructor-arg value="4" />
 	</bean>
 </beans>

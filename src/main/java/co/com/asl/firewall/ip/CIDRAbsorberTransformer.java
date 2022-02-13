@@ -1,10 +1,10 @@
 package co.com.asl.firewall.ip;
 
 import co.com.asl.firewall.entities.CIDRAddressV4;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -29,24 +29,22 @@ public class CIDRAbsorberTransformer {
       iteration++;
       totalChanges += changes;
       changes = 0;
+      final int initialSize = addresses.size();
+      List<CIDRAddressV4> toRemoveAddresses = new ArrayList<>();
 
-      for (int i = 1; i < CIDRAddressV4.TOTAL_BYTES; i++) {
-        final int finalI = i;
-        final int initialSize = addresses.size();
-        Collection<CIDRAddressV4> toCompareAddress = Collections.synchronizedList(
-            addresses.parallelStream()
-                .filter(Objects::nonNull)
-                .filter(ip -> ip.getMask() == finalI)
-                .collect(Collectors.toList()));
-
-        toCompareAddress.forEach(a ->
-            addresses.removeAll(
-                toCompareAddress.stream().filter(a2 -> (!a.equals(a2) && a.contains(a2))).collect(
-                    Collectors.toList()))
-        );
-
-        changes += initialSize - addresses.size();
+      CIDRAddressV4 previousAddress = null;
+      for (CIDRAddressV4 address : addresses) {
+        if (Objects.nonNull(previousAddress) && previousAddress.contains(address)) {
+          toRemoveAddresses.add(address);
+          changes++;
+          if (debugEnabled) {
+            log.debug("IP {} absorbed by {}", address, previousAddress);
+          }
+          continue;
+        }
+        previousAddress = address;
       }
+      addresses.removeAll(toRemoveAddresses);
       if (debugEnabled && changes > 0) {
         log.debug("Absorption: Iteration {}, changes: {}", iteration, changes);
       }

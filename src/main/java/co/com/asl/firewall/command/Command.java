@@ -1,11 +1,11 @@
 package co.com.asl.firewall.command;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
-import java.util.Set;
-import java.util.TreeSet;
 
 public final class Command {
 
@@ -19,7 +19,7 @@ public final class Command {
           "timeout 10s ".concat(commandLine)};
       Process process = Runtime.getRuntime().exec(commandSyntax);
       Scanner scanner = new Scanner(process.getInputStream());
-      Set<String> response = new TreeSet<>();
+      List<String> response = new ArrayList<>();
       while (scanner.hasNext()) {
         response.add(scanner.next());
       }

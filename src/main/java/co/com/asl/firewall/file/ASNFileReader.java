@@ -1,7 +1,6 @@
 package co.com.asl.firewall.file;
 
 import co.com.asl.firewall.entities.ASNumber;
-import co.com.asl.firewall.ip.CIDRTransformer;
 import co.com.asl.firewall.resources.ASNResourceCaller;
 import io.vavr.CheckedFunction1;
 import java.util.ArrayList;
@@ -31,9 +30,7 @@ public class ASNFileReader implements HostsListFileResourceReader {
 
   private final Logger log;
   @Autowired
-  protected CIDRTransformer cidrTransformer;
-  @Autowired
-  private ResourceLinesTransformer resourceLinesTransformer;
+  private IPListResourceTransformer ipListResourceTransformer;
   @Autowired
   private BeanFactory beanFactory;
   @Value("#{ numberThreads }")
@@ -46,9 +43,9 @@ public class ASNFileReader implements HostsListFileResourceReader {
   }
 
   private Collection<ASNResourceCaller> createResourceCallers(Resource asnResource) {
-    Collection<String> asnLines = resourceLinesTransformer.transform(asnResource).stream()
+    Collection<String> asnLines = ipListResourceTransformer.transform(asnResource)
         .filter(ASN_LINE_PREDICATE).collect(Collectors.toUnmodifiableList());
-    Collection<String> whoisLines = resourceLinesTransformer.transform(whoisResource).stream()
+    Collection<String> whoisLines = ipListResourceTransformer.transform(whoisResource)
         .collect(Collectors.toUnmodifiableList());
     Collection<ASNResourceCaller> asnResourceCallers = new ArrayList<>();
 

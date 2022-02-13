@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.apache.commons.collections4.MultiValuedMap;
@@ -17,7 +18,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.ResourcePatternResolver;
 
 public abstract class AbstractConfigurator {
@@ -40,10 +40,15 @@ public abstract class AbstractConfigurator {
     this.setting = setting;
   }
 
-  private Stream<Resource> loadResources(FileType fileType, UFWOperation ufwOperation)
+  private Stream<ASNumber> loadResources(FileType fileType, UFWOperation ufwOperation)
       throws IOException {
-    String path = fileType.path(getSetting(), ufwOperation);
-    return Arrays.stream(resourcePatternResolver.getResources(path));
+    log.debug("Loading resource for filetype {} and operation {}", fileType, ufwOperation);
+    final String path = fileType.path(getSetting(), ufwOperation);
+    final HostsListFileResourceReader resourceReader =
+        beanFactory.getBean(fileType.getResourceReader());
+    return Arrays
+        .stream(resourcePatternResolver.getResources(path))
+        .flatMap(r -> resourceReader.loadResource(r).stream());
   }
 
   protected MultiValuedMap<UFWOperation, ASNumber> getASNsByOperation() throws IOException {
@@ -51,10 +56,7 @@ public abstract class AbstractConfigurator {
 
     for (UFWOperation ufwOperation : UFWOperation.values()) {
       for (FileType fileType : FileType.values()) {
-        HostsListFileResourceReader resourceReader =
-            beanFactory.getBean(fileType.getResourceReader());
         loadResources(fileType, ufwOperation)
-            .flatMap(r -> resourceReader.loadResource(r).stream())
             .forEach(a -> asnsByOperation.putAll(ufwOperation, Collections.singleton(a)));
       }
     }
@@ -68,12 +70,11 @@ public abstract class AbstractConfigurator {
 
     for (UFWOperation ufwOperation : UFWOperation.values()) {
       Collection<CIDRAddressV4> addresses =
-          Collections.synchronizedSet(
-              asnsByOperation
-                  .get(ufwOperation)
-                  .stream()
-                  .flatMap(ASNumber::stream)
-                  .collect(Collectors.toSet()));
+          asnsByOperation
+              .get(ufwOperation)
+              .stream()
+              .flatMap(ASNumber::stream)
+              .collect(Collectors.toCollection(TreeSet::new));
       cidrTransformer.transform(addresses);
       cidrsByOperation.putAll(ufwOperation, addresses);
     }

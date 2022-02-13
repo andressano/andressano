@@ -3,7 +3,6 @@ package co.com.asl.firewall.configuration;
 import co.com.asl.firewall.command.AddUfwUserRuleLines;
 import co.com.asl.firewall.entities.CIDRAddressV4;
 import co.com.asl.firewall.file.FlatResourceLinesTransformer;
-import co.com.asl.firewall.file.ResourceLinesTransformer;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -25,8 +24,6 @@ import org.springframework.util.StopWatch;
 @Component
 public final class UFWConfigurator extends AbstractConfigurator {
 
-  @Autowired
-  private ResourceLinesTransformer resourceLinesTransformer;
   @Autowired
   private FlatResourceLinesTransformer flatResourceLinesTransformer;
 
@@ -70,7 +67,7 @@ public final class UFWConfigurator extends AbstractConfigurator {
             String.format("classpath*:META-INF/firewall/%s", file))),
         Arrays.stream(resourcePatternResolver.getResources(
             String.format("classpath*:META-INF/firewall/%s/**/%s", getSetting(), file)))
-    ).flatMap(r -> flatResourceLinesTransformer.transform(r).stream()).collect(Collectors.toList());
+    ).flatMap(r -> flatResourceLinesTransformer.transform(r)).collect(Collectors.toList());
   }
 
   public void configure(String setting, String userRules) throws IOException {

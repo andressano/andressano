@@ -60,10 +60,19 @@ public class CIDRAddressV4Test {
   }
 
   @Test
+  public void rangeContains2() {
+    CIDRAddressV4 cidrAddressV4 = new CIDRAddressV4("65.255.32.0/20");
+    CIDRAddressV4 cidrAddressV4Comp = new CIDRAddressV4("65.255.34.0/24");
+    assertTrue(cidrAddressV4.contains(cidrAddressV4Comp));
+  }
+
+  @Test
   public void compareToTest() {
     List<CIDRAddressV4> test = new ArrayList<>();
     test.add(new CIDRAddressV4("1.1.8.0/24"));
     test.add(new CIDRAddressV4("61.160.0.0/14"));
+    test.add(new CIDRAddressV4("65.255.32.0/20"));
+    test.add(new CIDRAddressV4("65.255.34.0/24"));
     test.add(new CIDRAddressV4("104.37.184.0/21"));
     test.add(new CIDRAddressV4("223.255.0.0/18"));
 
@@ -71,6 +80,8 @@ public class CIDRAddressV4Test {
     Iterator<CIDRAddressV4> iterator = test.iterator();
     assertEquals("1.1.8.0/24", iterator.next().toString());
     assertEquals("61.160.0.0/14", iterator.next().toString());
+    assertEquals("65.255.32.0/20", iterator.next().toString());
+    assertEquals("65.255.34.0/24", iterator.next().toString());
     assertEquals("104.37.184.0/21", iterator.next().toString());
     assertEquals("223.255.0.0/18", iterator.next().toString());
   }
