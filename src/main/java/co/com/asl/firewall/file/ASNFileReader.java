@@ -60,8 +60,8 @@ public class ASNFileReader implements HostsListFileResourceReader {
 
   private List<ASNumber> loadAsNumbers(Collection<ASNResourceCaller> asnResourceCallers) {
     List<ASNumber> asNumbersList = Collections.emptyList();
+    ExecutorService executorService = Executors.newFixedThreadPool(numberThreads);
     try {
-      ExecutorService executorService = Executors.newFixedThreadPool(numberThreads);
       asNumbersList = executorService
           .invokeAll(asnResourceCallers)
           .stream()
@@ -69,10 +69,11 @@ public class ASNFileReader implements HostsListFileResourceReader {
           .map(Option::getOrNull)
           .filter(Objects::nonNull)
           .collect(Collectors.toList());
-      executorService.shutdown();
     } catch (InterruptedException e) {
       log.error(e.getLocalizedMessage(), e);
       Thread.currentThread().interrupt();
+    } finally {
+      executorService.shutdown();
     }
     return asNumbersList;
   }
