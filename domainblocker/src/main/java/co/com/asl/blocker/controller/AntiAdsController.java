@@ -9,9 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -61,12 +59,11 @@ public class AntiAdsController {
     stopWatch.start();
 
     Path hostsFilePath = Path.of(hostsFile);
+    Files.deleteIfExists(hostsFilePath);
+
     List<String> fileLines = new ArrayList<>();
     fileLines.add(preludeLines);
     fileLines.addAll(createPreludeLines());
-    Files.deleteIfExists(hostsFilePath);
-    Files.write(hostsFilePath, fileLines);
-    fileLines.clear();
 
     Set<String> hostsLines = new TreeSet<>();
     hostsLines.addAll(blacklist);
@@ -89,13 +86,14 @@ public class AntiAdsController {
             .map(l -> String.format("%s\t%s", LineConstants.ROUTE_IP, l))
             .filter(this::filterWhiteList)
             .collect(Collectors.toList()));
-    Files.write(hostsFilePath, fileLines, StandardOpenOption.APPEND);
+    Files.write(hostsFilePath, fileLines, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+
     stopWatch.stop();
     log.info("File {} was created in {} seconds", hostsFile,
         Long.valueOf(stopWatch.getTime() / 1000L));
   }
 
-  private Set<String> createPreludeLines() {
-    return new HashSet<>(Arrays.asList("", "# Generated hosts"));
+  private List<String> createPreludeLines() {
+    return List.of("", "# Generated hosts");
   }
 }
