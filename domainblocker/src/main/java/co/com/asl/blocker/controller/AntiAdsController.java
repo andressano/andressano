@@ -65,27 +65,27 @@ public class AntiAdsController {
     fileLines.add(preludeLines);
     fileLines.addAll(createPreludeLines());
 
-    Set<String> hostsLines = new TreeSet<>();
-    hostsLines.addAll(blacklist);
+    Set<String> hostsLines = new TreeSet<>(blacklist);
 
     if (Operation.CREATE_HOSTS_FILE.equals(operation)) {
       Path sitesPath = Path.of(
           resourceLoader.getResource("classpath:/META-INF/antiads/sites.txt").getURI());
 
       try (Stream<String> stream = Files.lines(sitesPath)) {
-        Set<String> hosts = stream
+        hostsLines.addAll(stream
             .filter(LinePredicates.isNotComment())
             .map(urlToLinesTransformer::transform)
             .flatMap(Set::stream)
-            .collect(Collectors.toSet());
-        hostsLines.addAll(hosts);
+            .collect(Collectors.toCollection(TreeSet::new)));
       }
     }
     fileLines.addAll(
-        hostsLines.stream()
+        hostsLines
+            .stream()
             .map(l -> String.format("%s\t%s", LineConstants.ROUTE_IP, l))
             .filter(this::filterWhiteList)
-            .collect(Collectors.toList()));
+            .collect(Collectors.toList())
+    );
     Files.write(hostsFilePath, fileLines, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
 
     stopWatch.stop();
