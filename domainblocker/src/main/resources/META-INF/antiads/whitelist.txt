@@ -1,0 +1,37 @@
+# Special sites
+localhost
+.adk2.co
+.adnxs.net
+.cloudfront.net
+.centade.com
+.dol.ru
+.doubleclick.net
+.fzkjxy.com
+.hnliyin.com
+.go2.pl
+.hpg.com.br
+.liveadvert.com
+.lontent.com
+.neliver.com
+putlocker.ac
+putlocker.com
+putlocker.is
+putlocker.ws
+.tubesyndicate.net
+.tubesyndicate.org
+
+# Personal sites
+.astroayuda.net
+.comodo.com
+.dailyhoroscopes.net
+.dropbox.com
+.facebook.com
+.finance.google.com
+.grupovenus.com
+.kaspersky.com
+.norton.com
+.on24.com
+.tumblr.com
+docs.google.com
+www.isohunt.com
+www.youtube.com

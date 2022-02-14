@@ -10,7 +10,8 @@ import org.apache.commons.cli.OptionBuilder;
 import org.apache.commons.cli.Options;
 import org.apache.logging.log4j.core.LoggerContext;
 import org.apache.logging.log4j.core.config.Configurator;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class App {
 
@@ -40,8 +41,8 @@ public class App {
   }
 
   private static void runSpringContext(CommandLine line, Operation operation) throws IOException {
-    ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
-        "classpath*:META-INF/spring/**/*.xml", "classpath*:META-INF/antiads/**/*.xml");
+    ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(
+        "co.com.asl.blocker.config");
     context.start();
     AntiAdsController antiADSController = context.getBean(AntiAdsController.class);
     antiADSController.process(line.getOptionValue("file"), operation);
