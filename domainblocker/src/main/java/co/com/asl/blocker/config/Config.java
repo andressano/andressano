@@ -26,6 +26,6 @@ public class Config {
 
   @Bean
   public Collection<String> whitelist(WhitelistLoader whitelistLoader) throws IOException {
-    return whitelistLoader.loadHostsLines().collect(Collectors.toList());
+    return whitelistLoader.loadLines().collect(Collectors.toList());
   }
 }

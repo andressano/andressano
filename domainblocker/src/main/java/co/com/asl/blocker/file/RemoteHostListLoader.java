@@ -1,35 +1,33 @@
 package co.com.asl.blocker.file;
 
+import co.com.asl.blocker.file.line.LineFunctions;
+import io.vavr.control.Try;
 import java.io.IOException;
 import java.net.URL;
-import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Objects;
 import java.util.stream.Stream;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.support.ResourcePatternResolver;
 
-public abstract class RemoteHostListLoader extends HostListLoader {
+@Slf4j
+public abstract class RemoteHostListLoader implements HostListLoader {
 
   @Autowired
   protected ResourcePatternResolver resourcePatternResolver;
 
-  private ReadableByteChannel openStream(String url) {
-    try {
-      return Channels.newChannel(new URL(url).openStream());
-    } catch (IOException e) {
-      return null;
-    }
-  }
-
   protected Stream<String> loadRemoteHostsLines(String urlListPath) throws IOException {
     return
-        Files.lines(Path.of(resourcePatternResolver
-                .getResource(urlListPath).getURI()))
-            .map(this::openStream)
+        Files.lines(Path.of(resourcePatternResolver.getResource(urlListPath).getURI()))
+            .map(LineFunctions::removeComments)
+            .filter(StringUtils::isNotBlank)
+            .map(url -> Try.of(() -> new URL(url).openStream())
+                .onFailure(e -> log.error("Error reading url ".concat(url), e))
+                .getOrNull())
             .filter(Objects::nonNull)
-            .flatMap(super::loadHostsLines);
+            .flatMap(HostListLoader::loadLines);
   }
 }

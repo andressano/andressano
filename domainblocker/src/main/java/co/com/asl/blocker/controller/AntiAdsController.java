@@ -9,8 +9,9 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.StopWatch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
@@ -28,6 +29,18 @@ public class AntiAdsController {
   @Autowired
   private HostsLinesCreator hostsLinesCreator;
 
+  protected void createHostsFile(String hostsFile, Operation operation) throws IOException {
+    Path hostsFilePath = Path.of(hostsFile);
+    Files.deleteIfExists(hostsFilePath);
+
+    List<String> fileLines = new ArrayList<>();
+    fileLines.addAll(preludeLinesLoader.loadLines().collect(Collectors.toList()));
+    fileLines.add("");
+    fileLines.add("# Generated hosts");
+    fileLines.addAll(hostsLinesCreator.create(operation));
+    Files.write(hostsFilePath, fileLines, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+  }
+
   public void process(String hostsFile, Operation operation) throws IOException {
     Assert.notNull(hostsFile, "Hosts files required");
     Assert.notNull(operation, "Operation required");
@@ -36,15 +49,7 @@ public class AntiAdsController {
     log.info("Creating file {}", hostsFile);
     stopWatch.start();
 
-    Path hostsFilePath = Path.of(hostsFile);
-    Files.deleteIfExists(hostsFilePath);
-
-    List<String> fileLines = new ArrayList<>();
-    fileLines.add(preludeLinesLoader.load());
-    fileLines.add("");
-    fileLines.add("# Generated hosts");
-    fileLines.addAll(hostsLinesCreator.load(operation));
-    Files.write(hostsFilePath, fileLines, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+    createHostsFile(hostsFile, operation);
 
     stopWatch.stop();
     log.info("File {} was created in {} seconds", hostsFile,

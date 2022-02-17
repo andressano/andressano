@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 public class WhitelistLoader extends LocalHostListLoader {
 
   @Override
-  public Stream<String> loadHostsLines() throws IOException {
-    return super.loadLocalHostsLines("whitelist")
+  public Stream<String> loadLines() throws IOException {
+    return super.loadLocalHostsLines("classpath:/META-INF/whitelist/*.txt")
         .filter(StringUtils::isNotBlank);
   }
 }

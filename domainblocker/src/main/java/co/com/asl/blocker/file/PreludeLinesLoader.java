@@ -1,15 +1,15 @@
 package co.com.asl.blocker.file;
 
+import co.com.asl.blocker.file.line.LineConstants;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PreludeLinesLoader {
+public class PreludeLinesLoader implements LinesLoader {
 
   @Autowired
   @Qualifier("osName")
@@ -20,12 +20,10 @@ public class PreludeLinesLoader {
   @Autowired
   private ResourcePatternResolver resourcePatternResolver;
 
-  public String load() throws IOException {
-    return Files.readString(
-            Path.of(
-                resourcePatternResolver
-                    .getResource(String.format("classpath:/META-INF/hostsFiles/%s.txt", osName))
-                    .getURI()))
-        .replace("%%COMPUTER_NAME%%", hostName);
+  public Stream<String> loadLines() throws IOException {
+    return LinesLoader.loadLines(
+            resourcePatternResolver.getResource(
+                String.format("classpath:/META-INF/hostsFiles/%s.txt", osName)).getInputStream())
+        .map(l -> l.replace(LineConstants.COMPUTER_NAME, hostName));
   }
 }
