@@ -17,11 +17,11 @@ public class LineFunctions {
     return replaceTextConsumer(COMPUTER_NAME, hostName);
   }
 
-  public static Function<String, String> replaceComments() {
-    return l -> l.replaceFirst("#(.)*", "").trim();
+  public static String removeComments(String line) {
+    return line.replaceFirst("#(.)*", "").trim();
   }
 
-  public static Function<String, String> removeIp() {
-    return l -> l.replaceFirst(LineConstants.IP_REGEX_PATTERN, "");
+  public static String removeIp(String line) {
+    return line.replaceFirst(LineConstants.IP_REGEX_PATTERN.concat("\\s+"), "");
   }
 }
