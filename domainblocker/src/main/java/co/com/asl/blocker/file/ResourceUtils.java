@@ -1,10 +1,11 @@
 package co.com.asl.blocker.file;
 
-import java.io.BufferedReader;
 import java.io.InputStream;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
-import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Scanner;
 import java.util.stream.Stream;
 
 public final class ResourceUtils {
@@ -13,11 +14,16 @@ public final class ResourceUtils {
   }
 
   public static final Stream<String> loadLines(ReadableByteChannel channel) {
-    return new BufferedReader(
-        Channels.newReader(channel, Charset.defaultCharset())).lines();
+    return loadLines(Channels.newInputStream(channel));
   }
 
   public static final Stream<String> loadLines(InputStream inputStream) {
-    return loadLines(Channels.newChannel(inputStream));
+    Collection<String> lines = new ArrayList<>();
+    Scanner scanner = new Scanner(inputStream);
+    while (scanner.hasNextLine()) {
+      lines.add(scanner.nextLine());
+    }
+    scanner.close();
+    return lines.stream();
   }
 }
