@@ -30,6 +30,6 @@ public abstract class RemoteHostListLoader extends HostListLoader {
                 .getResource(urlListPath).getURI()))
             .map(this::openStream)
             .filter(Objects::nonNull)
-            .flatMap(rbc -> super.loadHostsLines(rbc));
+            .flatMap(super::loadHostsLines);
   }
 }
