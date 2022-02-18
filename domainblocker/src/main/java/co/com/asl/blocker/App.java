@@ -16,8 +16,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class App {
 
   public static void main(String[] args) {
-    Operation operation = Operation.INVALID_OPERATION;
     try {
+      Operation operation = Operation.INVALID_OPERATION;
       CommandLineParser parser = new GnuParser();
       Options options = createOptions();
       CommandLine line = parser.parse(options, args, true);

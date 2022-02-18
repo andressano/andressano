@@ -1,4 +1,6 @@
-package co.com.asl.blocker.file.line;
+package co.com.asl.blocker.line;
+
+import java.util.stream.Stream;
 
 public class LineConstants {
 
@@ -7,6 +9,7 @@ public class LineConstants {
   public static final String COMMENT_PATTERN = "#(.)*";
   public static final String ROUTE_IP = "0.0.0.0";
   public static final String COMPUTER_NAME = "%%COMPUTER_NAME%%";
+  public static final Stream<String> GENERATED_HOSTS = Stream.of("", "# Generated hosts");
 
   private LineConstants() {
     super();

@@ -1,4 +1,4 @@
-package co.com.asl.blocker.file.line;
+package co.com.asl.blocker.line;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -17,5 +17,8 @@ public class LineFunctions {
 
   public static boolean isValidLine(String line) {
     return StringUtils.isNotBlank(line) && line.matches(LineConstants.HOSTNAME_PATTERN);
+  }
+  public static String formatLine(String host) {
+    return String.format("%s\t%s", LineConstants.ROUTE_IP, host);
   }
 }

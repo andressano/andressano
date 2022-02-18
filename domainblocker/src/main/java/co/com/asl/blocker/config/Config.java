@@ -1,6 +1,6 @@
 package co.com.asl.blocker.config;
 
-import co.com.asl.blocker.file.WhitelistLoader;
+import co.com.asl.blocker.host.WhitelistLoader;
 import co.com.asl.blocker.runtime.CommandRunner;
 import java.io.IOException;
 import java.util.Collection;
