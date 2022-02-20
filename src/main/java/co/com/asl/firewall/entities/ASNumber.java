@@ -1,25 +1,28 @@
 package co.com.asl.firewall.entities;
 
+import co.com.asl.firewall.entities.transform.CIDRTransformableSet;
 import java.util.Collection;
 import java.util.Objects;
-import java.util.TreeSet;
+import java.util.function.Predicate;
 import java.util.regex.Pattern;
 import org.springframework.util.Assert;
 
-public class ASNumber extends TreeSet<CIDRAddressV4> implements Comparable<ASNumber> {
+public class ASNumber extends CIDRTransformableSet implements Comparable<ASNumber> {
 
   public static final String REGEX_PATTERN = "AS([0-9]{1,6})";
+  public static final Predicate<String> PREDICATE = Pattern.compile(REGEX_PATTERN)
+      .asMatchPredicate();
   private static final long serialVersionUID = 1L;
   private int number;
 
   public ASNumber(int number) {
-    super();
     setNumber(number);
   }
 
   public ASNumber(String asn) {
-    Assert.isTrue(Pattern.compile(REGEX_PATTERN).matcher(asn).matches(), "ASN Not valid.");
+    Assert.isTrue(PREDICATE.test(asn), "ASN Not valid.");
     setNumber(Integer.parseInt(asn.substring(2)));
+    setName(asn);
   }
 
   public ASNumber(Collection<CIDRAddressV4> addreses) {
@@ -28,8 +31,9 @@ public class ASNumber extends TreeSet<CIDRAddressV4> implements Comparable<ASNum
 
   public ASNumber(String asn, Collection<CIDRAddressV4> addreses) {
     this(addreses);
-    Assert.isTrue(Pattern.compile(REGEX_PATTERN).matcher(asn).matches(), "ASN Not valid.");
+    Assert.isTrue(PREDICATE.test(asn), "ASN Not valid.");
     setNumber(Integer.parseInt(asn.substring(2)));
+    setName(asn);
   }
 
   public int getNumber() {

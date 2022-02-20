@@ -2,14 +2,13 @@ package co.com.asl.firewall.configuration;
 
 import co.com.asl.firewall.entities.ASNumber;
 import co.com.asl.firewall.entities.CIDRAddressV4;
+import co.com.asl.firewall.entities.transform.CIDRTransformableSet;
 import co.com.asl.firewall.file.FileType;
 import co.com.asl.firewall.file.HostsListFileResourceReader;
-import co.com.asl.firewall.ip.CIDRTransformer;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.TreeSet;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.apache.commons.collections4.MultiValuedMap;
@@ -25,8 +24,6 @@ public abstract class AbstractConfigurator {
   protected final Logger log = LoggerFactory.getLogger(getClass());
   @Autowired
   protected ResourcePatternResolver resourcePatternResolver;
-  @Autowired
-  protected CIDRTransformer cidrTransformer;
 
   private String setting;
   @Autowired
@@ -74,8 +71,8 @@ public abstract class AbstractConfigurator {
               .get(ufwOperation)
               .stream()
               .flatMap(ASNumber::stream)
-              .collect(Collectors.toCollection(TreeSet::new));
-      cidrTransformer.transform(addresses);
+              .collect(Collectors.toCollection(CIDRTransformableSet::new))
+              .transform();
       cidrsByOperation.putAll(ufwOperation, addresses);
     }
     return cidrsByOperation;

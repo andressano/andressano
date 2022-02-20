@@ -14,7 +14,6 @@ public final class ASNLineToASNumberTransformer {
   public static final synchronized Collection<CIDRAddressV4> transform(
       final String whoisCommandLine, final String asn) {
     return Command.execute(String.format(whoisCommandLine, asn))
-        .stream()
         .filter(l -> l.matches(CIDRAddressV4.REGEX_PATTERN))
         .map(CIDRAddressV4::new)
         .collect(Collectors.toList());

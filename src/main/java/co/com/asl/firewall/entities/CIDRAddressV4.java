@@ -1,6 +1,7 @@
 package co.com.asl.firewall.entities;
 
 import java.util.Optional;
+import java.util.function.Predicate;
 import java.util.regex.Pattern;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.Assert;
@@ -16,6 +17,7 @@ public class CIDRAddressV4 implements Comparable<CIDRAddressV4> {
   private static final String NUMBER_PATTERN = "([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])";
   public static final String REGEX_PATTERN =
       "^(" + NUMBER_PATTERN + "\\.){3}" + NUMBER_PATTERN + "(\\/(\\d|[1-2]\\d|3[0-2]))?$";
+  public static final Predicate<String> PREDICATE = Pattern.compile(REGEX_PATTERN).asMatchPredicate();
   private int ip;
   private short mask;
 

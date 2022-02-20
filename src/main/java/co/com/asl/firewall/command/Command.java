@@ -2,18 +2,21 @@ package co.com.asl.firewall.command;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public final class Command {
+
+  private static final Logger log = LoggerFactory.getLogger(Command.class);
 
   private Command() {
     super();
   }
 
-  public static final Collection<String> execute(final String commandLine) {
+  public static final Stream<String> execute(final String commandLine) {
     try {
       String[] commandSyntax = new String[]{"/bin/bash", "-c",
           "timeout 10s ".concat(commandLine)};
@@ -24,11 +27,14 @@ public final class Command {
         response.add(scanner.next());
       }
       scanner.close();
-      return response;
+      if (log.isDebugEnabled()) {
+        log.debug("Executing {} with output {}", commandLine, response);
+      }
+      return response.stream();
     } catch (IOException e) {
-      e.printStackTrace();
+      log.error("Error running {}", commandLine, e);
     }
-    return Collections.emptyList();
+    return Stream.empty();
   }
 
 }
