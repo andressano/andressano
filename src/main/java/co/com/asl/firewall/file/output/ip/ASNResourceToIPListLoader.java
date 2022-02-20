@@ -1,7 +1,9 @@
-package co.com.asl.firewall.file;
+package co.com.asl.firewall.file.output.ip;
 
 import co.com.asl.firewall.configuration.UFWOperation;
 import co.com.asl.firewall.entities.CIDRAddressV4;
+import co.com.asl.firewall.file.ASNListLoader;
+import co.com.asl.firewall.file.output.ResourceToASNListLoader;
 import java.util.Collection;
 import java.util.stream.Stream;
 import lombok.extern.slf4j.Slf4j;

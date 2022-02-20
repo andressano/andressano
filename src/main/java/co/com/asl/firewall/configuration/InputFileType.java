@@ -1,15 +1,13 @@
-package co.com.asl.firewall.file;
+package co.com.asl.firewall.configuration;
 
-import co.com.asl.firewall.configuration.UFWOperation;
-
-public enum FileType {
+public enum InputFileType {
   ASN_FILETYPE("classpath*:META-INF/firewall/%s/%s/ASNumbers.txt"),
 
   IP_FILETYPE("classpath*:META-INF/firewall/%s/%s/IPs.txt");
 
   private final String pattern;
 
-  FileType(String pattern) {
+  InputFileType(String pattern) {
     this.pattern = pattern;
   }
 

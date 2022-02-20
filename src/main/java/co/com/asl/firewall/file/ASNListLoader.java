@@ -26,7 +26,7 @@ public class ASNListLoader {
   private BeanFactory beanFactory;
 
   public Stream<ASNumber> load(Stream<String> asnList) {
-    Collection<ASNWhoisCallable> callables = asnList.filter(ASNumber.PREDICATE)
+    Collection<ASNWhoisCallable> callables = asnList
         .map(asn -> beanFactory.getBean(ASNWhoisCallable.class, asn))
         .collect(Collectors.toList());
     ExecutorService executorService = Executors.newFixedThreadPool(numberThreads);
@@ -34,8 +34,9 @@ public class ASNListLoader {
     try {
       list = executorService.invokeAll(callables)
           .stream()
-          .map(f-> Try.of(f::get).onFailure(e -> log.error(e.getLocalizedMessage(), e)).getOrNull())
-              .filter(Objects::nonNull);
+          .map(f -> Try.of(f::get)
+              .onFailure(e -> log.error(e.getLocalizedMessage(), e)).getOrNull())
+          .filter(Objects::nonNull);
     } catch (InterruptedException e) {
       log.error(e.getLocalizedMessage(), e);
       Thread.currentThread().interrupt();

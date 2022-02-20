@@ -1,7 +1,7 @@
 package co.com.asl.firewall.resources;
 
 import co.com.asl.firewall.configuration.UFWOperation;
-import co.com.asl.firewall.file.FileType;
+import co.com.asl.firewall.configuration.InputFileType;
 import io.vavr.control.Try;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -27,9 +27,9 @@ public class FileToLinesResourceLoader {
             .getOrElse(Stream.empty()));
   }
 
-  public Stream<String> load(FileType fileType, String profile, UFWOperation ufwOperation) {
+  public Stream<String> load(InputFileType inputFileType, String profile, UFWOperation ufwOperation) {
     return load(
-        Try.of(() -> resourcePatternResolver.getResources(fileType.path(profile, ufwOperation)))
+        Try.of(() -> resourcePatternResolver.getResources(inputFileType.path(profile, ufwOperation)))
             .onFailure(e -> log.error(e.getLocalizedMessage(), e))
             .getOrElse(new Resource[]{}));
   }

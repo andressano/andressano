@@ -1,7 +1,8 @@
 package co.com.asl.firewall.command;
 
-import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Stream;
@@ -16,22 +17,27 @@ public final class Command {
     super();
   }
 
+  private static final Collection<String> read(InputStream is) {
+    Scanner scanner = new Scanner(is);
+    List<String> response = new ArrayList<>();
+    while (scanner.hasNext()) {
+      response.add(scanner.next());
+    }
+    scanner.close();
+    return response;
+  }
+
   public static final Stream<String> execute(final String commandLine) {
     try {
       String[] commandSyntax = new String[]{"/bin/bash", "-c",
-          "timeout 10s ".concat(commandLine)};
+          "timeout 20s ".concat(commandLine)};
       Process process = Runtime.getRuntime().exec(commandSyntax);
-      Scanner scanner = new Scanner(process.getInputStream());
-      List<String> response = new ArrayList<>();
-      while (scanner.hasNext()) {
-        response.add(scanner.next());
-      }
-      scanner.close();
+      Collection<String> response = read(process.getInputStream());
       if (log.isDebugEnabled()) {
         log.debug("Executing {} with output {}", commandLine, response);
       }
       return response.stream();
-    } catch (IOException e) {
+    } catch (Exception e) {
       log.error("Error running {}", commandLine, e);
     }
     return Stream.empty();

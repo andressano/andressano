@@ -19,6 +19,12 @@ public class ASNumber extends CIDRTransformableSet implements Comparable<ASNumbe
     setNumber(number);
   }
 
+  public ASNumber(int number, String name) {
+    setNumber(number);
+    setName(name);
+  }
+
+
   public ASNumber(String asn) {
     Assert.isTrue(PREDICATE.test(asn), "ASN Not valid.");
     setNumber(Integer.parseInt(asn.substring(2)));
@@ -41,7 +47,7 @@ public class ASNumber extends CIDRTransformableSet implements Comparable<ASNumbe
   }
 
   public void setNumber(int number) {
-    Assert.isTrue(number > 0, "AS Number must be positive");
+    Assert.isTrue(number >= 0, "AS Number must be positive");
     this.number = number;
   }
 

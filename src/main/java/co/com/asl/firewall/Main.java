@@ -32,9 +32,9 @@ public class Main {
     try {
       Assert.notEmpty(args, "Not enough parameters");
       CommandLine cmd = new GnuParser().parse(options, args);
-        if (!cmd.hasOption(NOLOG_OPTION)) {
-            Configurator.initialize("log4j2", "log4j2.xml");
-        }
+      if (!cmd.hasOption(NOLOG_OPTION)) {
+        Configurator.initialize("log4j2", "log4j2.xml");
+      }
       startSpring(cmd);
     } catch (ParseException e) {
       printHelp();
@@ -55,11 +55,11 @@ public class Main {
     if (cmd.hasOption(CONFIG_TYPE_OPTION)) {
       String configType = cmd.getOptionValue(CONFIG_TYPE_OPTION);
       if (cmd.hasOption(FILE_OPTION)) {
-        context.getBean(FileConfigurator.class)
-            .configure(configType, cmd.getOptionValue(FILE_OPTION));
+        context.getBean(FileConfigurator.class, configType, cmd.getOptionValue(FILE_OPTION))
+            .configure();
       } else if (cmd.hasOption(FIREWALL_OPTION)) {
-        context.getBean(UFWConfigurator.class)
-            .configure(configType, cmd.getOptionValue(FIREWALL_OPTION));
+        context.getBean(UFWConfigurator.class, configType, cmd.getOptionValue(FIREWALL_OPTION))
+            .configure();
       }
     } else {
       printHelp();
