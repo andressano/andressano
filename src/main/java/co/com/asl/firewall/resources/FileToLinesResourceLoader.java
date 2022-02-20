@@ -27,10 +27,6 @@ public class FileToLinesResourceLoader {
             .getOrElse(Stream.empty()));
   }
 
-  public Stream<String> load(Resource resource) {
-    return load(new Resource[]{resource});
-  }
-
   public Stream<String> load(FileType fileType, String profile, UFWOperation ufwOperation) {
     return load(
         Try.of(() -> resourcePatternResolver.getResources(fileType.path(profile, ufwOperation)))

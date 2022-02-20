@@ -3,14 +3,16 @@ package co.com.asl.firewall.entities.transform;
 import co.com.asl.firewall.entities.CIDRAddressV4;
 import java.util.Collection;
 import java.util.TreeSet;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@EqualsAndHashCode
 public class CIDRTransformableSet extends TreeSet<CIDRAddressV4> {
 
-  private final Logger log = LoggerFactory.getLogger(getClass());
+  private final transient Logger log = LoggerFactory.getLogger(getClass());
   private final boolean isDebugEnabled = log.isDebugEnabled();
   @Setter
   @Getter

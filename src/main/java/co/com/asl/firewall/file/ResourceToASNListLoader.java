@@ -20,6 +20,7 @@ public class ResourceToASNListLoader {
         .map(l -> l.replaceFirst("#(.)*", ""))
         .map(l -> l.replaceAll("\\s+", ""))
         .filter(StringUtils::isNotBlank)
-        .filter(ASNumber.PREDICATE);
+        .filter(ASNumber.PREDICATE)
+        .distinct();
   }
 }

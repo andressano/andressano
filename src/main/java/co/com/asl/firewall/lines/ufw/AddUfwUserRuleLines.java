@@ -1,4 +1,4 @@
-package co.com.asl.firewall.command;
+package co.com.asl.firewall.lines.ufw;
 
 import co.com.asl.firewall.configuration.UFWOperation;
 import co.com.asl.firewall.entities.CIDRAddressV4;

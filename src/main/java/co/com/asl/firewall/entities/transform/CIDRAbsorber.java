@@ -11,7 +11,10 @@ import org.springframework.util.CollectionUtils;
 final class CIDRAbsorber {
 
   private static final Logger log = LoggerFactory.getLogger(CIDRAbsorber.class);
-  private static final boolean isDebugEnabled = log.isDebugEnabled();
+  private static final boolean DEBUG_ENABLED = log.isDebugEnabled();
+
+  private CIDRAbsorber() {
+  }
 
   static void absorb(CIDRTransformableSet addresses) {
     if (CollectionUtils.isEmpty(addresses)) {
@@ -23,7 +26,7 @@ final class CIDRAbsorber {
     for (CIDRAddressV4 address : addresses) {
       if (Objects.nonNull(previousAddress) && previousAddress.contains(address)) {
         toRemoveAddresses.add(address);
-        if (isDebugEnabled) {
+        if (DEBUG_ENABLED) {
           log.debug("[{}] IP {} absorbed by {}", addresses.getName(), address, previousAddress);
         }
         continue;

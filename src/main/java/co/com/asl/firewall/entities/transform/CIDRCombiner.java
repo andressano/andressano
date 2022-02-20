@@ -13,6 +13,9 @@ final class CIDRCombiner {
 
   private static final Logger log = LoggerFactory.getLogger(CIDRCombiner.class);
 
+  private CIDRCombiner() {
+  }
+
   static void combine(CIDRTransformableSet addresses) {
     if (CollectionUtils.isEmpty(addresses)) {
       return;

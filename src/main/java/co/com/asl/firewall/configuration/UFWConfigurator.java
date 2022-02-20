@@ -1,6 +1,6 @@
 package co.com.asl.firewall.configuration;
 
-import co.com.asl.firewall.command.AddUfwUserRuleLines;
+import co.com.asl.firewall.lines.ufw.AddUfwUserRuleLines;
 import co.com.asl.firewall.entities.transform.CIDRTransformableSet;
 import co.com.asl.firewall.file.IPListLoader;
 import co.com.asl.firewall.resources.FileToLinesResourceLoader;
@@ -12,19 +12,28 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
-import org.apache.commons.collections4.CollectionUtils;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StopWatch;
 
 @Component
-public final class UFWConfigurator extends AbstractConfigurator {
+@Slf4j
+public final class UFWConfigurator {
 
+  @Setter
+  @Getter
+  private String setting;
   @Autowired
   private FileToLinesResourceLoader fileToLinesResourceLoader;
   @Autowired
   private BeanFactory beanFactory;
+  @Autowired
+  private ResourcePatternResolver resourcePatternResolver;
   @Autowired
   private Collection<IPListLoader> listLoaders;
 
@@ -39,25 +48,24 @@ public final class UFWConfigurator extends AbstractConfigurator {
           .stream()
           .flatMap(a -> AddUfwUserRuleLines.execute(a, ufwOperation))
           .collect(Collectors.toList());
-      if (CollectionUtils.isEmpty(addresses)) {
-        continue;
-      }
       addressRulesLines.addAll(addresses);
     }
     return addressRulesLines;
   }
 
   private void writeUserRules(final String userRules) throws IOException {
+    Collection<String> lines = new ArrayList<>();
+    lines.addAll(readFiles("start.txt"));
+    lines.addAll(List.of("### RULES ###"));
+    lines.addAll(readFiles("startRules.txt"));
+    lines.addAll(loadRulesLines());
+    lines.addAll(readFiles("endRules.txt"));
+    lines.addAll(List.of("", "### END RULES ###", ""));
+    lines.addAll(readFiles("end.txt"));
+
     final Path userRulesPath = Path.of(userRules);
     Files.deleteIfExists(userRulesPath);
-    Files.write(userRulesPath, readFiles("start.txt"), StandardOpenOption.CREATE,
-        StandardOpenOption.APPEND);
-    Files.write(userRulesPath, List.of("### RULES ###"), StandardOpenOption.APPEND);
-    Files.write(userRulesPath, readFiles("startRules.txt"), StandardOpenOption.APPEND);
-    Files.write(userRulesPath, loadRulesLines(), StandardOpenOption.APPEND);
-    Files.write(userRulesPath, readFiles("endRules.txt"), StandardOpenOption.APPEND);
-    Files.write(userRulesPath, List.of("", "### END RULES ###", ""), StandardOpenOption.APPEND);
-    Files.write(userRulesPath, readFiles("end.txt"), StandardOpenOption.APPEND);
+    Files.write(userRulesPath, lines, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
   }
 
   private Collection<String> readFiles(String file) throws IOException {

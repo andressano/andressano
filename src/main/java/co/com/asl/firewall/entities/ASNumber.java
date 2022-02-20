@@ -56,6 +56,11 @@ public class ASNumber extends CIDRTransformableSet implements Comparable<ASNumbe
   }
 
   @Override
+  public ASNumber transform() {
+    return (ASNumber) super.transform();
+  }
+
+  @Override
   public String toString() {
     return "AS" + number;
   }
