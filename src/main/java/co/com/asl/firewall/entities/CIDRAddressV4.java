@@ -85,7 +85,7 @@ public class CIDRAddressV4 implements Comparable<CIDRAddressV4> {
           cidrAddressV4.getIp() >>> (BYTES_PER_GROUP * i));
     }
     if (compare == 0) {
-      return Integer.compare(cidrAddressV4.getMask(), getMask());
+      return Integer.compare(getMask(), cidrAddressV4.getMask());
     }
     return compare;
   }

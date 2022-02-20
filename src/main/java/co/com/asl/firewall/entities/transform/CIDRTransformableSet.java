@@ -2,6 +2,7 @@ package co.com.asl.firewall.entities.transform;
 
 import co.com.asl.firewall.entities.CIDRAddressV4;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.TreeSet;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

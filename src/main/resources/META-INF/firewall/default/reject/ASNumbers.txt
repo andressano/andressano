@@ -39,6 +39,7 @@ AS35995 #Twitter Inc.
 AS37958 #Beijing Blue I.T Technologies Co.,Ltd.
 AS38365 #Beijing Baidu Netcom Science and Technology Co., Ltd.
 AS39572 #Advanced Hosters B.V.
+AS41717 #Telfly
 AS45076 #Beijing Baidu Netcom Science and Technology Co., Ltd.
 AS45085 #Beijing Baidu Netcom Science and Technology Co., Ltd.
 AS46652 #ServerStack, Inc.
