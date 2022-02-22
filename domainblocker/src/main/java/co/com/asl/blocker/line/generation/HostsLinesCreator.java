@@ -2,6 +2,7 @@ package co.com.asl.blocker.line.generation;
 
 import co.com.asl.blocker.enums.Operation;
 import co.com.asl.blocker.host.Blacklist;
+import co.com.asl.blocker.host.Whitelist;
 import co.com.asl.blocker.line.LineFunctions;
 import io.vavr.control.Try;
 import java.io.IOException;
@@ -10,7 +11,6 @@ import java.util.stream.Stream;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -20,11 +20,12 @@ public class HostsLinesCreator implements LinesCreator {
   @Autowired
   private Collection<Blacklist> blacklists;
   @Autowired
-  @Qualifier("whitelist")
-  private Collection<String> whitelist;
+  private Collection<Whitelist> whitelist;
 
   private boolean isValid(String host) {
-    return StringUtils.isNotBlank(host) && whitelist.stream().anyMatch(h -> !host.endsWith(h));
+    return StringUtils.isNotBlank(host) && whitelist.stream().flatMap(wl ->
+        Try.of(wl::loadLines)
+            .getOrElse(Stream.empty())).anyMatch(h -> !host.endsWith(h));
   }
 
   public Stream<String> create() throws IOException {

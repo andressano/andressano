@@ -11,7 +11,7 @@ import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.stereotype.Component;
 
 @Component
-public class WhitelistLoader implements HostList {
+public class WhitelistLoader implements Whitelist {
 
   @Autowired
   private ResourcePatternResolver resourcePatternResolver;
