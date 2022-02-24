@@ -1,7 +1,7 @@
 package co.com.asl.firewall.configuration;
 
 import co.com.asl.firewall.file.output.asn.ASNLoader;
-import co.com.asl.firewall.lines.file.AddFileLines;
+import co.com.asl.firewall.lines.file.FileLinesUtil;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -23,8 +23,6 @@ public final class FileConfigurator extends AbstractConfigurator {
 
   @Autowired
   private Collection<ASNLoader> asnLoaders;
-  @Autowired
-  private AddFileLines addFileLines;
 
   public FileConfigurator(String profile, String outputFile) {
     super(profile, outputFile);
@@ -38,7 +36,7 @@ public final class FileConfigurator extends AbstractConfigurator {
       addresses.addAll(
           asnLoaders.stream().flatMap(al -> al.load(getProfile(), ufwOperation))
               .sorted()
-              .flatMap(addFileLines::createLines)
+              .flatMap(FileLinesUtil::createLines)
               .collect(Collectors.toList()));
 
       if (!CollectionUtils.isEmpty(addresses)) {
@@ -47,7 +45,7 @@ public final class FileConfigurator extends AbstractConfigurator {
       }
     }
     final Path userRulesPath = Path.of(outputFile);
-    Files.write(userRulesPath, lines, StandardOpenOption.WRITE,
+    Files.write(userRulesPath, lines, StandardOpenOption.CREATE, StandardOpenOption.WRITE,
         StandardOpenOption.TRUNCATE_EXISTING);
   }
 }

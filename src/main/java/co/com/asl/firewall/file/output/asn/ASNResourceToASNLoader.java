@@ -11,10 +11,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class ASNResourceToASNLoader implements ASNLoader {
 
+  private final ASNListLoader asnListLoader;
+  private final ResourceToASNListLoader resourceToASNListLoader;
+
   @Autowired
-  private ASNListLoader asnListLoader;
-  @Autowired
-  private ResourceToASNListLoader resourceToASNListLoader;
+  public ASNResourceToASNLoader(ASNListLoader asnListLoader,
+      ResourceToASNListLoader resourceToASNListLoader) {
+    this.asnListLoader = asnListLoader;
+    this.resourceToASNListLoader = resourceToASNListLoader;
+  }
 
   @Override
   public Stream<ASNumber> load(String setting, UFWOperation ufwOperation) {

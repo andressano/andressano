@@ -11,8 +11,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class IPResourceToASNLoader implements ASNLoader {
 
+  private final ResourceToIPListLoader resourceToIPListLoader;
+
   @Autowired
-  private ResourceToIPListLoader resourceToIPListLoader;
+  public IPResourceToASNLoader(
+      ResourceToIPListLoader resourceToIPListLoader) {
+    this.resourceToIPListLoader = resourceToIPListLoader;
+  }
 
   @Override
   public Stream<ASNumber> load(String profile, UFWOperation ufwOperation) {

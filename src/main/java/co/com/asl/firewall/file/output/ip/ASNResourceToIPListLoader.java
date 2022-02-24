@@ -13,11 +13,16 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class ASNResourceToIPListLoader implements IPListLoader {
+  private final ResourceToASNListLoader resourceToASNListLoader;
+  private final ASNListLoader asnListLoader;
 
   @Autowired
-  private ResourceToASNListLoader resourceToASNListLoader;
-  @Autowired
-  private ASNListLoader asnListLoader;
+  public ASNResourceToIPListLoader(
+      ResourceToASNListLoader resourceToASNListLoader,
+      ASNListLoader asnListLoader) {
+    this.resourceToASNListLoader = resourceToASNListLoader;
+    this.asnListLoader = asnListLoader;
+  }
 
   public Stream<CIDRAddressV4> load(String string, UFWOperation ufwOperation) {
     return asnListLoader.load(

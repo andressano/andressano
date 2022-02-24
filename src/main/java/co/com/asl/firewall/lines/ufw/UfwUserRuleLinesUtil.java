@@ -4,9 +4,9 @@ import co.com.asl.firewall.configuration.UFWOperation;
 import co.com.asl.firewall.entities.CIDRAddressV4;
 import java.util.stream.Stream;
 
-public final class AddUfwUserRuleLines {
+public final class UfwUserRuleLinesUtil {
 
-  private AddUfwUserRuleLines() {
+  private UfwUserRuleLinesUtil() {
     super();
   }
 

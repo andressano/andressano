@@ -6,10 +6,12 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
-@Component
-public class AddFileLines {
+public final class FileLinesUtil {
 
-  public Stream<String> createLines(CIDRTransformableSet transformableSet) {
+  private FileLinesUtil() {
+  }
+
+  public static final Stream<String> createLines(CIDRTransformableSet transformableSet) {
     if (CollectionUtils.isEmpty(transformableSet)) {
       return Stream.empty();
     }

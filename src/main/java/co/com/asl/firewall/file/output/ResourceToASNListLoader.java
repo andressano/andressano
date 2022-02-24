@@ -12,8 +12,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class ResourceToASNListLoader {
 
+  private final FileToLinesResourceLoader fileToLinesResourceLoader;
+
   @Autowired
-  private FileToLinesResourceLoader fileToLinesResourceLoader;
+  private ResourceToASNListLoader(
+      FileToLinesResourceLoader fileToLinesResourceLoader) {
+    this.fileToLinesResourceLoader = fileToLinesResourceLoader;
+  }
 
   public Stream<String> load(String setting, UFWOperation ufwOperation) {
     return fileToLinesResourceLoader

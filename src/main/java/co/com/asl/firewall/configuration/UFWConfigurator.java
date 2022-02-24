@@ -2,7 +2,7 @@ package co.com.asl.firewall.configuration;
 
 import co.com.asl.firewall.entities.transform.CIDRTransformableSet;
 import co.com.asl.firewall.file.output.ip.IPListLoader;
-import co.com.asl.firewall.lines.ufw.AddUfwUserRuleLines;
+import co.com.asl.firewall.lines.ufw.UfwUserRuleLinesUtil;
 import co.com.asl.firewall.resources.FileToLinesResourceLoader;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -46,7 +46,7 @@ public final class UFWConfigurator extends AbstractConfigurator {
           .collect(Collectors.toCollection(CIDRTransformableSet::new))
           .transform()
           .stream()
-          .flatMap(a -> AddUfwUserRuleLines.execute(a, ufwOperation))
+          .flatMap(a -> UfwUserRuleLinesUtil.execute(a, ufwOperation))
           .collect(Collectors.toList());
       addressRulesLines.addAll(addresses);
     }

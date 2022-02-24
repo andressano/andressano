@@ -17,8 +17,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class FileToLinesResourceLoader {
 
+  private final ResourcePatternResolver resourcePatternResolver;
+
   @Autowired
-  private ResourcePatternResolver resourcePatternResolver;
+  public FileToLinesResourceLoader(
+      ResourcePatternResolver resourcePatternResolver) {
+    this.resourcePatternResolver = resourcePatternResolver;
+  }
 
   public Stream<String> load(Resource... resources) {
     return Arrays.stream(resources).flatMap(resource ->
