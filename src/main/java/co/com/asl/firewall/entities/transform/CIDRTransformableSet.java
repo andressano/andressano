@@ -24,7 +24,7 @@ public class CIDRTransformableSet extends TreeSet<CIDRAddressV4> {
   }
 
   public CIDRTransformableSet() {
-    super();
+    this("Default");
   }
 
   public CIDRTransformableSet(String name) {
@@ -39,8 +39,8 @@ public class CIDRTransformableSet extends TreeSet<CIDRAddressV4> {
     do {
       iteration++;
       int initialSize = this.size();
-      CIDRAbsorber.absorb(this);
       CIDRCombiner.combine(this);
+      CIDRAbsorber.absorb(this);
       changes = initialSize - this.size();
 
       if (isDebugEnabled && changes > 0) {

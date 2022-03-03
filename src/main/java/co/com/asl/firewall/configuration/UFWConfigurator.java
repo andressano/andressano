@@ -65,7 +65,7 @@ public final class UFWConfigurator extends AbstractConfigurator {
     lines.addAll(readFiles("end.txt"));
 
     final Path userRulesPath = Path.of(getOutputFile());
-    Files.write(userRulesPath, lines, StandardOpenOption.WRITE,
+    Files.write(userRulesPath, lines, StandardOpenOption.CREATE, StandardOpenOption.WRITE,
         StandardOpenOption.TRUNCATE_EXISTING);
   }
 

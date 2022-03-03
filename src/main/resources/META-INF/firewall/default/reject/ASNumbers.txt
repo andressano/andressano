@@ -1,6 +1,7 @@
 AS10099 #China Unicom Global
 AS12389 #Rostelcom Russia
 AS12418 #Quantum Russia
+AS13238 #YANDEX LLC
 AS13414 #Twitter Inc.
 AS14571 #hge.com.br
 AS14720 #Gamma Networking Inc.
@@ -8,6 +9,7 @@ AS17015 #Vibrant media inc
 AS19318 #NEW JERSEY INTERNATIONAL INTERNET EXCHANGE LLC
 AS19324 #Dosarrest Internet Security LTD
 AS20401 #Hostway Corporation
+AS208722 #Yandex Oy
 #AS20940 #Akamai Technologies - Comment cloud providers
 #AS21342 #Akamai Technologies - Comment cloud providers
 AS21859 #Beijing JingTian Technology Co., Ltd.
@@ -27,7 +29,7 @@ AS29990 #AppNexus, Inc
 AS30361 #Swiftwill, Inc. - TOPPRIO
 AS30633 #LeASeweb USA, Inc.
 AS31080 #go2.pl
-AS3216  #PJSC Vimpelcom Russia
+AS3216 #PJSC Vimpelcom Russia
 AS32934 #Facebook, Inc.
 AS33419 #Exponential Interactive, Inc.
 AS35995 #Twitter Inc.
@@ -37,14 +39,17 @@ AS38370 #China TieTong Telecommunications Corporation
 AS39572 #Advanced Hosters B.V.
 AS4134 #China Telecom Backbone
 AS41717 #Telfly
+AS42567 #MOJOHOST B.V.
 AS46652 #ServerStack, Inc.
 AS4808 #China Unicom Beijing Province Network
 AS4809 #China Unicom Beijing Province Network
+AS4811 #China Telecom Group
 AS4812 #China Telecom Backbone
 AS4837 #China Unicom Backbone
 AS4847 #China Networks Inter-Exchange
 AS48684 #Viking Host B.V.
 AS49587 #Adsmarket G.M LTD
+AS50245 #Serverel Inc.
 AS50974 #Ediciones El Pais, S.L.
 AS53292 #Barracuda Networks, Inc.
 AS53334 #Total Uptime Technologies, LLC
@@ -60,6 +65,9 @@ AS56041 #China Mobile communications corporation
 AS56040 #China Mobile communications corporation
 AS56127 #Beijing Shidaihongyuan Network Communication Co.,Ltd.
 AS56464 #Vibrant Media Ltd
+AS56898 #Private Host B.V.
+AS57724 #DDOS-GUARD LTD
+AS58061 #Scalaxy B.V.
 AS58453 #China mobile international
 AS62355 #Network Dedicated SAS
 AS63293 #Facebook, Inc.
@@ -70,3 +78,5 @@ AS8945 #Twitter Inc.
 AS9394 #China TieTong Telecommunications Corporation
 AS9808 #Guangdong Mobile Communication Co.Ltd.
 AS9929 #China Netcom Backbone
+AS63727 	#Huawei
+AS55990 	#Huawei Cloud Service data center

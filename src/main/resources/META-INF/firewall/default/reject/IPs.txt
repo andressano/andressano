@@ -7,6 +7,7 @@
 69.55.53.0/24 		#ServerStack, Inc.
 103.0.0.0/8			#Beijing Baidu Netcom Science and Technology Co., Ltd.,CN
 104.18.32.0/20
+104.19.128.0/20
 108.174.10.0/24		#Linkedin.com
 106.0.0.0/8		    #Beijing Blue I.T Technologies Co.,Ltd., CN
 111.0.0.0/10		#Beijing Baidu Netcom Science and Technology Co., Ltd.,CN
@@ -17,8 +18,9 @@
 185.39.8.0/22		#Network Dedicated SAS - cdn.sstream.pw
 198.41.192.0/19		#CloudFlare, Inc.
 202.108.0.0/16		#China Unicom Beijing Province Network
-209.235.192.0/18	#INETu, Inc.
+207.66.140.0/22
 208.69.32.0/21		#block.opendns.com
+209.235.192.0/18	#INETu, Inc.
 
 #Ads
 66.235.132.0/22		#Adobe Systems Inc.
