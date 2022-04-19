@@ -100,6 +100,8 @@ telecommand.telemetry.microsoft.com.nsatc.net
 telemetry.appex.bing.net
 telemetry.microsoft.com
 telemetry.urs.microsoft.com
+theporndude.com
+thepornguy.com
 ui.skype.com
 urs.microsoft.com
 view.atdmt.com
@@ -117,3 +119,6 @@ wes.df.telemetry.microsoft.com
 www.elabs6.com
 www.linkedin.com
 www.msftncsi.com
+www.theporndude.com
+www.thepornguy.com
+www.vivthomas.com

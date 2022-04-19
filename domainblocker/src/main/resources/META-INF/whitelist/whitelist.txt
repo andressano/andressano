@@ -21,7 +21,6 @@ putlocker.ws
 .tubesyndicate.org
 
 # Personal sites
-.astroayuda.net
 .comodo.com
 .dailyhoroscopes.net
 .dropbox.com
@@ -31,7 +30,4 @@ putlocker.ws
 .kaspersky.com
 .norton.com
 .on24.com
-.tumblr.com
 docs.google.com
-www.isohunt.com
-www.youtube.com
