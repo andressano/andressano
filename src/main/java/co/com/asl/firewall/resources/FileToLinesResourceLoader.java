@@ -1,6 +1,6 @@
 package co.com.asl.firewall.resources;
 
-import co.com.asl.firewall.configuration.UFWOperation;
+import co.com.asl.firewall.configuration.ufw.UFWOperation;
 import co.com.asl.firewall.configuration.InputFileType;
 import io.vavr.control.Try;
 import java.nio.file.Files;

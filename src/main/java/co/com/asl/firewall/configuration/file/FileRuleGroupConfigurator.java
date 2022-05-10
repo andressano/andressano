@@ -1,5 +1,7 @@
-package co.com.asl.firewall.configuration;
+package co.com.asl.firewall.configuration.file;
 
+import co.com.asl.firewall.configuration.AbstractConfigurator;
+import co.com.asl.firewall.configuration.ufw.UFWOperation;
 import co.com.asl.firewall.entities.CIDRAddressV4;
 import co.com.asl.firewall.entities.transform.CIDRTransformableSet;
 import co.com.asl.firewall.file.output.ip.IPListLoader;

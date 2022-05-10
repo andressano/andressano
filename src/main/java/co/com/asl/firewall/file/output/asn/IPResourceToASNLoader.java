@@ -1,6 +1,6 @@
 package co.com.asl.firewall.file.output.asn;
 
-import co.com.asl.firewall.configuration.UFWOperation;
+import co.com.asl.firewall.configuration.ufw.UFWOperation;
 import co.com.asl.firewall.entities.ASNumber;
 import co.com.asl.firewall.file.output.ip.ResourceToIPListLoader;
 import java.util.stream.Collectors;

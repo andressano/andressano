@@ -1,7 +1,7 @@
 package co.com.asl.firewall.file.output;
 
 import co.com.asl.firewall.configuration.InputFileType;
-import co.com.asl.firewall.configuration.UFWOperation;
+import co.com.asl.firewall.configuration.ufw.UFWOperation;
 import co.com.asl.firewall.entities.ASNumber;
 import co.com.asl.firewall.resources.FileToLinesResourceLoader;
 import java.util.stream.Stream;

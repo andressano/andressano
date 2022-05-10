@@ -1,4 +1,4 @@
-package co.com.asl.firewall.configuration;
+package co.com.asl.firewall.configuration.ufw;
 
 public enum UFWOperation {
     ACCEPT("allow"), DROP("drop"), REJECT("reject");

@@ -1,5 +1,7 @@
-package co.com.asl.firewall.configuration;
+package co.com.asl.firewall.configuration.file;
 
+import co.com.asl.firewall.configuration.AbstractConfigurator;
+import co.com.asl.firewall.configuration.ufw.UFWOperation;
 import co.com.asl.firewall.file.output.asn.ASNLoader;
 import co.com.asl.firewall.lines.file.FileLinesUtil;
 import java.io.IOException;

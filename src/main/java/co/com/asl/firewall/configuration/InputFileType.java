@@ -1,5 +1,7 @@
 package co.com.asl.firewall.configuration;
 
+import co.com.asl.firewall.configuration.ufw.UFWOperation;
+
 public enum InputFileType {
   ASN_FILETYPE("classpath*:META-INF/firewall/%s/%s/ASNumbers.txt"),
 

@@ -1,6 +1,6 @@
 package co.com.asl.firewall.file.output.ip;
 
-import co.com.asl.firewall.configuration.UFWOperation;
+import co.com.asl.firewall.configuration.ufw.UFWOperation;
 import co.com.asl.firewall.entities.CIDRAddressV4;
 import java.util.stream.Stream;
 

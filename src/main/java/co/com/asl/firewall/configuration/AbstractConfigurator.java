@@ -22,6 +22,7 @@ public abstract class AbstractConfigurator {
   public void configure() throws IOException {
     StopWatch stopWatch = new StopWatch();
     stopWatch.start();
+
     log.info("UFW configuration '{}' started", getProfile());
     writeFile();
     stopWatch.stop();

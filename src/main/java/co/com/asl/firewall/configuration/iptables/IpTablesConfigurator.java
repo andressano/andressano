@@ -1,7 +1,11 @@
-package co.com.asl.firewall.configuration;
+package co.com.asl.firewall.configuration.iptables;
 
+import co.com.asl.firewall.configuration.AbstractConfigurator;
+import co.com.asl.firewall.configuration.ufw.UFWOperation;
 import co.com.asl.firewall.entities.transform.CIDRTransformableSet;
 import co.com.asl.firewall.file.output.ip.IPListLoader;
+import co.com.asl.firewall.lines.iptables.IpTablesInputUserRuleLinesUtil;
+import co.com.asl.firewall.lines.iptables.IpTablesOutputUserRuleLinesUtil;
 import co.com.asl.firewall.lines.ufw.UfwUserRuleLinesUtil;
 import co.com.asl.firewall.resources.FileToLinesResourceLoader;
 import java.io.IOException;
@@ -22,7 +26,7 @@ import org.springframework.stereotype.Component;
 @Scope("prototype")
 @Component
 @Slf4j
-public final class UFWConfigurator extends AbstractConfigurator {
+public final class IpTablesConfigurator extends AbstractConfigurator {
 
   @Autowired
   private FileToLinesResourceLoader fileToLinesResourceLoader;
@@ -33,7 +37,7 @@ public final class UFWConfigurator extends AbstractConfigurator {
   @Autowired
   private Collection<IPListLoader> listLoaders;
 
-  public UFWConfigurator(String profile, String outputFile) {
+  public IpTablesConfigurator(String profile, String outputFile) {
     super(profile, outputFile);
   }
 
@@ -46,7 +50,19 @@ public final class UFWConfigurator extends AbstractConfigurator {
           .collect(Collectors.toCollection(CIDRTransformableSet::new))
           .transform()
           .stream()
-          .flatMap(a -> UfwUserRuleLinesUtil.execute(a, ufwOperation))
+          .flatMap(a -> IpTablesInputUserRuleLinesUtil.execute(a, ufwOperation))
+          .collect(Collectors.toList());
+      addressRulesLines.addAll(addresses);
+    }
+
+    for (UFWOperation ufwOperation : UFWOperation.values()) {
+      Collection<String> addresses = listLoaders
+          .stream()
+          .flatMap(ll -> ll.load(getProfile(), ufwOperation))
+          .collect(Collectors.toCollection(CIDRTransformableSet::new))
+          .transform()
+          .stream()
+          .flatMap(a -> IpTablesOutputUserRuleLinesUtil.execute(a, ufwOperation))
           .collect(Collectors.toList());
       addressRulesLines.addAll(addresses);
     }
@@ -72,9 +88,9 @@ public final class UFWConfigurator extends AbstractConfigurator {
   private Collection<String> readFiles(String file) throws IOException {
     Collection<String> lines = new ArrayList<>();
     lines.addAll(fileToLinesResourceLoader.load(resourcePatternResolver.getResources(
-        String.format("classpath*:META-INF/firewall/%s", file))).collect(Collectors.toList()));
+        String.format("classpath*:META-INF/firewall/iptables/%s", file))).collect(Collectors.toList()));
     lines.addAll(fileToLinesResourceLoader.load(resourcePatternResolver.getResources(
-        String.format("classpath*:META-INF/firewall/%s/**/%s", getProfile(), file))).collect(
+        String.format("classpath*:META-INF/firewall/iptables/%s/**/%s", getProfile(), file))).collect(
         Collectors.toList()));
     return lines;
   }
