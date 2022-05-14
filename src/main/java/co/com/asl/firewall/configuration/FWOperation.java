@@ -1,13 +1,13 @@
-package co.com.asl.firewall.configuration.ufw;
+package co.com.asl.firewall.configuration;
 
-public enum UFWOperation {
+public enum FWOperation {
     ACCEPT("allow"), DROP("drop"), REJECT("reject");
 
-    UFWOperation(String policy) {
+    FWOperation(String policy) {
         this.policy = policy;
     }
 
-    private String policy;
+    private final String policy;
 
     public String policy() {
         return policy;

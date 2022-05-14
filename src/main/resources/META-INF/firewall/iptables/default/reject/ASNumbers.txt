@@ -1,3 +1,17 @@
+AS3216 #PJSC Vimpelcom Russia
+AS4134 #China Telecom Backbone
+AS4808 #China Unicom Beijing Province Network
+AS4809 #China Unicom Beijing Province Network
+AS4811 #China Telecom Group
+AS4812 #China Telecom Backbone
+AS4837 #China Unicom Backbone
+AS4847 #China Networks Inter-Exchange
+AS6432 #Doubleclick.net
+AS7415 #302br.net
+AS8945 #Twitter Inc.
+AS9394 #China TieTong Telecommunications Corporation
+AS9808 #Guangdong Mobile Communication Co.Ltd.
+AS9929 #China Netcom Backbone
 AS10099 #China Unicom Global
 AS12389 #Rostelcom Russia
 AS12418 #Quantum Russia
@@ -29,33 +43,31 @@ AS29990 #AppNexus, Inc
 AS30361 #Swiftwill, Inc. - TOPPRIO
 AS30633 #LeASeweb USA, Inc.
 AS31080 #go2.pl
-AS3216 #PJSC Vimpelcom Russia
+AS31133 #MegaFon Russia
 AS32934 #Facebook, Inc.
 AS33419 #Exponential Interactive, Inc.
 AS35995 #Twitter Inc.
+AS37936 #15F,Ideal Plaza No.58 Bei Si Huan Xi Road
 AS37958 #Beijing Blue I.T Technologies Co.,Ltd.
 AS38365 #Beijing Baidu Netcom Science and Technology Co., Ltd.
 AS38370 #China TieTong Telecommunications Corporation
 AS39572 #Advanced Hosters B.V.
-AS4134 #China Telecom Backbone
 AS41717 #Telfly
 AS42567 #MOJOHOST B.V.
+AS45090	#Shenzhen Tencent Computer Systems Company Limited
 AS46652 #ServerStack, Inc.
-AS4808 #China Unicom Beijing Province Network
-AS4809 #China Unicom Beijing Province Network
-AS4811 #China Telecom Group
-AS4812 #China Telecom Backbone
-AS4837 #China Unicom Backbone
-AS4847 #China Networks Inter-Exchange
+AS47764 #LLC VK Russia
 AS48684 #Viking Host B.V.
 AS49587 #Adsmarket G.M LTD
 AS50245 #Serverel Inc.
+AS50810 #Mobin Net Communication Company (Private Joint Stock)
 AS50974 #Ediciones El Pais, S.L.
 AS53292 #Barracuda Networks, Inc.
 AS53334 #Total Uptime Technologies, LLC
 AS54115 #Facebook, Inc.
 AS54888 #Twitter Inc.
 AS55468 #China radio international
+AS55990 #Huawei Cloud Service data center
 AS56048 #China Mobile Communicaitons Corporation
 AS56047 #China Mobile communications corporation
 AS56046 #China Mobile communications corporation
@@ -72,11 +84,6 @@ AS58453 #China mobile international
 AS62355 #Network Dedicated SAS
 AS63293 #Facebook, Inc.
 AS63711 #China TieTong Telecommunications Corporation
-AS6432 #Doubleclick.net
-AS7415 #302br.net
-AS8945 #Twitter Inc.
-AS9394 #China TieTong Telecommunications Corporation
-AS9808 #Guangdong Mobile Communication Co.Ltd.
-AS9929 #China Netcom Backbone
-AS63727 	#Huawei
-AS55990 	#Huawei Cloud Service data center
+AS63727 #Huawei
+AS132591 #Tencent AS num for global network
+AS133478 #Tencent Cloud Computing (Beijing) Co., Ltd

@@ -1,6 +1,6 @@
 package co.com.asl.firewall.lines.iptables;
 
-import co.com.asl.firewall.configuration.ufw.UFWOperation;
+import co.com.asl.firewall.configuration.FWOperation;
 import co.com.asl.firewall.entities.CIDRAddressV4;
 import java.util.stream.Stream;
 
@@ -11,7 +11,7 @@ public final class IpTablesOutputUserRuleLinesUtil {
   }
 
   public static final Stream<String> execute(CIDRAddressV4 cidrAddressV4,
-      UFWOperation operation) {
+      FWOperation operation) {
     switch (operation) {
       case ACCEPT:
       case DROP:

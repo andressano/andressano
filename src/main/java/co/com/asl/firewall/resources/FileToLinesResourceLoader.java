@@ -1,17 +1,20 @@
 package co.com.asl.firewall.resources;
 
-import co.com.asl.firewall.configuration.ufw.UFWOperation;
-import co.com.asl.firewall.configuration.InputFileType;
-import io.vavr.control.Try;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.stream.Stream;
-import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.stereotype.Component;
+
+import co.com.asl.firewall.configuration.FWOperation;
+import co.com.asl.firewall.configuration.FirewallType;
+import co.com.asl.firewall.configuration.InputFileType;
+import io.vavr.control.Try;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Component
@@ -32,9 +35,9 @@ public class FileToLinesResourceLoader {
             .getOrElse(Stream.empty()));
   }
 
-  public Stream<String> load(InputFileType inputFileType, String profile, UFWOperation ufwOperation) {
+  public Stream<String> load(InputFileType inputFileType, FirewallType firewallType, String profile, FWOperation ufwOperation) {
     return load(
-        Try.of(() -> resourcePatternResolver.getResources(inputFileType.path(profile, ufwOperation)))
+        Try.of(() -> resourcePatternResolver.getResources(inputFileType.path(firewallType, profile, ufwOperation)))
             .onFailure(e -> log.error(e.getLocalizedMessage(), e))
             .getOrElse(new Resource[]{}));
   }

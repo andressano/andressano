@@ -1,10 +1,5 @@
 package co.com.asl.firewall.configuration.file;
 
-import co.com.asl.firewall.configuration.AbstractConfigurator;
-import co.com.asl.firewall.configuration.ufw.UFWOperation;
-import co.com.asl.firewall.entities.CIDRAddressV4;
-import co.com.asl.firewall.entities.transform.CIDRTransformableSet;
-import co.com.asl.firewall.file.output.ip.IPListLoader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -12,11 +7,19 @@ import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.stream.Collectors;
-import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
+
+import co.com.asl.firewall.configuration.AbstractConfigurator;
+import co.com.asl.firewall.configuration.FWOperation;
+import co.com.asl.firewall.configuration.FirewallType;
+import co.com.asl.firewall.entities.CIDRAddressV4;
+import co.com.asl.firewall.entities.transform.CIDRTransformableSet;
+import co.com.asl.firewall.file.output.ip.IPListLoader;
+import lombok.extern.slf4j.Slf4j;
 
 @Scope("prototype")
 @Component
@@ -34,10 +37,10 @@ public final class FileRuleGroupConfigurator extends AbstractConfigurator {
   private Collection<String> loadRulesLines() {
     Collection<String> addressRulesLines = new ArrayList<>();
     int group = 1;
-    for (UFWOperation ufwOperation : UFWOperation.values()) {
+    for (FWOperation ufwOperation : FWOperation.values()) {
       ArrayList<String> addresses = listLoaders
           .stream()
-          .flatMap(ll -> ll.load(getProfile(), ufwOperation))
+          .flatMap(ll -> ll.load(FirewallType.UFW, getProfile(), ufwOperation))
           .collect(Collectors.toCollection(CIDRTransformableSet::new))
           .transform()
           .stream()

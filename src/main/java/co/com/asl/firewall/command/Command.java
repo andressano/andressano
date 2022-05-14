@@ -17,7 +17,7 @@ public final class Command {
     super();
   }
 
-  private static final Collection<String> read(InputStream is) {
+  private static Collection<String> read(InputStream is) {
     Scanner scanner = new Scanner(is);
     List<String> response = new ArrayList<>();
     while (scanner.hasNext()) {
@@ -27,7 +27,7 @@ public final class Command {
     return response;
   }
 
-  public static final Stream<String> execute(final String commandLine) {
+  public static Stream<String> execute(final String commandLine) {
     try {
       String[] commandSyntax = new String[]{"/bin/bash", "-c",
           "timeout 20s ".concat(commandLine)};

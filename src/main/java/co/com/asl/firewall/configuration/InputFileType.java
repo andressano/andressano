@@ -1,23 +1,21 @@
 package co.com.asl.firewall.configuration;
 
-import co.com.asl.firewall.configuration.ufw.UFWOperation;
-
 public enum InputFileType {
-  ASN_FILETYPE("classpath*:META-INF/firewall/%s/%s/ASNumbers.txt"),
+	ASN_FILETYPE("classpath*:META-INF/firewall/%s/%s/%s/ASNumbers.txt"),
 
-  IP_FILETYPE("classpath*:META-INF/firewall/%s/%s/IPs.txt");
+	IP_FILETYPE("classpath*:META-INF/firewall/%s/%s/%s/IPs.txt");
 
-  private final String pattern;
+	private final String pattern;
 
-  InputFileType(String pattern) {
-    this.pattern = pattern;
-  }
+	InputFileType(String pattern) {
+		this.pattern = pattern;
+	}
 
-  public String path(String profile, UFWOperation ufwOperation) {
-    return String.format(pattern, profile, ufwOperation.name().toLowerCase());
-  }
+	public String path(FirewallType firewallType, String profile, FWOperation ufwOperation) {
+		return String.format(pattern, firewallType.name().toLowerCase(), profile, ufwOperation.name().toLowerCase());
+	}
 
-  public String getPattern() {
-    return pattern;
-  }
+	public String getPattern() {
+		return pattern;
+	}
 }

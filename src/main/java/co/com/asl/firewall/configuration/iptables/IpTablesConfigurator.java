@@ -1,13 +1,5 @@
 package co.com.asl.firewall.configuration.iptables;
 
-import co.com.asl.firewall.configuration.AbstractConfigurator;
-import co.com.asl.firewall.configuration.ufw.UFWOperation;
-import co.com.asl.firewall.entities.transform.CIDRTransformableSet;
-import co.com.asl.firewall.file.output.ip.IPListLoader;
-import co.com.asl.firewall.lines.iptables.IpTablesInputUserRuleLinesUtil;
-import co.com.asl.firewall.lines.iptables.IpTablesOutputUserRuleLinesUtil;
-import co.com.asl.firewall.lines.ufw.UfwUserRuleLinesUtil;
-import co.com.asl.firewall.resources.FileToLinesResourceLoader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -16,12 +8,22 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
-import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.stereotype.Component;
+
+import co.com.asl.firewall.configuration.AbstractConfigurator;
+import co.com.asl.firewall.configuration.FWOperation;
+import co.com.asl.firewall.configuration.FirewallType;
+import co.com.asl.firewall.entities.transform.CIDRTransformableSet;
+import co.com.asl.firewall.file.output.ip.IPListLoader;
+import co.com.asl.firewall.lines.iptables.IpTablesInputUserRuleLinesUtil;
+import co.com.asl.firewall.lines.iptables.IpTablesOutputUserRuleLinesUtil;
+import co.com.asl.firewall.resources.FileToLinesResourceLoader;
+import lombok.extern.slf4j.Slf4j;
 
 @Scope("prototype")
 @Component
@@ -43,10 +45,10 @@ public final class IpTablesConfigurator extends AbstractConfigurator {
 
   private Collection<String> loadRulesLines() {
     Collection<String> addressRulesLines = new ArrayList<>();
-    for (UFWOperation ufwOperation : UFWOperation.values()) {
+    for (FWOperation ufwOperation : FWOperation.values()) {
       Collection<String> addresses = listLoaders
           .stream()
-          .flatMap(ll -> ll.load(getProfile(), ufwOperation))
+          .flatMap(ll -> ll.load(FirewallType.IPTABLES, getProfile(), ufwOperation))
           .collect(Collectors.toCollection(CIDRTransformableSet::new))
           .transform()
           .stream()
@@ -55,10 +57,10 @@ public final class IpTablesConfigurator extends AbstractConfigurator {
       addressRulesLines.addAll(addresses);
     }
 
-    for (UFWOperation ufwOperation : UFWOperation.values()) {
+    for (FWOperation ufwOperation : FWOperation.values()) {
       Collection<String> addresses = listLoaders
           .stream()
-          .flatMap(ll -> ll.load(getProfile(), ufwOperation))
+          .flatMap(ll -> ll.load(FirewallType.IPTABLES, getProfile(), ufwOperation))
           .collect(Collectors.toCollection(CIDRTransformableSet::new))
           .transform()
           .stream()

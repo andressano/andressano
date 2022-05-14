@@ -1,12 +1,15 @@
 package co.com.asl.firewall.file.output.asn;
 
-import co.com.asl.firewall.configuration.ufw.UFWOperation;
-import co.com.asl.firewall.entities.ASNumber;
-import co.com.asl.firewall.file.output.ip.ResourceToIPListLoader;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import co.com.asl.firewall.configuration.FWOperation;
+import co.com.asl.firewall.configuration.FirewallType;
+import co.com.asl.firewall.entities.ASNumber;
+import co.com.asl.firewall.file.output.ip.ResourceToIPListLoader;
 
 @Component
 public class IPResourceToASNLoader implements ASNLoader {
@@ -20,8 +23,8 @@ public class IPResourceToASNLoader implements ASNLoader {
   }
 
   @Override
-  public Stream<ASNumber> load(String profile, UFWOperation ufwOperation) {
-    return Stream.of(resourceToIPListLoader.load(profile, ufwOperation)
+  public Stream<ASNumber> load(FirewallType firewallType, String profile, FWOperation ufwOperation) {
+    return Stream.of(resourceToIPListLoader.load(firewallType, profile, ufwOperation)
         .collect(Collectors.toCollection(() -> new ASNumber(0, "Others"))));
   }
 }
