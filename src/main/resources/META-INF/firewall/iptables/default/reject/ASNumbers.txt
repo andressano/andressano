@@ -56,7 +56,10 @@ AS41717 #Telfly
 AS42567 #MOJOHOST B.V.
 AS45090	#Shenzhen Tencent Computer Systems Company Limited
 AS46652 #ServerStack, Inc.
+AS47541 #VKonatkte Ltd Russia
+AS47626 #Timer LLC Russia
 AS47764 #LLC VK Russia
+AS48858 #Milecom Russia
 AS48684 #Viking Host B.V.
 AS49587 #Adsmarket G.M LTD
 AS50245 #Serverel Inc.
