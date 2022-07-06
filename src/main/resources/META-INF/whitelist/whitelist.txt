@@ -12,6 +12,7 @@ localhost
 .hpg.com.br
 .liveadvert.com
 .lontent.com
+.mql5.com
 .neliver.com
 putlocker.ac
 putlocker.com
@@ -27,7 +28,6 @@ putlocker.ws
 .facebook.com
 .finance.google.com
 .grupovenus.com
-.kaspersky.com
 .norton.com
 .on24.com
 docs.google.com

@@ -7,6 +7,7 @@ ebaumsworld.com
 engagemedia.org
 flickr.com
 flixya.com
+googlevideo.com
 instagram.com
 live.fb.com
 liveleak.com
@@ -64,4 +65,10 @@ www.wistia.com
 www.younow.com
 www.youtube.com
 younow.com
+youtu.be
 youtube.com
+youtube.googleapis.com
+youtubei.googleapis.com
+youtube-nocookie.com
+ytimg.com
+ytimg.l.google.com
