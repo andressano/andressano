@@ -9,3 +9,5 @@ https://raw.githubusercontent.com/shreyasminocha/shady-hosts/main/hosts
 https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-porn-social/hosts
 https://github.com/AdguardTeam/cname-trackers
 https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt
+https://raw.githubusercontent.com/TechnologyClassroom/HOSTS/master/HOSTSFwin.txt
+https://github.com/KodoPengin/GameIndustry-hosts-Template/raw/master/Gaming-Full-Template/hosts
