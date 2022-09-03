@@ -2,6 +2,7 @@ package co.com.asl.blocker.line.generation;
 
 import co.com.asl.blocker.enums.Operation;
 import co.com.asl.blocker.host.Blacklist;
+import co.com.asl.blocker.host.HostList;
 import co.com.asl.blocker.host.Whitelist;
 import co.com.asl.blocker.line.LineFunctions;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +20,8 @@ public class BlackListLinesCreator implements LinesCreator {
     @Autowired
     private Blacklist blacklist;
     @Autowired
+    private HostList hostList;
+    @Autowired
     private Whitelist whitelist;
 
     private boolean isValid(String host) {
@@ -26,7 +29,7 @@ public class BlackListLinesCreator implements LinesCreator {
     }
 
     public Stream<String> create() throws IOException {
-        return blacklist.stream().filter(this::isValid).sorted().distinct().map(LineFunctions::formatLine);
+        return Stream.concat(blacklist.stream(), hostList.stream()).filter(this::isValid).map(LineFunctions::formatLine);
     }
 
     @Override

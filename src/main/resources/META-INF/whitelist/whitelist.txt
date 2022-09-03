@@ -14,16 +14,9 @@ localhost
 .lontent.com
 .mql5.com
 .neliver.com
-putlocker.ac
-putlocker.com
-putlocker.is
-putlocker.ws
-.tubesyndicate.net
-.tubesyndicate.org
 
 # Personal sites
 .comodo.com
-.dailyhoroscopes.net
 .dropbox.com
 .facebook.com
 .finance.google.com
@@ -32,4 +25,5 @@ putlocker.ws
 docs.google.com
 
 #ddclient
+updates.opendns.com
 .dyndns.org
