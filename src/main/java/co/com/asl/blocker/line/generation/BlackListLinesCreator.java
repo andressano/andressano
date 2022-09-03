@@ -25,7 +25,7 @@ public class BlackListLinesCreator implements LinesCreator {
     private Whitelist whitelist;
 
     private boolean isValid(String host) {
-        return StringUtils.isNotBlank(host) && whitelist.stream().noneMatch(host::endsWith);
+        return whitelist.stream().noneMatch(host::endsWith);
     }
 
     public Stream<String> create() throws IOException {

@@ -23,7 +23,3 @@ localhost
 .norton.com
 .on24.com
 docs.google.com
-
-#ddclient
-updates.opendns.com
-.dyndns.org

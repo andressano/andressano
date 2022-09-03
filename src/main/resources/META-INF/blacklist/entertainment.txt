@@ -15,6 +15,7 @@ metacafe.com
 myspace.com
 oculu.com
 ourmedia.org
+play2048.co
 pscp.tv
 snapchat.com
 sproutvideo.com

@@ -10,4 +10,5 @@ https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-p
 https://github.com/AdguardTeam/cname-trackers
 https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt
 https://raw.githubusercontent.com/TechnologyClassroom/HOSTS/master/HOSTSFwin.txt
-https://github.com/KodoPengin/GameIndustry-hosts-Template/raw/master/Gaming-Full-Template/hosts
+https://raw.githubusercontent.com/KodoPengin/GameIndustry-hosts-Template/master/Gaming-Full-Template/hosts
+https://raw.githubusercontent.com/neilio/online-games-blocklist/main/online-games-blocklist.txt
