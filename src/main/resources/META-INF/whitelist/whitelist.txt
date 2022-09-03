@@ -27,7 +27,9 @@ putlocker.ws
 .dropbox.com
 .facebook.com
 .finance.google.com
-.grupovenus.com
 .norton.com
 .on24.com
 docs.google.com
+
+#ddclient
+.dyndns.org

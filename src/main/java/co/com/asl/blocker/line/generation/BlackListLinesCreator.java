@@ -1,7 +1,7 @@
 package co.com.asl.blocker.line.generation;
 
 import co.com.asl.blocker.enums.Operation;
-import co.com.asl.blocker.host.HostList;
+import co.com.asl.blocker.host.Blacklist;
 import co.com.asl.blocker.host.Whitelist;
 import co.com.asl.blocker.line.LineFunctions;
 import lombok.extern.slf4j.Slf4j;
@@ -14,10 +14,10 @@ import java.util.stream.Stream;
 
 @Component
 @Slf4j
-public class HostsLinesCreator implements LinesCreator {
+public class BlackListLinesCreator implements LinesCreator {
 
     @Autowired
-    private HostList hostList;
+    private Blacklist blacklist;
     @Autowired
     private Whitelist whitelist;
 
@@ -26,7 +26,7 @@ public class HostsLinesCreator implements LinesCreator {
     }
 
     public Stream<String> create() throws IOException {
-        return hostList.stream().filter(this::isValid).sorted().distinct().map(LineFunctions::formatLine);
+        return blacklist.stream().filter(this::isValid).sorted().distinct().map(LineFunctions::formatLine);
     }
 
     @Override

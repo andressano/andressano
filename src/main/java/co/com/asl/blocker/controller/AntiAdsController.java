@@ -45,14 +45,7 @@ public class AntiAdsController {
     Assert.notNull(hostsFile, "Hosts files required");
     Assert.notNull(operation, "Operation required");
 
-    StopWatch stopWatch = new StopWatch();
     log.info("Creating file {}", hostsFile);
-    stopWatch.start();
-
     createHostsFile(hostsFile, operation);
-
-    stopWatch.stop();
-    log.info("File {} was created in {} seconds", hostsFile,
-        Long.valueOf(stopWatch.getTime() / 1000L));
   }
 }
