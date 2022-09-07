@@ -1,4 +1,5 @@
-
+2048game.com
+beta.apihub.info
 brightcove.com
 collegehumor.com
 dailymotion.com
@@ -11,11 +12,14 @@ googlevideo.com
 instagram.com
 live.fb.com
 liveleak.com
+mathisfun.com
 metacafe.com
 myspace.com
 oculu.com
 ourmedia.org
+play2048.app
 play2048.co
+play2048.pro
 pscp.tv
 snapchat.com
 sproutvideo.com
