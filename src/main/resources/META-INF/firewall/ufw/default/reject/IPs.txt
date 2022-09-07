@@ -17,6 +17,7 @@
 184.173.0.0/18		#ThePlanet.com Internet Services, Inc.
 185.39.8.0/22		#Network Dedicated SAS - cdn.sstream.pw
 198.41.192.0/19		#CloudFlare, Inc.
+198.211.127.200		#beta.apihub.info
 202.108.0.0/16		#China Unicom Beijing Province Network
 207.66.140.0/22
 208.69.32.0/21		#block.opendns.com
