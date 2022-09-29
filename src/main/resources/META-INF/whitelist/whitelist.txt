@@ -16,6 +16,7 @@ localhost
 .neliver.com
 
 # Personal sites
+.brid.tv
 .comodo.com
 .dropbox.com
 .facebook.com
@@ -23,3 +24,5 @@ localhost
 .norton.com
 .on24.com
 docs.google.com
+.wix.com
+.wixstatic.com
