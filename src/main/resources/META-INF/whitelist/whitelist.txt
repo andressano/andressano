@@ -26,3 +26,9 @@ localhost
 docs.google.com
 .wix.com
 .wixstatic.com
+
+# News
+larepublica.co
+larepublica.com.co
+.larepublica.co
+.larepublica.com.co
