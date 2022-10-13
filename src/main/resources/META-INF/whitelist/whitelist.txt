@@ -1,34 +1,20 @@
 # Special sites
 localhost
-.adk2.co
-.adnxs.net
-.cloudfront.net
-.centade.com
-.dol.ru
-.doubleclick.net
-.fzkjxy.com
-.hnliyin.com
-.go2.pl
-.hpg.com.br
-.liveadvert.com
-.lontent.com
-.mql5.com
-.neliver.com
 
 # Personal sites
-.brid.tv
-.comodo.com
-.dropbox.com
-.facebook.com
-.finance.google.com
-.norton.com
-.on24.com
+brid.tv
+comodo.com
+dropbox.com
+facebook.com
+finance.google.com
+mega.nz
+norton.com
+on24.com
 docs.google.com
-.wix.com
-.wixstatic.com
+wix.com
+wixstatic.com
 
 # News
 larepublica.co
 larepublica.com.co
-.larepublica.co
-.larepublica.com.co
+youtube.com

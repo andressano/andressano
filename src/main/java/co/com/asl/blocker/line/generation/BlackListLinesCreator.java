@@ -25,11 +25,11 @@ public class BlackListLinesCreator implements LinesCreator {
     private Whitelist whitelist;
 
     private boolean isValid(String host) {
-        return whitelist.stream().noneMatch(host::endsWith) || whitelist.stream().filter(h -> !h.startsWith(".")).allMatch(host::equalsIgnoreCase);
+        return whitelist.stream().noneMatch(host::equalsIgnoreCase) && !whitelist.stream().anyMatch(h -> host.endsWith(".".concat(h)));
     }
 
     public Stream<String> create() throws IOException {
-        return Stream.concat(blacklist.stream(), hostList.stream()).filter(this::isValid).map(LineFunctions::formatLine);
+        return Stream.concat(blacklist.stream(), hostList.stream().filter(this::isValid)).map(LineFunctions::formatLine);
     }
 
     @Override

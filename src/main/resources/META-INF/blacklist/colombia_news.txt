@@ -88,8 +88,6 @@ lanacion.com.co
 lanotadigital.com
 laopinion.com.co
 lapatria.com
-larepublica.co
-larepublica.com.co
 las2orillas.co
 lasillavacia.com
 latarde.com
@@ -213,8 +211,6 @@ www.lanacion.com.co
 www.lanotadigital.com
 www.laopinion.com.co
 www.lapatria.com
-www.larepublica.co
-www.larepublica.com.co
 www.las2orillas.co
 www.lasillavacia.com
 www.latarde.com
