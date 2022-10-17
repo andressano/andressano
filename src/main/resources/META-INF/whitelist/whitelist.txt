@@ -13,8 +13,9 @@ on24.com
 docs.google.com
 wix.com
 wixstatic.com
+youtube.com
+www.youtube.com
 
 # News
 larepublica.co
 larepublica.com.co
-youtube.com

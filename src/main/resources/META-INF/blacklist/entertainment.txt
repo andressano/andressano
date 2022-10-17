@@ -29,7 +29,6 @@ twitter.com
 uploadstars.com
 veoh.com
 viddler.com
-video.ibm.com
 vidipedia.org
 vidmax.com
 vidyard.com
@@ -60,7 +59,6 @@ www.twitter.com
 www.uploadstars.com
 www.veoh.com
 www.viddler.com
-www.video.ibm.com
 www.vidipedia.org
 www.vidmax.com
 www.vidyard.com

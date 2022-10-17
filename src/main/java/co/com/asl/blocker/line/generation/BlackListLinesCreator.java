@@ -29,7 +29,7 @@ public class BlackListLinesCreator implements LinesCreator {
     }
 
     public Stream<String> create() throws IOException {
-        return Stream.concat(blacklist.stream(), hostList.stream().filter(this::isValid)).map(LineFunctions::formatLine);
+        return Stream.concat(blacklist.stream(), hostList.stream()).filter(this::isValid).map(LineFunctions::formatLine);
     }
 
     @Override
