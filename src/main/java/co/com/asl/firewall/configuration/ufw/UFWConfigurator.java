@@ -1,5 +1,6 @@
 package co.com.asl.firewall.configuration.ufw;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -9,6 +10,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -63,9 +65,9 @@ public final class UFWConfigurator extends AbstractConfigurator {
     Collection<String> lines = new ArrayList<>();
     lines.addAll(readFiles("start.txt"));
     lines.addAll(List.of("### RULES ###"));
-    lines.addAll(readFiles("startRules.txt"));
+    lines.addAll(readFiles(StringUtils.join(getProfile(), File.separator, "startRules.txt")));
     lines.addAll(loadRulesLines());
-    lines.addAll(readFiles("endRules.txt"));
+    lines.addAll(readFiles(StringUtils.join(getProfile(), File.separator, "endRules.txt")));
     lines.addAll(List.of("", "### END RULES ###", ""));
     lines.addAll(readFiles("end.txt"));
 
@@ -77,10 +79,7 @@ public final class UFWConfigurator extends AbstractConfigurator {
   private Collection<String> readFiles(String file) throws IOException {
     Collection<String> lines = new ArrayList<>();
     lines.addAll(fileToLinesResourceLoader.load(resourcePatternResolver.getResources(
-        String.format("classpath*:META-INF/ufw/firewall/%s", file))).collect(Collectors.toList()));
-    lines.addAll(fileToLinesResourceLoader.load(resourcePatternResolver.getResources(
-        String.format("classpath*:META-INF/ufw/firewall/%s/**/%s", getProfile(), file))).collect(
-        Collectors.toList()));
+        String.format("classpath*:META-INF/firewall/ufw/%s", file))).collect(Collectors.toList()));
     return lines;
   }
 }

@@ -1,4 +1,12 @@
 
-### tuple ### reject any 80 192.168.1.254 any 0.0.0.0/0 out
--A ufw-user-output -p tcp -d 192.168.1.254 --dport 80 -j REJECT --reject-with tcp-reset
--A ufw-user-output -p udp -d 192.168.1.254 --dport 80 -j REJECT
+### tuple ### allow any 80 0.0.0.0/0 any 0.0.0.0/0 out
+-A ufw-user-output -p tcp --dport 80 -j ACCEPT
+-A ufw-user-output -p udp --dport 80 -j ACCEPT
+
+### tuple ### allow any 443 0.0.0.0/0 any 0.0.0.0/0 out
+-A ufw-user-output -p tcp --dport 443 -j ACCEPT
+-A ufw-user-output -p udp --dport 443 -j ACCEPT
+
+### tuple ### allow any 53 0.0.0.0/0 any 0.0.0.0/0 out
+-A ufw-user-output -p tcp --dport 53 -j ACCEPT
+-A ufw-user-output -p udp --dport 53 -j ACCEPT
