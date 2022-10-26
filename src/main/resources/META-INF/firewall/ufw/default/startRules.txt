@@ -1,5 +1,13 @@
 
+### tuple ### allow any 53 0.0.0.0/0 any 0.0.0.0/0 out
+-A ufw-user-output -p tcp --dport 53 -j ACCEPT
+-A ufw-user-output -p udp --dport 53 -j ACCEPT
+
 ### tuple ### allow any 80 0.0.0.0/0 any 0.0.0.0/0 out
+-A ufw-user-output -p tcp --dport 80 -j ACCEPT
+-A ufw-user-output -p udp --dport 80 -j ACCEPT
+
+### tuple ### allow any 123 0.0.0.0/0 any 0.0.0.0/0 out
 -A ufw-user-output -p tcp --dport 80 -j ACCEPT
 -A ufw-user-output -p udp --dport 80 -j ACCEPT
 
@@ -7,6 +15,14 @@
 -A ufw-user-output -p tcp --dport 443 -j ACCEPT
 -A ufw-user-output -p udp --dport 443 -j ACCEPT
 
-### tuple ### allow any 53 0.0.0.0/0 any 0.0.0.0/0 out
--A ufw-user-output -p tcp --dport 53 -j ACCEPT
--A ufw-user-output -p udp --dport 53 -j ACCEPT
+### tuple ### allow any 465 0.0.0.0/0 any 0.0.0.0/0 out
+-A ufw-user-output -p tcp --dport 465 -j ACCEPT
+-A ufw-user-output -p udp --dport 465 -j ACCEPT
+
+### tuple ### allow any 993 0.0.0.0/0 any 0.0.0.0/0 out
+-A ufw-user-output -p tcp --dport 993 -j ACCEPT
+-A ufw-user-output -p udp --dport 993 -j ACCEPT
+
+### tuple ### allow any 54783 0.0.0.0/0 any 0.0.0.0/0 out
+-A ufw-user-output -p tcp --dport 54783 -j ACCEPT
+-A ufw-user-output -p udp --dport 54783 -j ACCEPT
