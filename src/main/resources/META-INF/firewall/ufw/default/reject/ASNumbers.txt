@@ -1,92 +1,475 @@
-AS3216 #PJSC Vimpelcom Russia
-AS4134 #China Telecom Backbone
-AS4808 #China Unicom Beijing Province Network
-AS4809 #China Unicom Beijing Province Network
-AS4811 #China Telecom Group
-AS4812 #China Telecom Backbone
-AS4837 #China Unicom Backbone
-AS4847 #China Networks Inter-Exchange
-AS6432 #Doubleclick.net
-AS7415 #302br.net
-AS8945 #Twitter Inc.
-AS9394 #China TieTong Telecommunications Corporation
-AS9808 #Guangdong Mobile Communication Co.Ltd.
-AS9929 #China Netcom Backbone
-AS10099 #China Unicom Global
-AS12389 #Rostelcom Russia
-AS12418 #Quantum Russia
-AS13238 #YANDEX LLC
-AS13414 #Twitter Inc.
-AS14571 #hge.com.br
-AS14720 #Gamma Networking Inc.
-AS17015 #Vibrant media inc
-AS19318 #NEW JERSEY INTERNATIONAL INTERNET EXCHANGE LLC
-AS19324 #Dosarrest Internet Security LTD
-AS20401 #Hostway Corporation
-AS208722 #Yandex Oy
+AS2587 	# OOO FREEnet Group
+AS2895 	# OOO FREEnet Group
+AS3216 	# PJSC Vimpelcom Russia
+AS3226 	# OOO "NI"
+AS3277 	# OOO "NPO FRACTEL"
+AS4134 	# China Telecom Backbone
+AS4808 	# China Unicom Beijing Province Network
+AS4809 	# China Unicom Beijing Province Network
+AS4811 	# China Telecom Group
+AS4812 	# China Telecom Backbone
+AS4837 	# China Unicom Backbone
+AS4847 	# China Networks Inter-Exchange
+AS5431 	# OOO FREEnet Group
+AS6432 	# Doubleclick.net
+AS6869 	# OOO FREEnet Group
+AS6869 	# OOO FREEnet Group
+AS7415 	# 302br.net
+AS8325 	# OOO FREEnet Group
+AS8440 	# S.SETEVAYA SVYAZ, OOO
+AS8440 	# S.SETEVAYA SVYAZ, OOO
+AS8441 	# OOO NPP Garant Service University
+AS8441 	# OOO NPP Garant Service University
+AS8592 	# Research and production firm "IMT-Center" OOO
+AS8592 	# Research and production firm "IMT-Center" OOO
+AS8595 	# OOO WestCall Ltd.
+AS8595 	# OOO WestCall Ltd.
+AS8744 	# OOO "MediaSeti"
+AS8744 	# OOO "MediaSeti"
+AS8774 	# OOO Kompaniya Etype
+AS8774 	# OOO Kompaniya Etype
+AS8945 	# Twitter Inc.
+AS9394 	# China TieTong Telecommunications Corporation
+AS9808 	# Guangdong Mobile Communication Co.Ltd.
+AS9929 	# China Netcom Backbone
+AS10099 	# China Unicom Global
+AS12389 	# Rostelcom Russia
+AS12418 	# Quantum Russia
+AS12494 	# OOO "Post ltd"
+AS13238 	# YANDEX LLC
+AS13414 	# Twitter Inc.
+AS14571 	# hge.com.br
+AS14720 	# Gamma Networking Inc.
+AS15672 	# OOO Telecom TZ
+AS15754 	# OOO Taxtelecom
+AS15850 	# Cyberplat OOO
+AS16143 	# OOO NIIR-RadioNet
+AS16173 	# OOO CQGI Rus
+AS17015 	# Vibrant media inc
+AS19318 	# NEW JERSEY INTERNATIONAL INTERNET EXCHANGE LLC
+AS19324 	# Dosarrest Internet Security LTD
+AS20401 	# Hostway Corporation
+AS21105 	# OOO RTK-Primorye
+AS21859 	# Beijing JingTian Technology Co., Ltd.
+AS22384 	# NationalNet, Inc
+AS23650 	# IDC, China Telecommunications Corporation
+AS23724 	# IDC, China Telecommunications Corporation
+AS24138 	# China TieTong Telecommunications Corporation
+AS24151 	# China Internet Network Infomation Center
+AS24425 	# China TieTong Telecommunications Corporation
+AS24684 	# OOO IPPORT
+AS24829 	# OOO WestCall Ltd.
+AS24936 	# Plusinfo OOO
+AS25339 	# OOO "Ingame"
+AS25751 	# Conversant, Inc.
+AS25875 	# FriendFinder Networks Inc
+AS27257 	# Webair Internet Development Company Inc.
+AS27810 	# Merca.net.co
+AS28736 	# OOO Telecom-net
+AS28775 	# OOO TRANSTELECOM
+AS29363 	# OOO 'RUS'
+AS29476 	# OOO "Telecom-Holding"
+AS29572 	# OOO IPPORT
+AS29613 	# OOO "Lanatelecom"
+AS29789 	# Reflected Networks, Inc
+AS29893 	# Chatango LLC
+AS29990 	# AppNexus, Inc
+AS30361 	# Swiftwill, Inc. - TOPPRIO
+AS30633 	# LeASeweb USA, Inc.
+AS30924 	# OOO"NPK Katharsis"
+AS30960 	# OOO Scientific-Production Center "Tetra"
+AS30968 	# OOO "National Telecommunications"
+AS31080 	# go2.pl
+AS31133 	# MegaFon Russia
+AS31277 	# OOO New Line Telecom
+AS31370 	# OOO "Gruppa MosLine"
+AS31387 	# OOO Stalnet
+AS31430 	# OOO Suntel
+AS31514 	# OOO Trivon Networks
+AS31626 	# OOO "ZVI Telecom"
+AS31720 	# EngiNet, OOO
+AS32934 	# Facebook, Inc.
+AS33419 	# Exponential Interactive, Inc.
+AS33797 	# OOO WestCall Ltd.
+AS34033 	# OOO SALON 2116 Electronic Post Office
+AS34052 	# OOO NPP Logika
+AS34268 	# OOO AineT
+AS34379 	# OOO "Telecomunikacionnye Nezavisimye Systemy"
+AS34545 	# Webinar Tehnologii OOO
+AS34580 	# OOO "MediaSeti"
+AS34682 	# KOMPLEKTORG OOO
+AS34786 	# OOO NPO Intermet
+AS34879 	# OOO "Sovremennye setevye tekhnologii"
+AS35257 	# OOO "INSTITUTE FOR FINANCIAL STUDIES"
+AS35294 	# OOO Atlastelecom
+AS35301 	# OOO CCCMOS GROUP RUS
+AS35377 	# OOO "ZVI Telecom"
+AS35410 	# OOO Nord-telecom
+AS35423 	# OOO "Serebryannaya Strela"
+AS35527 	# AlfaTEL OOO
+AS35640 	# OOO MIGRAPH
+AS35658 	# OOO SCIENTIFIC RESEARCH CENTER "Bulat"
+AS35730 	# OOO Organizational Technological Solutions 2000
+AS35995 	# Twitter Inc.
+AS37936 	# 15F,Ideal Plaza No.58 Bei Si Huan Xi Road
+AS37958 	# Beijing Blue I.T Technologies Co.,Ltd.
+AS38365 	# Beijing Baidu Netcom Science and Technology Co., Ltd.
+AS38370 	# China TieTong Telecommunications Corporation
+AS38954 	# OOO TMS
+AS39289 	# OOO "MediaSeti"
+AS39572 	# Advanced Hosters B.V.
+AS39678 	# OOO Pegas Touristik
+AS39684 	# OOO Mango Telecom
+AS39707 	# OOO "SvyazInform"
+AS39741 	# data-centr ekaterinburg OOO
+AS39821 	# OOO Versiya
+AS39920 	# OOO "MediaSeti"
+AS41143 	# OOO Ob-Telecom
+AS41212 	# OOO Carcade
+AS41377 	# OOO "Faktor"
+AS41443 	# OOO SMART-TELEKOM
+AS41515 	# OOO "MediaSeti"
+AS41717 	# Telfly
+AS41748 	# OOO "VolgaSvyazService"
+AS41845 	# OOO Fun Holding
+AS41861 	# OOO "MediaSeti"
+AS41862 	# OOO "MediaSeti"
+AS41947 	# OOO Fly Engeneering Group
+AS41975 	# OOO RIVC "Simplex"
+AS41999 	# OOO Pegas Touristik
+AS42023 	# OOO WestCall Ltd.
+AS42071 	# OOO Electronic Office
+AS42144 	# OOO Nauka
+AS42233 	# OOO Lux
+AS42291 	# OOO Istranet
+AS42561 	# OOO "NTS GRADIENT"
+AS42567 	# MOJOHOST B.V.
+AS42748 	# OOO TRANSTELECOM
+AS42819 	# OOO "MediaSeti"
+AS42827 	# OOO Kolpinskie Internet-Seti
+AS42940 	# OOO "MediaSeti"
+AS42988 	# OOO Teleport-Service Regions
+AS43031 	# V-LAN OOO
+AS43287 	# OOO "VIT"
+AS43429 	# OOO "MediaSeti"
+AS43502 	# OOO Torgovij Dom EPK
+AS43533 	# OOO "Gals Telecom"
+AS43537 	# OOO WestCall Ltd.
+AS43647 	# DATA CENTER NETWORK SELECTEL, FE LLC.
+AS43661 	# OOO Kip Konnect
+AS43798 	# OOO "NOVATEL"
+AS43901 	# OOO "MediaSeti"
+AS43903 	# OOO "MediaSeti"
+AS44011 	# OOO TKS2000
+AS44014 	# OOO NPO VMI
+AS44126 	# OOO "TerraLink"
+AS44265 	# OOO Smoltelecom
+AS44446 	# OOO SibirInvest
+AS44478 	# OOO "Etalon-Optic"
+AS44619 	# OOO IT-Telecom
+AS44699 	# OOO Stroitelnaya Innovacia
+AS44844 	# OOO "MediaSeti"
+AS44871 	# OOO MTW.RU
+AS45046 	# OOO Isatel
+AS45090 	# Shenzhen Tencent Computer Systems Company Limited
+AS46652 	# ServerStack, Inc.
+AS47211 	# OOO Kolpinskie Internet-Seti
+AS47240 	# OOO Trivon Networks
+AS47429 	# OOO TABLOGIX
+AS47440 	# BUSINESS SYSTEM TELEHOUSE, OOO
+AS47531 	# GorPTUs OOO
+AS47541 	# VKonatkte Ltd Russia
+AS47626 	# Timer LLC Russia
+AS47764 	# LLC VK Russia
+AS47857 	# OOO SPARK TELL
+AS47860 	# OOO "OTC"
+AS47914 	# OOO Creative Direct Marketing Solutions
+AS47955 	# OOO KTS-Telecom
+AS48036 	# OOO Scientific-Production Enterprise Edma
+AS48176 	# OOO SET
+AS48209 	# OOO LANCRONIX
+AS48226 	# OOO "INFOKOM"
+AS48234 	# OOO "IT-Region"
+AS48276 	# IPSvyaz OOO
+AS48302 	# OOO "Telecom GKhK"
+AS48308 	# OOO TTC
+AS48684 	# Viking Host B.V.
+AS48711 	# OOO "Matritsa"
+AS48759 	# OOO NPP POLYPROM
+AS48802 	# OOO "Povolzhskiy Processingoviy Center"
+AS48858 	# Milecom Russia
+AS48897 	# OOO KB Avia
+AS49039 	# OOO "Telemaks"
+AS49058 	# OOO SPARK TELL
+AS49342 	# OOO "MediaSeti"
+AS49505 	# OOO "Network of data-centers "Selectel"
+AS49505 	# OOO "Network of data-centers "Selectel"
+AS49530 	# Kompleks-S OOO
+AS49547 	# Alawar.RU OOO
+AS49587 	# Adsmarket G.M LTD
+AS49641 	# OOO "Alfacom"
+AS49686 	# OOO Prometey
+AS49702 	# Svyaz Telecom OOO
+AS49878 	# OOO DagNet
+AS50105 	# OOO "Sestroretskoe Cable Television"
+AS50126 	# OOO "Teleservis"
+AS50174 	# Intexcom OOO
+AS50218 	# OOO "Rigla"
+AS50245 	# Serverel Inc.
+AS50260 	# OOO "Svyaz Alians"
+AS50317 	# OOO ADOPT PLUS
+AS50340 	# OOO "Network of data-centers "Selectel"
+AS50340 	# OOO "Network of data-centers "Selectel"
+AS50367 	# OOO BENET
+AS50513 	# OOO WestCall Ltd.
+AS50538 	# OOO "Petrosvyaz"
+AS50545 	# OOO 1C-Softclub
+AS50553 	# OOO Stalnet
+AS50556 	# OOO KISS
+AS50567 	# OOO Sibenergotelecom
+AS50717 	# OOO "Fortis"
+AS50735 	# OOO Eastnet
+AS50739 	# OOO Suntel
+AS50775 	# OOO 24 chasa TV
+AS50810 	# Mobin Net Communication Company (Private Joint Stock)
+AS50916 	# OOO Nadym Svyaz Service
+AS50958 	# OOO W-INTERNET
+AS50974 	# Ediciones El Pais, S.L.
+AS51054 	# OOO "TransKom"
+AS51193 	# OOO "Inbank"
+AS51226 	# Costcom OOO
+AS51288 	# Web3tel msk OOO
+AS51292 	# OOO "UNITED PRESS"
+AS51408 	# OOO Sirius-Project
+AS51535 	# OOO Sever-Telecom
+AS51592 	# OOO Svift Telecom
+AS51666 	# OOO WestCall Ltd.
+AS51705 	# Moskovia Telecom OOO
+AS51730 	# OOO IT-Tcentr
+AS51921 	# OOO Integral telesystems
+AS52047 	# OOO "MVM"
+AS52085 	# OOO "SKB"
+AS52201 	# OOO Suntel
+AS52217 	# OOO ISKRA
+AS53292 	# Barracuda Networks, Inc.
+AS53334 	# Total Uptime Technologies, LLC
+AS54115 	# Facebook, Inc.
+AS54888 	# Twitter Inc.
+AS55468 	# China radio international
+AS55990 	# Huawei Cloud Service data center
+AS56040 	# China Mobile communications corporation
+AS56041 	# China Mobile communications corporation
+AS56042 	# China Mobile communications corporation
+AS56044 	# China Mobile communications corporation
+AS56046 	# China Mobile communications corporation
+AS56047 	# China Mobile communications corporation
+AS56048 	# China Mobile Communicaitons Corporation
+AS56127 	# Beijing Shidaihongyuan Network Communication Co.,Ltd.
+AS56463 	# OOO "BSCOM"
+AS56464 	# Vibrant Media Ltd
+AS56477 	# OOO WestCall Ltd.
+AS56493 	# Dream Line OOO
+AS56676 	# OOO Modern Communication Systems
+AS56707 	# OOO NETCOM
+AS56763 	# Infotell UK OOO
+AS56779 	# OOO UJK " Druzhba"
+AS56807 	# OOO UKS
+AS56820 	# OOO EVRAZ
+AS56857 	# OOO SPARK TELL
+AS56874 	# Electrosvyazstroy OOO
+AS56886 	# OOO "Red Star"
+AS56898 	# Private Host B.V.
+AS56916 	# OOO CSM
+AS56923 	# Virtualfort OOO
+AS56960 	# OOO TeleMontag
+AS57108 	# OOO ASKONA-VEK
+AS57123 	# OOO Garant
+AS57181 	# OOO RTK
+AS57244 	# OOO SP "Millenium-Apsny"
+AS57290 	# OOO SPARK TELL
+AS57328 	# OOO Mir svyazi
+AS57372 	# OOO Comtelco
+AS57503 	# OOO Taxtelecom
+AS57512 	# OOO "Sportmaster"
+AS57639 	# OOO NETPLUS
+AS57645 	# OOO LICARD
+AS57652 	# OOO "Internet po optike"
+AS57724 	# DDOS-GUARD LTD
+AS57805 	# OOO NUTEP
+AS58019 	# OOO ITELIS
+AS58041 	# OOO AriaTV
+AS58061 	# Scalaxy B.V.
+AS58097 	# OOO Taxcom
+AS58136 	# OOO RGTS "Parus"
+AS58191 	# OOO DevelopOnBox
+AS58229 	# OOO "Equifax Credit Services"
+AS58284 	# OOO RTS Telecom
+AS58453 	# China mobile international
+AS59424 	# OOO HAS-TELEKOM
+AS59530 	# OOO "Izdatelstvo EKSMO"
+AS59663 	# OOO "Kontakt Centr Otkrytaya Liniya"
+AS59792 	# OOO MAGAZIN MALOGO KREDITOVANIYA
+AS60065 	# OOO LICARD
+AS60292 	# OOO "MediaSeti"
+AS60312 	# 5COM OOO
+AS60363 	# OOO "FB Group"
+AS60375 	# OOO MC IMH
+AS60459 	# OOO Flexline-N
+AS60489 	# OOO "Center informational technologies"
+AS60519 	# OOO Shishkin Les Holding
+AS60536 	# OOO "RelCom"
+AS60598 	# OOO Upravljajushchaja kompanija Labirint
+AS60738 	# OOO PKF "Delta Telekom"
+AS60915 	# OOO Taxtelecom
+AS60944 	# OOO CC Alpha Capital
+AS61009 	# Tyumbit-ASU OOO
+AS61010 	# IPNET OOO
+AS61068 	# OOO "NECSTEL"
+AS61359 	# OOO "KT-IX"
+AS61405 	# Bitrace OOO
+AS61976 	# OOO "Network of data-centers "Selectel"
+AS61976 	# OOO "Network of data-centers "Selectel"
+AS62286 	# PremierKom OOO
+AS62316 	# OOO "Contact-center GRAN"
+AS62333 	# OOO "Yulia"
+AS62355 	# Network Dedicated SAS
+AS63179 	# Twitter Inc.
+AS63293 	# Facebook, Inc.
+AS63293 	# Facebook, Inc.
+AS63711 	# China TieTong Telecommunications Corporation
+AS63727 	# Huawei
+AS64409 	# OOO Telestar Communications
+AS64433 	# OOO "PC"
+AS132591 	# Tencent AS num for global network
+AS133478 	# Tencent Cloud Computing (Beijing) Co., Ltd
+AS196768 	# KTO OOO
+AS196864 	# OOO Lepta
+AS197002 	# OOO Tenor
+AS197257 	# OOO Security enterprise "ARES-OHRANA"
+AS197366 	# OOO Parma-Telecom
+AS197406 	# OOO Telecom LTD
+AS197468 	# OOO NETPLUS
+AS197559 	# OOO Non Banking Credit Organization Western Union DP East
+AS197607 	# OOO CLASSIC-ST
+AS197718 	# OOO Elektron
+AS197878 	# OOO "M2M telematica-Altai"
+AS198028 	# OOO "BG Market"
+AS198039 	# OOO "RUSSIA CONSULTING"
+AS198134 	# OOO Bitree Networks
+AS198137 	# OOO Net-Nord
+AS198155 	# OOO Smart-Processing
+AS198592 	# OOO Svir'-Telecom
+AS198728 	# OOO Panasonic RUS
+AS198762 	# OOO "Migcredit"
+AS198821 	# OOO Alkor and Co
+AS198832 	# OOO Optical Transport Network
+AS198844 	# PRED-Grupp OOO
+AS198873 	# OOO "SK "Soglasie"
+AS198907 	# OOO Harmony
+AS198918 	# OOO Interdol
+AS198933 	# OOO Severo-Zapadnye telekommunikacii
+AS198955 	# OOO PromServiceBank
+AS199007 	# OOO Rolis
+AS199119 	# OOO Barstel
+AS199146 	# OOO Claster
+AS199161 	# OOO "PKO NEFTEHIMOBORUDOVANIE"
+AS199420 	# OOO Fly Engeneering Group
+AS199502 	# OOO WestCall Ltd.
+AS199521 	# OOO FK PULS
+AS199537 	# KIT Finance PA OOO
+AS199622 	# OOO SPARK TELL
+AS199623 	# OOO SPARK TELL
+AS199624 	# OOO SPARK TELL
+AS199647 	# OOO SPARK TELL
+AS200466 	# TST OOO
+AS200477 	# OOO GC Hosser
+AS200487 	# OOO VPS
+AS200524 	# OOO NETPLUS
+AS200803 	# Lankom OOO
+AS201131 	# New Line OOO
+AS201414 	# OOO "DELTA-ELECTRONICS"
+AS201497 	# REDIRECT OOO
+AS201786 	# OOO ComLine
+AS201825 	# Rusphone OOO
+AS201858 	# OOO "MP SST"
+AS202155 	# OOO "National Telecommunications"
+AS202432 	# IT Service Profit OOO
+AS202493 	# Intercom OOO
+AS202740 	# KKS OOO
+AS202752 	# OOO "Spacetel"
+AS202758 	# OOO "Impulse"
+AS202764 	# B2B Grupp OOO
+AS202852 	# Molniya" OOO  AS202838 OOO "Intercom
+AS202985 	# DIASOFT OOO
+AS202989 	# Ofis24 OOO
+AS203002 	# Kuban-Inet OOO
+AS203163 	# OOO Internet 04
+AS203173 	# CentroFinance Group MFO OOO
+AS203344 	# OOO TTKOM
+AS203401 	# IT-Logistic OOO
+AS203627 	# Pobeda OOO
+AS203699 	# OOO "UK "Chernogolovka"
+AS203766 	# Infoservice Technology OOO
+AS203791 	# OOO Kurier
+AS203808 	# OOO ExCloud
+AS203816 	# OOO Ester Service
+AS204117 	# OkHost OOO
+AS204271 	# ShowJet OOO
+AS204337 	# OOO RUSNANO
+AS204623 	# OOO New Line
+AS204738 	# OOO "Etazhi-Zapadnaya Sibir"
+AS204848 	# Colvir-Rus OOO
+AS204878 	# OOO "Sovremennye setevye tekhnologii"
+AS204898 	# OOO Avantelecom
+AS204921 	# PLATEZHNYE RESHENIYA, OOO
+AS205297 	# Nevskiy Syndicat OOO
+AS205312 	# OOO "Sovremennye setevye tekhnologii"
+AS205657 	# SPA-Telecom" OOO  AS205641 ELCOM-Svyaz OOO  AS205628 OOO MIG-Service Centre  AS205595 OOO MTW.RU  AS205569 REGIONSVYAZ OOO  AS205495 OOO "L-Telecom
+AS206116 	# KomTelekom OOO
+AS206134 	# OOO Razvitie Optimizatsiya System Svyaz Telecom
+AS206152 	# OOO Regional Wireless networks
+AS206167 	# OOO Hamster
+AS206179 	# OOO SDK GARANT
+AS206385 	# OOO "SPETSTELECOM-YUG"
+AS206501 	# Gugl.Pro OOO
+AS206538 	# Alfa-Telecom OOO
+AS207093 	# Telematika Plus OOO
+AS207165 	# OOO 05COM
+AS207384 	# OOO Negotsiant
+AS207387 	# Gravitel OOO
+AS207447 	# OOO Smart Technologies
+AS207473 	# Rusphone OOO
+AS207501 	# Bikinskie Elektronnye Systemy OOO
+AS207532 	# Fortran OOO
+AS207665 	# OOO "Optimal'nye Sistemy Svyazi" (limited liability company)
+AS207952 	# Evro Telecom OOO
+AS208009 	# BelTechPlatforma OOO
+AS208722 	# Yandex Oy
+AS208825 	# REDLINE OOO
+AS208838 	# DomSet OOO
+AS208954 	# OOO "UPiterTelecom"
+AS209005 	# SB-Line OOO
+AS209361 	# data-centr ekaterinburg OOO
+AS209376 	# OOO Trivon Networks
+AS209393 	# OOO Dontel
+AS209499 	# OOO Flynet
+AS209546 	# NK-NET OOO
+AS209702 	# OOO "Viktoria Baltiya"
+AS210122 	# TCK OOO
+AS210491 	# OOO Quantek
+AS210706 	# OOO "StroyTerminal Center Krasok"
+AS210725 	# OOO Kinostudiya "Zvezda"
+AS211399 	# KPD group OOO
+AS211725 	# OOO METRO
+AS211951 	# LocalNet+ OOO
+AS212016 	# OOO "Zavod No.423"
+AS212429 	# UralMontagAvtomatika, OOO
+AS212487 	# Gorodskie seti OOO
+AS212614 	# OOO MMTR Technologii
+AS212673 	# OOO TRK ''INTEGRAL''
+AS212681 	# OOO ROLF
+AS212800 	# Cocobri, OOO
+AS213254 	# OOO RAIT TELECOM
+AS213332 	# OOO Regional Wireless networks
 #AS20940 #Akamai Technologies - Comment cloud providers
 #AS21342 #Akamai Technologies - Comment cloud providers
-AS21859 #Beijing JingTian Technology Co., Ltd.
-AS22384 #NationalNet, Inc
-AS23650 #IDC, China Telecommunications Corporation
-AS23724 #IDC, China Telecommunications Corporation
-AS24138 #China TieTong Telecommunications Corporation
-AS24151 #China Internet Network Infomation Center
-AS24425 #China TieTong Telecommunications Corporation
-AS25751 #Conversant, Inc.
-AS25875 #FriendFinder Networks Inc
-AS27257 #Webair Internet Development Company Inc.
-AS27810 #Merca.net.co
-AS29789 #Reflected Networks, Inc
-AS29893 #Chatango LLC
-AS29990 #AppNexus, Inc
-AS30361 #Swiftwill, Inc. - TOPPRIO
-AS30633 #LeASeweb USA, Inc.
-AS31080 #go2.pl
-AS31133 #MegaFon Russia
-AS32934 #Facebook, Inc.
-AS33419 #Exponential Interactive, Inc.
-AS35995 #Twitter Inc.
-AS37936 #15F,Ideal Plaza No.58 Bei Si Huan Xi Road
-AS37958 #Beijing Blue I.T Technologies Co.,Ltd.
-AS38365 #Beijing Baidu Netcom Science and Technology Co., Ltd.
-AS38370 #China TieTong Telecommunications Corporation
-AS39572 #Advanced Hosters B.V.
-AS41717 #Telfly
-AS42567 #MOJOHOST B.V.
-AS45090	#Shenzhen Tencent Computer Systems Company Limited
-AS46652 #ServerStack, Inc.
-AS47541 #VKonatkte Ltd Russia
-AS47626 #Timer LLC Russia
-AS47764 #LLC VK Russia
-AS48858 #Milecom Russia
-AS48684 #Viking Host B.V.
-AS49587 #Adsmarket G.M LTD
-AS50245 #Serverel Inc.
-AS50810 #Mobin Net Communication Company (Private Joint Stock)
-AS50974 #Ediciones El Pais, S.L.
-AS53292 #Barracuda Networks, Inc.
-AS53334 #Total Uptime Technologies, LLC
-AS54115 #Facebook, Inc.
-AS54888 #Twitter Inc.
-AS55468 #China radio international
-AS55990 #Huawei Cloud Service data center
-AS56048 #China Mobile Communicaitons Corporation
-AS56047 #China Mobile communications corporation
-AS56046 #China Mobile communications corporation
-AS56044 #China Mobile communications corporation
-AS56042 #China Mobile communications corporation
-AS56041 #China Mobile communications corporation
-AS56040 #China Mobile communications corporation
-AS56127 #Beijing Shidaihongyuan Network Communication Co.,Ltd.
-AS56464 #Vibrant Media Ltd
-AS56898 #Private Host B.V.
-AS57724 #DDOS-GUARD LTD
-AS58061 #Scalaxy B.V.
-AS58453 #China mobile international
-AS62355 #Network Dedicated SAS
-AS63293 #Facebook, Inc.
-AS63711 #China TieTong Telecommunications Corporation
-AS63727 #Huawei
-AS132591 #Tencent AS num for global network
-AS133478 #Tencent Cloud Computing (Beijing) Co., Ltd
