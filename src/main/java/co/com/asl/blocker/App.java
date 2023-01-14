@@ -16,10 +16,10 @@ import java.io.IOException;
 public class App {
 
     public static void main(String[] args) {
+        Options options = createOptions();
         try {
             Operation operation = Operation.INVALID_OPERATION;
             CommandLineParser parser = new GnuParser();
-            Options options = createOptions();
             CommandLine line = parser.parse(options, args, true);
             if (line.hasOption("enable")) {
                 operation = Operation.CREATE_HOSTS_FILE;
@@ -30,7 +30,7 @@ public class App {
             runSpringContext(line, operation);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            printHelp(options);
         }
     }
 
@@ -68,5 +68,9 @@ public class App {
         options.addOption("enable", false, "Create a combined hosts file.");
         options.addOption("nolog", false, "Disable logging.");
         return options;
+    }
+
+    private static void printHelp(Options options) {
+        new HelpFormatter().printHelp("java -jar domainblocker.jar", options);
     }
 }
