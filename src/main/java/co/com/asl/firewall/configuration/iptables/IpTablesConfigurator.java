@@ -76,7 +76,7 @@ public final class IpTablesConfigurator extends AbstractConfigurator {
     Collection<String> lines = new ArrayList<>();
     lines.addAll(readFiles("start.txt"));
     lines.addAll(List.of("### RULES ###"));
-    lines.addAll(readFiles("startRules.txt"));
+    lines.addAll(readFiles("endRules.txt"));
     lines.addAll(loadRulesLines());
     lines.addAll(readFiles("endRules.txt"));
     lines.addAll(List.of("", "### END RULES ###", ""));

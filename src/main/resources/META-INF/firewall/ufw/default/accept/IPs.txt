@@ -1,4 +1,3 @@
 69.164.192.0/19	#fightthenewdrug.org
 50.22.76.8		#Revista dinero
 50.97.172.200	#elheraldo.co
-31.13.64.0/18	#META PLATFORMS IRELAND LIMITED
