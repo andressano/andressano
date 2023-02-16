@@ -9,7 +9,7 @@
 		<Logger name="org.springframework" level="OFF">
 			<AppenderRef ref="STDOUT" />
 		</Logger>
-		<Logger name="co.com.asl" level="OFF">
+		<Logger name="co.com.asl" level="INFO">
 			<AppenderRef ref="STDOUT" />
 		</Logger>
 		<Root level="ERROR">
