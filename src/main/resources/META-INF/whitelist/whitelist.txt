@@ -2,6 +2,8 @@
 localhost
 
 # Personal sites
+amazon.com
+amazonaws.com
 brid.tv
 comodo.com
 dropbox.com
@@ -11,7 +13,6 @@ mega.nz
 norton.com
 on24.com
 docs.google.com
-whatsapp.com
 wix.com
 wixstatic.com
 youtube.com
