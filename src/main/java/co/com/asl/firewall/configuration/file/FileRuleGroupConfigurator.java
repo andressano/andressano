@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,24 +20,48 @@ import co.com.asl.firewall.configuration.FirewallType;
 import co.com.asl.firewall.entities.CIDRAddressV4;
 import co.com.asl.firewall.entities.transform.CIDRTransformableSet;
 import co.com.asl.firewall.file.output.ip.IPListLoader;
-import lombok.extern.slf4j.Slf4j;
 
 @Scope("prototype")
 @Component
-@Slf4j
 public final class FileRuleGroupConfigurator extends AbstractConfigurator {
 
-  private final int IPS_GROUP = 500;
   @Autowired
   private Collection<IPListLoader> listLoaders;
 
   public FileRuleGroupConfigurator(String profile, String outputFile) {
     super(profile, outputFile);
   }
+  
+  private List<String> joinAddreses(List<String> addresses, final int size) {
+      
+      List<String> result = new ArrayList<>();
+ 	  int group = 1;
+	  StringBuilder sb = new StringBuilder();
+	  for (int i = 0; i < addresses.size(); i++) {
+	    final String ip = addresses.get(i);
+	    final int proposedLength = sb.length() + ip.length();
+	    if (proposedLength <= size -1) {
+	      sb.append(ip);
+	    }
+	    if (proposedLength + 1 <= size) {
+	      sb.append(",");
+	    }
+	    if (proposedLength > size || i == addresses.size() - 1) {
+	      result.add(String.format("GROUP %d:", group++));
+	      if (sb.charAt(sb.length() - 1) == ',') {
+	        sb.deleteCharAt(sb.length() - 1);
+	      }
+	      result.add(sb.toString());
+	      sb.delete(0, sb.length());
+	    }
+	  }
+	return result;
+	  
+  }
+  
 
   private Collection<String> loadRulesLines() {
     Collection<String> addressRulesLines = new ArrayList<>();
-    int group = 1;
     for (FWOperation ufwOperation : FWOperation.values()) {
       ArrayList<String> addresses = listLoaders
           .stream()
@@ -52,25 +77,7 @@ public final class FileRuleGroupConfigurator extends AbstractConfigurator {
       }
 
       addressRulesLines.add(ufwOperation.name().concat(":"));
-      StringBuffer sb = new StringBuffer();
-      for (int i = 0; i < addresses.size(); i++) {
-        final String ip = addresses.get(i);
-        final int proposedLength = sb.length() + ip.length();
-        if (proposedLength <= 32766) {
-          sb.append(ip);
-        }
-        if (proposedLength + 1 <= 32767) {
-          sb.append(",");
-        }
-        if (proposedLength > 32767 || i == addresses.size() - 1) {
-          addressRulesLines.add(String.format("GROUP %d:", group++));
-          if (sb.charAt(sb.length() - 1) == ',') {
-            sb.deleteCharAt(sb.length() - 1);
-          }
-          addressRulesLines.add(sb.toString());
-          sb.delete(0, sb.length());
-        }
-      }
+      addressRulesLines.addAll(joinAddreses(addresses, 32767));
     }
     return addressRulesLines;
   }

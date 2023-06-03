@@ -1,10 +1,11 @@
 package co.com.asl.firewall.lines.file;
 
-import co.com.asl.firewall.entities.transform.CIDRTransformableSet;
 import java.util.stream.Stream;
+
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
+
+import co.com.asl.firewall.entities.transform.CIDRTransformableSet;
 
 public final class FileLinesUtil {
 

@@ -9,7 +9,7 @@ import org.springframework.util.Assert;
 
 public class ASNumber extends CIDRTransformableSet implements Comparable<ASNumber> {
 
-  public static final String REGEX_PATTERN = "AS([0-9]{1,6})";
+  public static final String REGEX_PATTERN = "AS(\\d{1,6})";
   public static final Predicate<String> PREDICATE = Pattern.compile(REGEX_PATTERN)
       .asMatchPredicate();
   private static final long serialVersionUID = 1L;
