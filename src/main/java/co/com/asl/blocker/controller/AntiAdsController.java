@@ -30,7 +30,6 @@ public class AntiAdsController {
 
   protected void createHostsFile(String hostsFile, Operation operation) throws IOException {
     Path hostsFilePath = Path.of(hostsFile);
-    Files.deleteIfExists(hostsFilePath);
 
     List<String> fileLines = linesCreators.stream()
         .filter(lc -> lc.isOperationAllowed(operation))
@@ -38,7 +37,7 @@ public class AntiAdsController {
         .flatMap(lc -> Try.of(lc::create).getOrElse(Stream.empty()))
         .collect(Collectors.toList());
 
-    Files.write(hostsFilePath, fileLines, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+    Files.write(hostsFilePath, fileLines, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
   }
 
   public void process(String hostsFile, Operation operation) throws IOException {

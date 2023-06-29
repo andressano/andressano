@@ -14,7 +14,7 @@ import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 @Component
-public class Whitelist extends TreeSet<String> {
+public class AllowList extends TreeSet<String> {
     @Autowired
     private ResourcePatternResolver resourcePatternResolver;
 
@@ -24,7 +24,7 @@ public class Whitelist extends TreeSet<String> {
     @PostConstruct
     public void loadLines() throws IOException {
         addAll(resourceLinesReader.loadLines(Arrays.asList(resourcePatternResolver
-                        .getResources("classpath:/META-INF/whitelist/*.txt")))
+                        .getResources("classpath:/META-INF/allow-list/*.txt")))
                 .map(LineFunctions::removeComments)
                 .map(StringUtils::trimToEmpty)
                 .filter(StringUtils::isNotBlank)

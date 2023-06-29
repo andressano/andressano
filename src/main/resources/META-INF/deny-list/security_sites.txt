@@ -41,7 +41,6 @@ db3aqu.atdmt.com
 df.telemetry.microsoft.com
 diagnostics.support.microsoft.com
 ec.atdmt.com
-elsilencio.co
 fe2.update.microsoft.com.akadns.net
 feedback.microsoft-hohm.com
 feedback.search.microsoft.com
@@ -50,15 +49,12 @@ flex.msn.com
 g.msn.com
 googleads.g.doubleclick.net
 google-analytics.com
-graph.facebook.com
 h1.msn.com
 i1.services.social.microsoft.com
 i1.services.social.microsoft.com.nsatc.net
 iecvlist.microsoft.com
 ieonline.microsoft.com
 lb1.www.ms.akadns.net
-linkedin.com
-listserv.acm.org
 live.rads.msn.com
 m.adnxs.com
 m.hotmail.com
@@ -101,8 +97,6 @@ telecommand.telemetry.microsoft.com.nsatc.net
 telemetry.appex.bing.net
 telemetry.microsoft.com
 telemetry.urs.microsoft.com
-theporndude.com
-thepornguy.com
 ui.skype.com
 urs.microsoft.com
 view.atdmt.com
@@ -117,9 +111,6 @@ watson.ppe.telemetry.microsoft.com
 watson.telemetry.microsoft.com
 watson.telemetry.microsoft.com.nsatc.net
 wes.df.telemetry.microsoft.com
+windscribe.net
 www.elabs6.com
-www.linkedin.com
 www.msftncsi.com
-www.theporndude.com
-www.thepornguy.com
-www.vivthomas.com

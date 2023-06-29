@@ -14,7 +14,7 @@ import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 @Component
-public class Blacklist extends TreeSet<String> {
+public class DenyList extends TreeSet<String> {
 
     @Autowired
     protected ResourcePatternResolver resourcePatternResolver;
@@ -24,7 +24,7 @@ public class Blacklist extends TreeSet<String> {
     @PostConstruct
     public void loadLines() throws IOException {
         addAll(resourceLinesReader.loadLines(Arrays.asList(resourcePatternResolver
-                        .getResources("classpath:/META-INF/blacklist/*.txt")))
+                        .getResources("classpath:/META-INF/deny-list/*.txt")))
                 .map(LineFunctions::removeComments)
                 .map(StringUtils::trimToEmpty)
                 .filter(StringUtils::isNotBlank)

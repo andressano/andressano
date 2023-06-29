@@ -28,9 +28,11 @@ public class App {
             }
             initLog(line);
             runSpringContext(line, operation);
-
-        } catch (Exception e) {
+        } catch (ParseException e) {
             printHelp(options);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(1);
         }
     }
 

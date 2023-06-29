@@ -1,7 +1,11 @@
 # Special sites
 localhost
 
+# Programming
+ajax.googleapis.com
+
 # Personal sites
+alicdn.com
 amazon.com
 amazonaws.com
 brid.tv
