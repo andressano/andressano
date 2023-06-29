@@ -42,3 +42,4 @@
 ### tuple ### allow any 54783 0.0.0.0/0 any 0.0.0.0/0 out
 -A ufw-user-output -p tcp --dport 54783 -j ACCEPT
 -A ufw-user-output -p udp --dport 54783 -j ACCEPT
+
