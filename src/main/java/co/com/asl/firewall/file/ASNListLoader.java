@@ -20,16 +20,16 @@ import org.springframework.stereotype.Component;
 public class ASNListLoader {
 
   @Autowired
-  @Qualifier("numberThreads")
-  private int numberThreads;
-  @Autowired
   private BeanFactory beanFactory;
 
   public Stream<ASNumber> load(Stream<String> asnList) {
+    final int threads = Runtime.getRuntime().availableProcessors();
+
     Collection<ASNWhoisCallable> callables = asnList
         .map(asn -> beanFactory.getBean(ASNWhoisCallable.class, asn))
         .collect(Collectors.toList());
-    ExecutorService executorService = Executors.newFixedThreadPool(numberThreads);
+
+    ExecutorService executorService = Executors.newFixedThreadPool(threads);
     Stream<ASNumber> list = Stream.empty();
     try {
       list = executorService.invokeAll(callables)

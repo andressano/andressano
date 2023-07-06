@@ -35,9 +35,17 @@
 -A ufw-user-output -p tcp --dport 993 -j ACCEPT
 -A ufw-user-output -p udp --dport 993 -j ACCEPT
 
+### tuple ### allow any 3306 0.0.0.0/0 any 0.0.0.0/0 out
+-A ufw-user-output -p tcp --dport 3306 -j ACCEPT
+-A ufw-user-output -p udp --dport 3306 -j ACCEPT
+
 ### tuple ### allow any 3389 0.0.0.0/0 any 0.0.0.0/0 out
 -A ufw-user-output -p tcp --dport 3389 -j ACCEPT
 -A ufw-user-output -p udp --dport 3389 -j ACCEPT
+
+### tuple ### allow any 5432 0.0.0.0/0 any 0.0.0.0/0 out
+-A ufw-user-output -p tcp --dport 5432 -j ACCEPT
+-A ufw-user-output -p udp --dport 5432 -j ACCEPT
 
 ### tuple ### allow any 54783 0.0.0.0/0 any 0.0.0.0/0 out
 -A ufw-user-output -p tcp --dport 54783 -j ACCEPT

@@ -14,11 +14,6 @@ import org.springframework.core.io.Resource;
 public class Config {
 
   @Bean
-  public int numberThreads() {
-    return 4;
-  }
-
-  @Bean
   public Collection<String> whoisQueries(
       FileToLinesResourceLoader fileToLinesResourceLoader,
       @Value("classpath:/META-INF/whois/servers.txt") Resource whoisResource) {

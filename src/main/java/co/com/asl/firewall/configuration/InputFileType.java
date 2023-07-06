@@ -1,9 +1,9 @@
 package co.com.asl.firewall.configuration;
 
 public enum InputFileType {
-	ASN_FILETYPE("classpath*:META-INF/firewall/%s/%s/%s/ASNumbers.txt"),
+	ASN_FILETYPE("META-INF/firewall/%s/%s/%s/ASNumbers.txt"),
 
-	IP_FILETYPE("classpath*:META-INF/firewall/%s/%s/%s/IPs.txt");
+	IP_FILETYPE("META-INF/firewall/%s/%s/%s/IPs.txt");
 
 	private final String pattern;
 
