@@ -11,6 +11,7 @@ import org.apache.commons.cli.GnuParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.core.config.Configurator;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.util.Assert;
@@ -60,6 +61,8 @@ public class Main {
 
     if (cmd.hasOption(CONFIG_TYPE_OPTION)) {
       String configType = cmd.getOptionValue(CONFIG_TYPE_OPTION);
+      if(StringUtils.isBlank(configType))
+        configType = "default";
       if (cmd.hasOption(FILE_OPTION)) {
         context.getBean(FileConfigurator.class, configType, cmd.getOptionValue(FILE_OPTION))
             .configure();

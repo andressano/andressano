@@ -31,6 +31,8 @@ AS12418	# Quantum Russia
 AS12494	# OOO "Post ltd"
 AS13238	# YANDEX LLC
 AS13414	# Twitter Inc.
+AS13443 # LinkedIn Corporation
+AS14413 # Linkedin Corporation
 AS14571	# hge.com.br
 AS14720	# Gamma Networking Inc.
 AS15672	# OOO Telecom TZ
@@ -41,6 +43,8 @@ AS16173	# OOO CQGI Rus
 AS17015	# Vibrant media inc
 AS19318	# NEW JERSEY INTERNATIONAL INTERNET EXCHANGE LLC
 AS19324	# Dosarrest Internet Security LTD
+AS20049 # LinkedIn Corporation
+AS20366 # LinkedIn Corporation
 AS20401	# Hostway Corporation
 AS21051	# LLC VK
 AS21105	# OOO RTK-Primorye
@@ -68,6 +72,7 @@ AS29789	# Reflected Networks, Inc
 AS29893	# Chatango LLC
 AS29990	# AppNexus, Inc
 AS30361	# Swiftwill, Inc. - TOPPRIO
+AS30427 # LinkedIn Corporation
 AS30633	# LeASeweb USA, Inc.
 AS30924	# OOO"NPK Katharsis"
 AS30960	# OOO Scientific-Production Center "Tetra"
@@ -118,6 +123,7 @@ AS39707	# OOO "SvyazInform"
 AS39741	# data-centr ekaterinburg OOO
 AS39821	# OOO Versiya
 AS39920	# OOO "MediaSeti"
+AS40793 # LinkedIn Corporation
 AS41143	# OOO Ob-Telecom
 AS41212	# OOO Carcade
 AS41377	# OOO "Faktor"
@@ -252,6 +258,7 @@ AS53292	# Barracuda Networks, Inc.
 AS53334	# Total Uptime Technologies, LLC
 AS54115	# Facebook, Inc.
 AS54888	# Twitter Inc.
+AS55163 # LinkedIn Corporation
 AS55468	# China radio international
 AS55990	# Huawei Cloud Service data center
 AS56040	# China Mobile communications corporation

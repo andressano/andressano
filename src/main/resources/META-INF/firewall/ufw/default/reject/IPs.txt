@@ -1,14 +1,7 @@
-8.8.8.8				#Google
-8.8.4.4				#Google
-23.72.0.0/13		#Steampowered.com
-54.69.251.25        #Pulzo.com
 58.68.128.0/17		#Beijing Blue I.t Technologies Co. Ltd
 67.215.92.0/24		#login.opendns.com
 69.55.53.0/24 		#ServerStack, Inc.
 103.0.0.0/8			#Beijing Baidu Netcom Science and Technology Co., Ltd.,CN
-104.18.32.0/20
-104.19.128.0/20
-108.174.10.0/24		#Linkedin.com
 106.0.0.0/8		    #Beijing Blue I.T Technologies Co.,Ltd., CN
 111.0.0.0/10		#Beijing Baidu Netcom Science and Technology Co., Ltd.,CN
 123.103.0.0/17		#Chinanetcenter Ltd
@@ -18,10 +11,8 @@
 185.39.8.0/22		#Network Dedicated SAS - cdn.sstream.pw
 198.211.127.200		#beta.apihub.info
 202.108.0.0/16		#China Unicom Beijing Province Network
-207.66.140.0/22
 208.69.32.0/21		#block.opendns.com
 209.235.192.0/18	#INETu, Inc.
-216.239.36.0/24     #Google analytics
 
 #Ads
 66.235.132.0/22		#Adobe Systems Inc.
@@ -31,4 +22,3 @@
 146.148.0.0/17 		#Google Inc. 
 194.87.0.0/16		#Demos-Internet CJSC
 
-#Youtube
