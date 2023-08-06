@@ -1,53 +1,24 @@
 
-### tuple ### allow any 21 0.0.0.0/0 any 0.0.0.0/0 out
--A ufw-user-output -p tcp --dport 21 -j ACCEPT
--A ufw-user-output -p udp --dport 21 -j ACCEPT
+### tuple ### reject any 80 64.233.160.0/19 any 0.0.0.0/0 out
+-A ufw-user-output -p tcp -d 64.233.160.0/19 --dport 80 -j REJECT --reject-with tcp-reset
+-A ufw-user-output -p udp -d 64.233.160.0/19 --dport 80 -j REJECT
 
-### tuple ### allow any 22 0.0.0.0/0 any 0.0.0.0/0 out
--A ufw-user-output -p tcp --dport 22 -j ACCEPT
--A ufw-user-output -p udp --dport 22 -j ACCEPT
+### tuple ### reject any 443 64.233.160.0/19 any 0.0.0.0/0 out
+-A ufw-user-output -p tcp -d 64.233.160.0/19 --dport 443 -j REJECT --reject-with tcp-reset
+-A ufw-user-output -p udp -d 64.233.160.0/19 --dport 443 -j REJECT
 
-### tuple ### allow any 23 0.0.0.0/0 any 0.0.0.0/0 out
--A ufw-user-output -p tcp --dport 23 -j ACCEPT
--A ufw-user-output -p udp --dport 23 -j ACCEPT
+### tuple ### reject any 80 142.250.0.0/15 any 0.0.0.0/0 out
+-A ufw-user-output -p tcp -d 142.250.0.0/15 --dport 80 -j REJECT --reject-with tcp-reset
+-A ufw-user-output -p udp -d 142.250.0.0/15 --dport 80 -j REJECT
 
-### tuple ### allow any 53 0.0.0.0/0 any 0.0.0.0/0 out
--A ufw-user-output -p tcp --dport 53 -j ACCEPT
--A ufw-user-output -p udp --dport 53 -j ACCEPT
+### tuple ### reject any 443 142.250.0.0/15 any 0.0.0.0/0 out
+-A ufw-user-output -p tcp -d 142.250.0.0/15 --dport 443 -j REJECT --reject-with tcp-reset
+-A ufw-user-output -p udp -d 142.250.0.0/15 --dport 443 -j REJECT
 
-### tuple ### allow any 80 0.0.0.0/0 any 0.0.0.0/0 out
--A ufw-user-output -p tcp --dport 80 -j ACCEPT
--A ufw-user-output -p udp --dport 80 -j ACCEPT
+### tuple ### reject any 80 172.217.192.0/24 any 0.0.0.0/0 out
+-A ufw-user-output -p tcp -d 172.217.192.0/24 --dport 80 -j REJECT --reject-with tcp-reset
+-A ufw-user-output -p udp -d 172.217.192.0/24 --dport 80 -j REJECT
 
-### tuple ### allow any 123 0.0.0.0/0 any 0.0.0.0/0 out
--A ufw-user-output -p tcp --dport 80 -j ACCEPT
--A ufw-user-output -p udp --dport 80 -j ACCEPT
-
-### tuple ### allow any 443 0.0.0.0/0 any 0.0.0.0/0 out
--A ufw-user-output -p tcp --dport 443 -j ACCEPT
--A ufw-user-output -p udp --dport 443 -j ACCEPT
-
-### tuple ### allow any 465 0.0.0.0/0 any 0.0.0.0/0 out
--A ufw-user-output -p tcp --dport 465 -j ACCEPT
--A ufw-user-output -p udp --dport 465 -j ACCEPT
-
-### tuple ### allow any 993 0.0.0.0/0 any 0.0.0.0/0 out
--A ufw-user-output -p tcp --dport 993 -j ACCEPT
--A ufw-user-output -p udp --dport 993 -j ACCEPT
-
-### tuple ### allow any 3306 0.0.0.0/0 any 0.0.0.0/0 out
--A ufw-user-output -p tcp --dport 3306 -j ACCEPT
--A ufw-user-output -p udp --dport 3306 -j ACCEPT
-
-### tuple ### allow any 3389 0.0.0.0/0 any 0.0.0.0/0 out
--A ufw-user-output -p tcp --dport 3389 -j ACCEPT
--A ufw-user-output -p udp --dport 3389 -j ACCEPT
-
-### tuple ### allow any 5432 0.0.0.0/0 any 0.0.0.0/0 out
--A ufw-user-output -p tcp --dport 5432 -j ACCEPT
--A ufw-user-output -p udp --dport 5432 -j ACCEPT
-
-### tuple ### allow any 54783 0.0.0.0/0 any 0.0.0.0/0 out
--A ufw-user-output -p tcp --dport 54783 -j ACCEPT
--A ufw-user-output -p udp --dport 54783 -j ACCEPT
-
+### tuple ### reject any 443 172.217.192.0/24 any 0.0.0.0/0 out
+-A ufw-user-output -p tcp -d 172.217.192.0/24 --dport 443 -j REJECT --reject-with tcp-reset
+-A ufw-user-output -p udp -d 172.217.192.0/24 --dport 443 -j REJECT

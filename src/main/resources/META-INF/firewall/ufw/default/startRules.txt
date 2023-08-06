@@ -3,8 +3,8 @@
 -A ufw-user-output -p tcp -d 192.168.1.1 --dport 8000 -j ACCEPT
 -A ufw-user-output -p udp -d 192.168.1.1 --dport 8000 -j ACCEPT
 
-### tuple ### allow tcp any 0.0.0.0/0 any 172.16.0.0/12 in
--A ufw-user-input -p tcp -s 172.16.0.0/12 -j ACCEPT
+### tuple ### deny tcp 20:23 0.0.0.0/0 any 0.0.0.0/0 in
+-A ufw-user-input -p tcp -m multiport --dports 20:23 -j DROP
 
-### tuple ### allow udp any 0.0.0.0/0 any 172.16.0.0/12 in
--A ufw-user-input -p udp -s 172.16.0.0/12 -j ACCEPT
+### tuple ### deny udp 20:23 0.0.0.0/0 any 0.0.0.0/0 in
+-A ufw-user-input -p udp -m multiport --dports 20:23 -j DROP

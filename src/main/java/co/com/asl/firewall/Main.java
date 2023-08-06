@@ -42,7 +42,7 @@ public class Main {
         Configurator.initialize("log4j2", "log4j2.xml");
       }
       startSpring(cmd);
-    } catch (ParseException e) {
+    } catch (ParseException | IllegalArgumentException e) {
       printHelp();
     } catch (IOException e) {
       e.printStackTrace();

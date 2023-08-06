@@ -44,7 +44,6 @@ AS19324	# Dosarrest Internet Security LTD
 AS20401	# Hostway Corporation
 AS21051	# LLC VK
 AS21105	# OOO RTK-Primorye
-AS21859	# Beijing JingTian Technology Co., Ltd.
 AS22384	# NationalNet, Inc
 AS23650	# IDC, China Telecommunications Corporation
 AS23724	# IDC, China Telecommunications Corporation
@@ -124,6 +123,7 @@ AS41212	# OOO Carcade
 AS41377	# OOO "Faktor"
 AS41443	# OOO SMART-TELEKOM
 AS41515	# OOO "MediaSeti"
+AS41690 # Dailymotion
 AS41717	# Telfly
 AS41748	# OOO "VolgaSvyazService"
 AS41845	# OOO Fun Holding
@@ -471,6 +471,3 @@ AS212800	# Cocobri, OOO
 AS213235	# LLC VK
 AS213254	# OOO RAIT TELECOM
 AS213332	# OOO Regional Wireless networks
-
-#AS20940 #Akamai Technologies - Comment cloud providers
-#AS21342 #Akamai Technologies - Comment cloud providers
