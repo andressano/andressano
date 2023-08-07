@@ -5,6 +5,7 @@ import co.com.asl.blocker.host.DenyList;
 import co.com.asl.blocker.host.HostList;
 import co.com.asl.blocker.host.AllowList;
 import co.com.asl.blocker.line.LineFunctions;
+import io.vavr.Predicates;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,18 +18,22 @@ import java.util.stream.Stream;
 public class DenyListLinesCreator implements LinesCreator {
 
     @Autowired
-    private DenyList blacklist;
+    private DenyList denylist;
     @Autowired
     private HostList hostList;
     @Autowired
     private AllowList whitelist;
 
     private boolean isValid(String host) {
-        return whitelist.stream().noneMatch(host::equalsIgnoreCase) && whitelist.stream().noneMatch(h -> host.endsWith(".".concat(h)));
+        return whitelist.stream().noneMatch(
+                Predicates.anyOf(host::equals, h -> host.endsWith(".".concat(h)))
+        );
     }
 
     public Stream<String> create() throws IOException {
-        return Stream.concat(blacklist.stream(), hostList.stream()).filter(this::isValid).map(LineFunctions::formatLine);
+        return Stream.concat(denylist.stream(), hostList.stream())
+                .filter(this::isValid)
+                .map(LineFunctions::formatLine);
     }
 
     @Override
