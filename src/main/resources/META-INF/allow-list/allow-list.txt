@@ -9,6 +9,7 @@ alicdn.com
 amazon.com
 amazonaws.com
 brid.tv
+clients2.google.com
 comodo.com
 dropbox.com
 finance.google.com
@@ -22,4 +23,8 @@ wixstatic.com
 # Social media
 facebook.com
 instagram.com
+music.youtube.com
 twitter.com
+twich.tv
+youtube.com
+youtube-nocookie.com

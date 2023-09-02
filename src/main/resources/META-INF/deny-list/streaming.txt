@@ -2,7 +2,4 @@ disney-plus.net
 disneyplus.com
 disneyplus.com.ssl.sc.omtrdc.net
 dssott.com
-play.google.com
 starplus.com
-youtube.com
-youtube-nocookie.com
