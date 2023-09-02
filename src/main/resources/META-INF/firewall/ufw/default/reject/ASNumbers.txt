@@ -335,6 +335,7 @@ AS61119	# LLC VK
 AS61359	# OOO "KT-IX"
 AS61405	# Bitrace OOO
 AS61976	# OOO "Network of data-centers "Selectel"
+AS62041	# Telegram Messenger Inc
 AS62286	# PremierKom OOO
 AS62316	# OOO "Contact-center GRAN"
 AS62333	# OOO "Yulia"
