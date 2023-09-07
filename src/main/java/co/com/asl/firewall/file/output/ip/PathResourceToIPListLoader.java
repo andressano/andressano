@@ -7,8 +7,6 @@ import co.com.asl.firewall.file.output.ResourceToPathsLoader;
 import io.vavr.control.Try;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.function.Predicate;
-import java.util.regex.Pattern;
 import java.util.stream.Stream;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
