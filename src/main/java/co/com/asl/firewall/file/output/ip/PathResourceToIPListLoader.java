@@ -19,15 +19,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class PathResourceToIPListLoader implements IPListLoader {
 
-  public static final String PATH_SEPARATOR = ",";
-
-  public static final String REGEX_PATTERN =
-      "^(" + CIDRAddressV4.NUMBER_PATTERN + "\\.){3}" + CIDRAddressV4.NUMBER_PATTERN
-          + "(\\/(\\d|[1-2]\\d|3[0-2]))+$";
-  public static final Predicate<String> PREDICATE = Pattern.compile(REGEX_PATTERN)
-      .asMatchPredicate();
-
-
   private final ResourceToPathsLoader resourceToPathsLoader;
 
   @Autowired
@@ -45,7 +36,7 @@ public class PathResourceToIPListLoader implements IPListLoader {
         .map(l -> l.replaceFirst("#(.)*", ""))
         .map(l -> l.replaceAll("\\s+", ""))
         .filter(StringUtils::isNotBlank)
-        .filter(PREDICATE)
+        .filter(CIDRAddressV4.PREDICATE)
         .map(CIDRAddressV4::new);
   }
 
