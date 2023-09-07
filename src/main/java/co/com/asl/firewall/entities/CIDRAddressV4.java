@@ -14,7 +14,7 @@ public class CIDRAddressV4 implements Comparable<CIDRAddressV4> {
   protected static final short BYTES_PER_GROUP = 8;
   protected static final short NUMBER_OF_GROUPS = TOTAL_BYTES / BYTES_PER_GROUP;
   protected static final int MAX_VALUE = 0xffffffff;
-  private static final String NUMBER_PATTERN = "(\\d|[1-9]\\d|1\\d{2}|2[0-4]\\d|25[0-5])";
+  public static final String NUMBER_PATTERN = "(\\d|[1-9]\\d|1\\d{2}|2[0-4]\\d|25[0-5])";
   public static final String REGEX_PATTERN =
       "^(" + NUMBER_PATTERN + "\\.){3}" + NUMBER_PATTERN + "(\\/(\\d|[1-2]\\d|3[0-2]))?$";
   public static final Predicate<String> PREDICATE = Pattern.compile(REGEX_PATTERN).asMatchPredicate();
