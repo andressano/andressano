@@ -23,13 +23,14 @@ public class ResourceToASNListLoader {
     this.fileToLinesResourceLoader = fileToLinesResourceLoader;
   }
 
-  public Stream<String> load(FirewallType firewallType, String setting, FWOperation ufwOperation) {
+  public Stream<Integer> load(FirewallType firewallType, String setting, FWOperation ufwOperation) {
     return fileToLinesResourceLoader
         .load(InputFileType.ASN_FILETYPE, firewallType, setting, ufwOperation)
         .map(l -> l.replaceFirst("#(.)*", ""))
         .map(l -> l.replaceAll("\\s+", ""))
         .filter(StringUtils::isNotBlank)
         .filter(ASNumber.PREDICATE)
+        .map(Integer::parseUnsignedInt)
         .distinct();
   }
 }

@@ -18,12 +18,12 @@ import org.springframework.util.CollectionUtils;
 @Component
 public class ASNWhoisCallable implements Callable<ASNumber> {
 
-  private final String asn;
+  private final Integer asn;
   @Autowired
   @Qualifier("whoisQueries")
   private Collection<String> whoisQueries;
 
-  public ASNWhoisCallable(String asn) {
+  public ASNWhoisCallable(Integer asn) {
     this.asn = asn;
   }
 

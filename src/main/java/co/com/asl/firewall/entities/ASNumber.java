@@ -5,30 +5,25 @@ import java.util.Collection;
 import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
+import lombok.Setter;
 import org.springframework.util.Assert;
 
+@Setter
 public class ASNumber extends CIDRTransformableSet implements Comparable<ASNumber> {
 
-  public static final String REGEX_PATTERN = "AS(\\d{1,6})";
+  public static final String REGEX_PATTERN = "(\\d{1,6})";
   public static final Predicate<String> PREDICATE = Pattern.compile(REGEX_PATTERN)
       .asMatchPredicate();
   private static final long serialVersionUID = 1L;
   private int number;
-
-  public ASNumber(int number) {
-    setNumber(number);
-  }
 
   public ASNumber(int number, String name) {
     setNumber(number);
     setName(name);
   }
 
-
-  public ASNumber(String asn) {
-    Assert.isTrue(PREDICATE.test(asn), "ASN Not valid.");
-    setNumber(Integer.parseInt(asn.substring(2)));
-    setName(asn);
+  public ASNumber(int number) {
+    this(number,"AS".concat(Integer.toString(number)));
   }
 
   public ASNumber(Collection<CIDRAddressV4> addreses) {
@@ -37,8 +32,7 @@ public class ASNumber extends CIDRTransformableSet implements Comparable<ASNumbe
 
   public ASNumber(String asn, Collection<CIDRAddressV4> addreses) {
     this(addreses);
-    Assert.isTrue(PREDICATE.test(asn), "ASN Not valid.");
-    setNumber(Integer.parseInt(asn.substring(2)));
+    setNumber(Integer.parseInt(asn));
     setName(asn);
   }
 

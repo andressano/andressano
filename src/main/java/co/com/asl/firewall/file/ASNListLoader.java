@@ -22,7 +22,7 @@ public class ASNListLoader {
   @Autowired
   private BeanFactory beanFactory;
 
-  public Stream<ASNumber> load(Stream<String> asnList) {
+  public Stream<ASNumber> load(Stream<Integer> asnList) {
     final int threads = Runtime.getRuntime().availableProcessors();
 
     Collection<ASNWhoisCallable> callables = asnList

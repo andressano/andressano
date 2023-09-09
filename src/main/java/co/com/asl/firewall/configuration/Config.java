@@ -16,7 +16,7 @@ public class Config {
   @Bean
   public Collection<String> whoisQueries(
       FileToLinesResourceLoader fileToLinesResourceLoader,
-      @Value("classpath:/META-INF/whois/servers.txt") Resource whoisResource) {
+      @Value("classpath:/META-INF/whois/queries.txt") Resource whoisResource) {
     return fileToLinesResourceLoader
         .load(whoisResource)
         .collect(Collectors.toList());
