@@ -10,7 +10,7 @@ import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = true)
 public class CIDRTransformableSet extends TreeSet<CIDRAddressV4> {
 
   private final transient Logger log = LoggerFactory.getLogger(getClass());

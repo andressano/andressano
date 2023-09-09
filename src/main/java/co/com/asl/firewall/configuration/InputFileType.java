@@ -1,11 +1,11 @@
 package co.com.asl.firewall.configuration;
 
 public enum InputFileType {
-	ASN_FILETYPE("META-INF/firewall/%s/%s/%s/ASNumbers.txt"),
+	ASN_FILETYPE("META-INF/common/%s/ASNumbers.txt"),
 
-	IP_FILETYPE("META-INF/firewall/%s/%s/%s/IPs.txt"),
+	IP_FILETYPE("META-INF/common/%s/IPs.txt"),
 
-	PATHS("META-INF/firewall/%s/%s/%s/Paths.txt");
+	IP_PATHS("META-INF/common/%s/ip-paths.txt");
 
 	private final String pattern;
 
@@ -13,8 +13,8 @@ public enum InputFileType {
 		this.pattern = pattern;
 	}
 
-	public String path(FirewallType firewallType, String profile, FWOperation ufwOperation) {
-		return String.format(pattern, firewallType.name().toLowerCase(), profile, ufwOperation.name().toLowerCase());
+	public String path(FWOperation ufwOperation) {
+		return String.format(pattern, ufwOperation.name().toLowerCase());
 	}
 
 	public String getPattern() {

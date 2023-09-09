@@ -32,7 +32,7 @@ public class ResourceToPathsLoader {
 
   public Stream<String> load(FirewallType firewallType, String setting, FWOperation ufwOperation) {
     return fileToLinesResourceLoader
-        .load(InputFileType.PATHS, firewallType, setting, ufwOperation)
+        .load(InputFileType.IP_PATHS, ufwOperation)
         .map(l -> l.replaceFirst("#(.)*", ""))
         .map(l -> l.replaceAll("\\s+", ""))
         .filter(StringUtils::isNotBlank)

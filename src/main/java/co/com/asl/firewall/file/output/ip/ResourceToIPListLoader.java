@@ -21,7 +21,7 @@ public class ResourceToIPListLoader implements IPListLoader {
   @Override
   public Stream<CIDRAddressV4> load(FirewallType firewallType, String setting, FWOperation ufwOperation) {
     return fileToLinesResourceLoader
-        .load(InputFileType.IP_FILETYPE, firewallType, setting, ufwOperation)
+        .load(InputFileType.IP_FILETYPE, ufwOperation)
         .map(l -> l.replaceFirst("#(.)*", ""))
         .map(l -> l.replaceAll("\\s+", ""))
         .filter(StringUtils::isNotBlank)

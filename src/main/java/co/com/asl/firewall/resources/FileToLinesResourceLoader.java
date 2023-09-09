@@ -25,8 +25,8 @@ public class FileToLinesResourceLoader {
             .getOrElse(Stream.empty()));
   }
 
-  public Stream<String> load(InputFileType inputFileType, FirewallType firewallType, String profile, FWOperation ufwOperation) {
-    final ClassPathResource resource = new ClassPathResource(inputFileType.path(firewallType, profile, ufwOperation));
+  public Stream<String> load(InputFileType inputFileType, FWOperation ufwOperation) {
+    final ClassPathResource resource = new ClassPathResource(inputFileType.path(ufwOperation));
     if(resource.exists())
       return load(resource);
     return Stream.empty();

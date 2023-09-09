@@ -25,7 +25,7 @@ public class ResourceToASNListLoader {
 
   public Stream<Integer> load(FirewallType firewallType, String setting, FWOperation ufwOperation) {
     return fileToLinesResourceLoader
-        .load(InputFileType.ASN_FILETYPE, firewallType, setting, ufwOperation)
+        .load(InputFileType.ASN_FILETYPE, ufwOperation)
         .map(l -> l.replaceFirst("#(.)*", ""))
         .map(l -> l.replaceAll("\\s+", ""))
         .filter(StringUtils::isNotBlank)
