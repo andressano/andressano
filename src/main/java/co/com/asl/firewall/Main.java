@@ -1,85 +1,65 @@
 package co.com.asl.firewall;
 
 import co.com.asl.firewall.configuration.Config;
-import co.com.asl.firewall.configuration.file.FileConfigurator;
 import co.com.asl.firewall.configuration.file.FileRuleGroupConfigurator;
 import co.com.asl.firewall.configuration.iptables.IpTablesConfigurator;
 import co.com.asl.firewall.configuration.ufw.UFWConfigurator;
-import java.io.IOException;
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.GnuParser;
-import org.apache.commons.cli.HelpFormatter;
-import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.logging.log4j.core.config.Configurator;
+import java.util.concurrent.Callable;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.util.Assert;
+import picocli.CommandLine;
+import picocli.CommandLine.Command;
+import picocli.CommandLine.Help.Visibility;
+import picocli.CommandLine.Option;
 
-public class Main {
+@Command(name = "firewall")
+public class Main implements Callable<Integer> {
 
-  private static final Options options = new Options();
-  private static final String CONFIG_TYPE_OPTION = "configType";
-  private static final String NOLOG_OPTION = "nolog";
-  private static final String FIREWALL_OPTION = "firewall";
-  private static final String IPTABLES_OPTION = "iptables";
-  private static final String FILE_OPTION = "file";
-  private static final String GROUPED_FILE_OPTION = "groupedFile";
+  @Option(names = {"-f",
+      "--firewall"}, paramLabel = "ufw|ip-tables|file", description = "Kind of firewall rules", showDefaultValue = Visibility.ALWAYS, required = false, defaultValue = "ufw")
+  private String firewallOption;
 
-  static {
-    options.addOption(FIREWALL_OPTION, true, "Location of user.rules");
-    options.addOption(IPTABLES_OPTION, true, "Location of user.rules for iptables");
-    options.addOption(FILE_OPTION, true, "Redirect output into a file");
-    options.addOption(GROUPED_FILE_OPTION, true, "Redirect output into a grouped file");
-    options.addOption(CONFIG_TYPE_OPTION, true, "Configure UFW with an specific configuration");
-    options.addOption(NOLOG_OPTION, false, "Turns off current logger");
-  }
+  @Option(names = {"-p",
+      "--profile"}, paramLabel = "<profile>", description = "Profile name", showDefaultValue = Visibility.ALWAYS, required = false, defaultValue = "default")
+  private String profileOption;
+
+  @Option(names = {"-nl", "--nolog"}, description = "Disables log")
+  private boolean nologOption;
+
+  @Option(names = {"-r", "--rules-path"}, description = "Rules path")
+  private String rulesPath;
 
   public static void main(String[] args) {
-    try {
-      Assert.notEmpty(args, "Not enough parameters");
-      CommandLine cmd = new GnuParser().parse(options, args);
-      if (!cmd.hasOption(NOLOG_OPTION)) {
-        Configurator.initialize("log4j2", "log4j2.xml");
-      }
-      startSpring(cmd);
-    } catch (ParseException | IllegalArgumentException e) {
-      printHelp();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    int exitCode = new CommandLine(new Main()).execute(args);
+    System.exit(exitCode);
   }
 
-  private static void printHelp() {
-    new HelpFormatter().printHelp("java -jar ufw.jar", options);
-  }
-
-  private static void startSpring(CommandLine cmd) throws IOException {
+  @Override
+  public Integer call() throws Exception {
     AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
         Config.class);
     context.start();
 
-    if (cmd.hasOption(CONFIG_TYPE_OPTION)) {
-      String configType = cmd.getOptionValue(CONFIG_TYPE_OPTION);
-      if(StringUtils.isBlank(configType))
-        configType = "default";
-      if (cmd.hasOption(FILE_OPTION)) {
-        context.getBean(FileConfigurator.class, configType, cmd.getOptionValue(FILE_OPTION))
+    switch (firewallOption) {
+      case "ufw":
+        context.getBean(UFWConfigurator.class, profileOption, rulesPath)
             .configure();
-      } else if (cmd.hasOption(FIREWALL_OPTION)) {
-        context.getBean(UFWConfigurator.class, configType, cmd.getOptionValue(FIREWALL_OPTION))
+        break;
+      case "ip-tables":
+        context.getBean(IpTablesConfigurator.class, profileOption, rulesPath)
             .configure();
-      } else if (cmd.hasOption(IPTABLES_OPTION)) {
-        context.getBean(IpTablesConfigurator.class, configType, cmd.getOptionValue(IPTABLES_OPTION))
+        break;
+      case "files":
+        context.getBean(FileRuleGroupConfigurator.class, profileOption, rulesPath)
             .configure();
-      } else if (cmd.hasOption(GROUPED_FILE_OPTION)) {
-        context.getBean(FileRuleGroupConfigurator.class, configType, cmd.getOptionValue(GROUPED_FILE_OPTION))
-            .configure();
-      }
-    } else {
-      printHelp();
+        break;
+      default:
+        context.stop();
+        context.close();
+        return 2;
     }
+
     context.stop();
     context.close();
+    return 0;
   }
 }
