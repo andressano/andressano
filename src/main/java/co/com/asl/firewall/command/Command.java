@@ -1,13 +1,13 @@
 package co.com.asl.firewall.command;
 
+import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Scanner;
+import java.io.InputStreamReader;
 import java.util.stream.Stream;
+import org.apache.logging.log4j.core.util.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.StringUtils;
 
 public final class Command {
 
@@ -17,14 +17,11 @@ public final class Command {
     super();
   }
 
-  private static Collection<String> read(InputStream is) {
-    Scanner scanner = new Scanner(is);
-    List<String> response = new ArrayList<>();
-    while (scanner.hasNext()) {
-      response.add(scanner.next());
+  private static Stream<String> read(InputStream is) throws IOException {
+    try (InputStreamReader isr = new InputStreamReader(is)) {
+      String output = IOUtils.toString(isr);
+      return Stream.of(StringUtils.tokenizeToStringArray(output, "\\p{javaWhitespace}+"));
     }
-    scanner.close();
-    return response;
   }
 
   public static Stream<String> execute(final String commandLine) {
@@ -32,11 +29,7 @@ public final class Command {
       String[] commandSyntax = new String[]{"/bin/bash", "-c",
           "timeout 20s ".concat(commandLine)};
       Process process = Runtime.getRuntime().exec(commandSyntax);
-      Collection<String> response = read(process.getInputStream());
-      if (log.isDebugEnabled()) {
-        log.debug("Executing {} with output {}", commandLine, response);
-      }
-      return response.stream();
+      return read(process.getInputStream());
     } catch (Exception e) {
       log.error("Error running {}", commandLine, e);
     }

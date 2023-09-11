@@ -5,6 +5,8 @@ import co.com.asl.firewall.configuration.file.FileRuleGroupConfigurator;
 import co.com.asl.firewall.configuration.iptables.IpTablesConfigurator;
 import co.com.asl.firewall.configuration.ufw.UFWConfigurator;
 import java.util.concurrent.Callable;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.core.config.Configurator;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
@@ -22,8 +24,8 @@ public class Main implements Callable<Integer> {
       "--profile"}, paramLabel = "<profile>", description = "Profile name", showDefaultValue = Visibility.ALWAYS, required = false, defaultValue = "default")
   private String profileOption;
 
-  @Option(names = {"-nl", "--nolog"}, description = "Disables log")
-  private boolean nologOption;
+  @Option(names = {"-ll", "--log-level"}, description = "Log level for logger", required = false, defaultValue = "info")
+  private String logLevel;
 
   @Option(names = {"-r", "--rules-path"}, description = "Rules path")
   private String rulesPath;
@@ -35,6 +37,7 @@ public class Main implements Callable<Integer> {
 
   @Override
   public Integer call() throws Exception {
+    Configurator.setRootLevel(Level.valueOf(logLevel));
     AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
         Config.class);
     context.start();
