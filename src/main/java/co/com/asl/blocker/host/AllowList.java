@@ -15,19 +15,21 @@ import java.util.stream.Collectors;
 
 @Component
 public class AllowList extends TreeSet<String> {
-    @Autowired
-    private ResourcePatternResolver resourcePatternResolver;
 
-    @Autowired
-    private ResourceLinesReader resourceLinesReader;
+  @Autowired
+  private ResourcePatternResolver resourcePatternResolver;
 
-    @PostConstruct
-    public void loadLines() throws IOException {
-        addAll(resourceLinesReader.loadLines(Arrays.asList(resourcePatternResolver
-                        .getResources("classpath:/META-INF/allow-list/*.txt")))
-                .map(LineFunctions::removeComments)
-                .map(StringUtils::trimToEmpty)
-                .filter(StringUtils::isNotBlank)
-                .collect(Collectors.toList()));
-    }
+  @Autowired
+  private ResourceLinesReader resourceLinesReader;
+
+  @PostConstruct
+  public void loadLines() throws IOException {
+    Arrays.stream(resourcePatternResolver
+            .getResources("classpath:/META-INF/allow-list/*.txt"))
+        .flatMap(resourceLinesReader::loadLines)
+        .map(LineFunctions::removeComments)
+        .map(StringUtils::trimToEmpty)
+        .filter(StringUtils::isNotBlank)
+        .forEach(this::add);
+  }
 }

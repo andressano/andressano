@@ -4,6 +4,7 @@ import co.com.asl.blocker.line.LineFunctions;
 import co.com.asl.blocker.line.reader.ResourceLinesReader;
 import co.com.asl.blocker.line.reader.URLLinesReader;
 import io.vavr.control.Try;
+import java.util.stream.Stream;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,34 +23,42 @@ import java.util.stream.Collectors;
 @Slf4j
 @Component
 public class HostList extends TreeSet<String> {
-    @Autowired
-    protected ResourcePatternResolver resourcePatternResolver;
 
-    @Autowired
-    private ResourceLinesReader resourceLinesReader;
-    @Autowired
-    private URLLinesReader urlLinesReader;
+  @Autowired
+  protected ResourcePatternResolver resourcePatternResolver;
 
-    public Collection<URL> loadURLs() throws IOException {
-        return resourceLinesReader.loadLines(Arrays.asList(resourcePatternResolver.getResources("classpath:/META-INF/sites.txt")))
-                .map(LineFunctions::removeComments)
-                .map(StringUtils::trim)
-                .filter(StringUtils::isNotBlank).map(url -> Try.of(() -> new URL(url))
-                        .onFailure(e -> log.error("Error reading url ".concat(url), e)).getOrNull())
-                .filter(Objects::nonNull)
-                .collect(Collectors.toList());
-    }
+  @Autowired
+  private ResourceLinesReader resourceLinesReader;
+  @Autowired
+  private URLLinesReader urlLinesReader;
 
-    @PostConstruct
-    public void loadLines() throws IOException {
-        addAll(urlLinesReader.loadLines(loadURLs()).map(LineFunctions::removeComments)
-                .map(StringUtils::trimToEmpty)
-                .filter(StringUtils::isNotBlank)
-                .map(LineFunctions::removeIp)
-                .map(StringUtils::trimToEmpty)
-                .filter(StringUtils::isNotBlank)
-                .filter(LineFunctions::isValidLine)
-                .collect(Collectors.toList()));
-    }
+  public Stream<String> loadURLLines() throws IOException {
+    return Arrays.stream(resourcePatternResolver.getResources("classpath:/META-INF/sites.txt"))
+        .flatMap(resourceLinesReader::loadLines)
+        .map(LineFunctions::removeComments)
+        .map(StringUtils::trim)
+        .filter(StringUtils::isNotBlank)
+        .map(url -> Try.of(() -> new URL(url))
+            .onFailure(e -> log.error("Error reading url ".concat(url), e)).getOrNull())
+        .flatMap(urlLinesReader::loadLines);
+  }
 
+  public Stream<String> loadDenyLines() throws IOException {
+    return Arrays.stream(resourcePatternResolver
+            .getResources("classpath:/META-INF/deny-list/*.txt"))
+        .flatMap(resourceLinesReader::loadLines);
+  }
+
+  @PostConstruct
+  public void loadLines() throws IOException {
+    Stream.concat(loadURLLines(), loadDenyLines())
+        .map(LineFunctions::removeComments)
+        .map(StringUtils::trimToEmpty)
+        .filter(StringUtils::isNotBlank)
+        .map(LineFunctions::removeIp)
+        .map(StringUtils::trimToEmpty)
+        .filter(StringUtils::isNotBlank)
+        .filter(LineFunctions::isValidLine)
+        .forEach(this::add);
+  }
 }

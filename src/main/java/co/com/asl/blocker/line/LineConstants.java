@@ -9,7 +9,7 @@ public class LineConstants {
   public static final String COMMENT_PATTERN = "#(.)*";
   public static final String ROUTE_IP = "0.0.0.0";
   public static final String COMPUTER_NAME = "%%COMPUTER_NAME%%";
-  public static final Stream<String> GENERATED_HOSTS = Stream.of("", "# Generated hosts");
+  public static final String GENERATED_HOSTS = "# Generated hosts";
 
   private LineConstants() {
     super();

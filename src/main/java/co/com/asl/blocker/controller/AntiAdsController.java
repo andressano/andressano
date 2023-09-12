@@ -10,10 +10,10 @@ import java.nio.file.StandardOpenOption;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.time.StopWatch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Component;
@@ -31,13 +31,14 @@ public class AntiAdsController {
   protected void createHostsFile(String hostsFile, Operation operation) throws IOException {
     Path hostsFilePath = Path.of(hostsFile);
 
-    List<String> fileLines = linesCreators.stream()
+    Collection<String> fileLines = linesCreators.stream()
         .filter(lc -> lc.isOperationAllowed(operation))
         .sorted(Comparator.comparing(LinesCreator::priority))
         .flatMap(lc -> Try.of(lc::create).getOrElse(Stream.empty()))
         .collect(Collectors.toList());
 
-    Files.write(hostsFilePath, fileLines, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+    Files.write(hostsFilePath, fileLines, StandardOpenOption.CREATE,
+        StandardOpenOption.TRUNCATE_EXISTING);
   }
 
   public void process(String hostsFile, Operation operation) throws IOException {

@@ -14,20 +14,19 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-public class ResourceLinesReader implements MultipleLinesReader<Resource> {
+public class ResourceLinesReader implements LinesReader<Resource> {
 
   @Autowired
   private InputStreamLinesReader linesReader;
 
   @Override
-  public Stream<String> loadLines(Collection<Resource> resources) throws IOException {
-    Collection<InputStream> inputStreams = resources.stream()
-        .filter(Objects::nonNull)
-        .map(resource -> Try.of(resource::getInputStream)
-            .onFailure(e -> log.error(e.getLocalizedMessage(), e))
-            .getOrNull())
-        .filter(Objects::nonNull)
-        .collect(Collectors.toList());
-    return linesReader.loadLines(inputStreams);
+  public Stream<String> loadLines(Resource resource) {
+    if(log.isDebugEnabled())
+      log.debug("Reading {}",resource.getFilename());
+    try (InputStream is = resource.getInputStream()) {
+      return linesReader.loadLines(is);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
   }
 }

@@ -11,12 +11,12 @@ public class GeneratedHostsLinesCreator implements LinesCreator {
 
   @Override
   public Stream<String> create() throws IOException {
-    return LineConstants.GENERATED_HOSTS;
+    return Stream.of("", LineConstants.GENERATED_HOSTS);
   }
 
   @Override
   public int priority() {
-    return Integer.MIN_VALUE + 1;
+    return 0;
   }
 
   @Override

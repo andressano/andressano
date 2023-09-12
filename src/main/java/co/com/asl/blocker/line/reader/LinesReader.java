@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.stream.Stream;
 
-public interface MultipleLinesReader<T> {
+public interface LinesReader<T> {
 
-  Stream<String> loadLines(Collection<T> resources) throws IOException;
+  Stream<String> loadLines(T resource);
 }

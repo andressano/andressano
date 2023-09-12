@@ -5,12 +5,14 @@ import co.com.asl.blocker.line.reader.ResourceLinesReader;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.stream.Stream;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.stereotype.Component;
 
 @Component
+@Slf4j
 public class PreludeLinesCreator implements LinesCreator {
 
   @Autowired
@@ -26,10 +28,13 @@ public class PreludeLinesCreator implements LinesCreator {
 
   @Override
   public Stream<String> create() throws IOException {
+    if (log.isDebugEnabled()) {
+      log.debug("Creating prelude hosts file");
+    }
+
     String path = String.format("classpath:/META-INF/hostsFiles/%s.txt", osName);
-    return resourceLinesReader.loadLines(Arrays.asList(
-            resourcePatternResolver
-                .getResources(path)))
+    return Arrays.stream(resourcePatternResolver.getResources(path))
+        .flatMap(resourceLinesReader::loadLines)
         .map(l -> l.replace(LineConstants.COMPUTER_NAME, hostName));
   }
 

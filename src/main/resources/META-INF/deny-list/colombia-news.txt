@@ -6,7 +6,6 @@ alertabogota.com
 ambitojuridico.com
 antena2.com
 bluradio.com
-bogota.gov.co
 boyaca.extra.com.co
 cablenoticias.tv
 cambiocolombia.com
@@ -147,7 +146,6 @@ www.alertabogota.com
 www.ambitojuridico.com
 www.antena2.com
 www.bluradio.com
-www.bogota.gov.co
 www.cablenoticias.tv
 www.cambiocolombia.com
 www.canal1.com.co

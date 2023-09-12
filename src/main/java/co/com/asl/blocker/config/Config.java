@@ -11,12 +11,12 @@ import org.springframework.context.annotation.Configuration;
 public class Config {
 
   @Bean
-  public String osName(CommandRunner commandRunner) {
+  public String osName() {
     return StringUtils.lowerCase(System.getProperty("os.name"));
   }
 
   @Bean
   public String hostName(CommandRunner commandRunner) {
-    return commandRunner.execute("cat /etc/hostname");
+    return commandRunner.execute("cat /etc/hostname").findFirst().orElse("");
   }
 }
