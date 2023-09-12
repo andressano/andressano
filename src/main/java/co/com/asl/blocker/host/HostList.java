@@ -15,10 +15,7 @@ import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Objects;
 import java.util.TreeSet;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Component
@@ -58,7 +55,7 @@ public class HostList extends TreeSet<String> {
         .map(LineFunctions::removeIp)
         .map(StringUtils::trimToEmpty)
         .filter(StringUtils::isNotBlank)
-        .filter(LineFunctions::isValidLine)
+        .filter(LineFunctions::isValidHostnameLine)
         .forEach(this::add);
   }
 }

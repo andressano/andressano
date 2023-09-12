@@ -10,7 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
 @Component
-public class InputStreamLinesReader implements LinesReader<InputStream> {
+public final class InputStreamLinesReader implements LinesReader<InputStream> {
 
   @Override
   public Stream<String> loadLines(InputStream is) {

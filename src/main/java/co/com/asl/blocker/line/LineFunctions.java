@@ -8,14 +8,14 @@ public class LineFunctions {
   }
 
   public static String removeComments(String line) {
-    return line.replaceFirst(LineConstants.COMMENT_PATTERN, "").trim();
+    return line.replaceFirst(LineConstants.COMMENT_PATTERN, "");
   }
 
   public static String removeIp(String line) {
-    return line.replaceFirst(LineConstants.IP_REGEX_PATTERN.concat("\\s+"), "");
+    return line.replaceFirst(LineConstants.IP_REGEX_PATTERN, "");
   }
 
-  public static boolean isValidLine(String line) {
+  public static boolean isValidHostnameLine(String line) {
     return StringUtils.isNotBlank(line) && line.matches(LineConstants.HOSTNAME_PATTERN);
   }
   public static String formatLine(String host) {
