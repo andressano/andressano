@@ -16,9 +16,10 @@ spring-test/test-output/
 argfile*
 activemq-data/
 
+buildSrc/build
 classes/
 /build
-buildSrc/build
+/htmlReport
 /spring-*/build
 /spring-core/kotlin-coroutines/build
 /framework-bom/build

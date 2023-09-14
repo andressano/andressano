@@ -8,6 +8,7 @@ import java.util.stream.Stream;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StreamUtils;
 
 @Component
 public final class InputStreamLinesReader implements LinesReader<InputStream> {
@@ -17,7 +18,7 @@ public final class InputStreamLinesReader implements LinesReader<InputStream> {
     try (InputStreamReader isr = new InputStreamReader(is)) {
       return IOUtils.readLines(isr).stream()
           .filter(StringUtils::isNotBlank);
-    } catch (IOException e) {
+    } catch (Exception e) {
       throw new RuntimeException(e);
     }
   }
