@@ -1,0 +1,12 @@
+hosts1.com
+hosts2.com
+hosts3.com
+www.hosts1.com
+www.hosts2.com
+www.hosts3.com.co
+abdce.allow1-hosts1.com
+abdce.allow2-hosts2.com
+abdce.allow3-hosts3.com
+abdce.deny1-hosts1.com
+abdce.deny2-hosts2.com
+abdce.deny3-hosts3.com

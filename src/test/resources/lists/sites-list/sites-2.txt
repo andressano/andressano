@@ -1,0 +1,12 @@
+hosts4.com
+hosts5.com
+hosts6.com
+www.hosts4.com
+www.hosts5.com
+www.hosts6.com.co
+abdce.allow1-hosts1.com
+abdce.allow2-hosts2.com
+abdce.allow3-hosts3.com
+abdce.deny1-hosts1.com
+abdce.deny2-hosts2.com
+abdce.deny3-hosts3.com

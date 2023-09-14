@@ -12,8 +12,9 @@ import org.springframework.context.annotation.Configuration;
 public class Config {
 
   @Bean
-  public String osName() {
-    return StringUtils.lowerCase(System.getProperty("os.name"));
+  public String hostFilePath() {
+    final String osName = StringUtils.lowerCase(System.getProperty("os.name"));
+    return String.format("classpath:/META-INF/hostsFiles/%s.txt", osName);
   }
 
   @Bean
@@ -21,17 +22,17 @@ public class Config {
     return commandRunner.execute("cat /etc/hostname").findFirst().orElse("");
   }
 
-  @Bean("sitesClasspath")
+  @Bean
   public String sitesClasspath() {
     return "classpath:/META-INF/sites.txt";
   }
 
-  @Bean("allowListClasspath")
+  @Bean
   public String allowListClasspath() {
     return "classpath:/META-INF/allow-list/*.txt";
   }
 
-  @Bean("denyListClasspath")
+  @Bean
   public String denyListClasspath() {
     return "classpath:/META-INF/deny-list/*.txt";
   }

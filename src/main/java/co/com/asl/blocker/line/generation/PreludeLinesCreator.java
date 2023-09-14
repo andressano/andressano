@@ -16,8 +16,8 @@ import org.springframework.stereotype.Component;
 public class PreludeLinesCreator implements LinesCreator {
 
   @Autowired
-  @Qualifier("osName")
-  private String osName;
+  @Qualifier("hostFilePath")
+  private String hostFilePath;
   @Autowired
   @Qualifier("hostName")
   private String hostName;
@@ -31,9 +31,7 @@ public class PreludeLinesCreator implements LinesCreator {
     if (log.isDebugEnabled()) {
       log.debug("Creating prelude hosts file");
     }
-
-    String path = String.format("classpath:/META-INF/hostsFiles/%s.txt", osName);
-    return Arrays.stream(resourcePatternResolver.getResources(path))
+    return Arrays.stream(resourcePatternResolver.getResources(hostFilePath))
         .flatMap(resourceLinesReader::loadLines)
         .map(l -> l.replace(LineConstants.COMPUTER_NAME, hostName));
   }

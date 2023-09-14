@@ -1,0 +1,3 @@
+allow2-hosts1.com
+allow2-hosts2.com
+allow2-hosts3.com

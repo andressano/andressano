@@ -1,6 +1,0 @@
-hosts1.com
-hosts2.com
-hosts3.com
-www.hosts1.com
-www.hosts2.com
-www.hosts3.com.co

@@ -1,1 +1,2 @@
-file:src/test/resources/lists/sites-list/hosts-1.txt
+file:src/test/resources/lists/sites-list/sites-1.txt
+file:src/test/resources/lists/sites-list/sites-2.txt
