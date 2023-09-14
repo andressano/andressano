@@ -8,6 +8,7 @@ import java.util.TreeSet;
 import javax.annotation.PostConstruct;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.stereotype.Component;
 
@@ -20,10 +21,14 @@ public class AllowList extends TreeSet<String> {
   @Autowired
   private ResourceLinesReader resourceLinesReader;
 
+  @Autowired
+  @Qualifier("allowListClasspath")
+  private String allowListClasspath;
+
   @PostConstruct
   public void loadLines() throws IOException {
     Arrays.stream(resourcePatternResolver
-            .getResources("classpath:/META-INF/allow-list/*.txt"))
+            .getResources(allowListClasspath))
         .flatMap(resourceLinesReader::loadLines)
         .map(LineFunctions::removeComments)
         .map(StringUtils::trimToEmpty)
