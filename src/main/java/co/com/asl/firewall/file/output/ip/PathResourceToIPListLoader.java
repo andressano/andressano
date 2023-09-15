@@ -28,7 +28,7 @@ public class PathResourceToIPListLoader implements IPListLoader {
   public Stream<CIDRAddressV4> load(FirewallType firewallType, String setting,
       FWOperation ufwOperation) {
     return resourceToPathsLoader
-        .load(setting, ufwOperation)
+        .load(ufwOperation)
         .flatMap(PathResourceToIPListLoader::pathToFiles)
         .flatMap(p -> Try.of(() -> Files.readAllLines(p).stream()).getOrElse(Stream.empty()))
         .map(l -> l.replaceFirst("#(.)*", ""))

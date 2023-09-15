@@ -26,7 +26,7 @@ public class ASNResourceToASNLoader implements ASNLoader {
 
   @Override
   public Stream<ASNumber> load(FirewallType firewallType, String setting, FWOperation ufwOperation) {
-    return asnListLoader.load(resourceToASNListLoader.load(setting, ufwOperation))
+    return asnListLoader.load(resourceToASNListLoader.load(ufwOperation))
         .map(ASNumber::transform)
         .sorted();
   }

@@ -2,7 +2,6 @@
 package co.com.asl.firewall.file.output;
 
 import co.com.asl.firewall.configuration.FWOperation;
-import co.com.asl.firewall.configuration.FirewallType;
 import co.com.asl.firewall.configuration.InputFileType;
 import co.com.asl.firewall.resources.FileToLinesResourceLoader;
 import java.util.function.Predicate;
@@ -28,9 +27,9 @@ public class ResourceToPathsLoader {
   public static final String REGEX_PATTERN = "^(\\/[\\w-]+)+(.([a-zA-Z]+)?)$";
 
   private static final Predicate<String> PREDICATE = Pattern.compile(REGEX_PATTERN)
-          .asMatchPredicate();
+      .asMatchPredicate();
 
-  public Stream<String> load(String setting, FWOperation ufwOperation) {
+  public Stream<String> load(FWOperation ufwOperation) {
     return fileToLinesResourceLoader
         .load(InputFileType.IP_PATHS, ufwOperation)
         .map(l -> l.replaceFirst("#(.)*", ""))

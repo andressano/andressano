@@ -44,12 +44,10 @@ final class CIDRCombiner {
     }
     addresses.removeAll(removeList);
     addresses.addAll(addList);
-    if (log.isInfoEnabled()) {
-      if (!addList.isEmpty()) {
-        log.info("[{}] IPs {} added and {} removed by combination", addresses.getName(),
-            addList.size(),
-            removeList.size());
-      }
+    if (log.isInfoEnabled() && !addList.isEmpty()) {
+      log.info("[{}] IPs {} added and {} removed by combination", addresses.getName(),
+          addList.size(),
+          removeList.size());
     }
   }
 }

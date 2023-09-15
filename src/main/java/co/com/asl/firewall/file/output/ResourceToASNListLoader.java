@@ -1,16 +1,13 @@
 package co.com.asl.firewall.file.output;
 
-import java.util.stream.Stream;
-
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import co.com.asl.firewall.configuration.FWOperation;
-import co.com.asl.firewall.configuration.FirewallType;
 import co.com.asl.firewall.configuration.InputFileType;
 import co.com.asl.firewall.entities.ASNumber;
 import co.com.asl.firewall.resources.FileToLinesResourceLoader;
+import java.util.stream.Stream;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 @Component
 public class ResourceToASNListLoader {
@@ -23,7 +20,7 @@ public class ResourceToASNListLoader {
     this.fileToLinesResourceLoader = fileToLinesResourceLoader;
   }
 
-  public Stream<Integer> load(String setting, FWOperation ufwOperation) {
+  public Stream<Integer> load(FWOperation ufwOperation) {
     return fileToLinesResourceLoader
         .load(InputFileType.ASN_FILETYPE, ufwOperation)
         .map(l -> l.replaceFirst("#(.)*", ""))

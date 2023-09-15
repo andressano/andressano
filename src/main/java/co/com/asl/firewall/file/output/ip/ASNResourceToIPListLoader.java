@@ -16,6 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Component
 public class ASNResourceToIPListLoader implements IPListLoader {
+
   private final ResourceToASNListLoader resourceToASNListLoader;
   private final ASNListLoader asnListLoader;
 
@@ -27,10 +28,11 @@ public class ASNResourceToIPListLoader implements IPListLoader {
     this.asnListLoader = asnListLoader;
   }
 
-  public Stream<CIDRAddressV4> load(FirewallType firewallType, String setting, FWOperation ufwOperation) {
+  public Stream<CIDRAddressV4> load(FirewallType firewallType, String setting,
+      FWOperation ufwOperation) {
     return asnListLoader.load(
             resourceToASNListLoader
-                .load(setting, ufwOperation))
+                .load(ufwOperation))
         .flatMap(Collection::stream);
   }
 }
