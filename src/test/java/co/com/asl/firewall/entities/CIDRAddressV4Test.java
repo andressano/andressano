@@ -52,6 +52,13 @@ class CIDRAddressV4Test {
   }
 
   @Test
+  void canAbsorbLowerMask() {
+    CIDRAddressV4 cidr1 = new CIDRAddressV4(192,168,2,0,23);
+    CIDRAddressV4 cidr2 = new CIDRAddressV4(192,168,2,0,24);
+    assertTrue(cidr1.canAbsorb(cidr2));
+  }
+
+  @Test
   void testToString() {
   }
 }

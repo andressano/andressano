@@ -24,7 +24,8 @@ public class Main implements Callable<Integer> {
       "--profile"}, paramLabel = "<profile>", description = "Profile name", showDefaultValue = Visibility.ALWAYS, required = false, defaultValue = "default")
   private String profileOption;
 
-  @Option(names = {"-ll", "--log-level"}, description = "Log level for logger", required = false, defaultValue = "info")
+  @Option(names = {"-ll",
+      "--log-level"}, description = "Log level for logger", required = false, defaultValue = "info")
   private String logLevel;
 
   @Option(names = {"-r", "--rules-path"}, description = "Rules path")
@@ -37,7 +38,7 @@ public class Main implements Callable<Integer> {
 
   @Override
   public Integer call() throws Exception {
-    Configurator.setRootLevel(Level.valueOf(logLevel));
+    Configurator.setLevel("co.com.asl.firewall", Level.valueOf(logLevel));
     AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
         Config.class);
     context.start();

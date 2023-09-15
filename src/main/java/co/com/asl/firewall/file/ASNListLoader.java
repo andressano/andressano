@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.Objects;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import lombok.extern.slf4j.Slf4j;
@@ -35,8 +36,9 @@ public class ASNListLoader {
       list = executorService.invokeAll(callables)
           .stream()
           .map(f -> Try.of(f::get)
-              .onFailure(e -> log.error(e.getLocalizedMessage(), e)).getOrNull())
-          .filter(Objects::nonNull);
+              .onFailure(e -> log.error(e.getLocalizedMessage(), e))
+              .getOrNull())
+          .filter(asn -> Objects.nonNull(asn) && !asn.isEmpty());
     } catch (InterruptedException e) {
       log.error(e.getLocalizedMessage(), e);
       Thread.currentThread().interrupt();

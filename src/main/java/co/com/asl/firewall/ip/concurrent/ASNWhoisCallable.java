@@ -29,16 +29,17 @@ public class ASNWhoisCallable implements Callable<ASNumber> {
 
   @Override
   public ASNumber call() throws Exception {
-    ASNumber result = whoisQueries.stream()
+    ASNumber asNumber = new ASNumber(asn);
+    whoisQueries.stream()
         .map(q -> String.format(q, asn))
         .flatMap(Command::execute)
         .map(String::trim)
         .filter(CIDRAddressV4.PREDICATE)
         .map(CIDRAddressV4::new)
-        .collect(Collectors.toCollection(() -> new ASNumber(asn)));
-    if (CollectionUtils.isEmpty(result)) {
-      log.warn("{} has no records", this.asn);
+        .forEach(asNumber::add);
+    if (log.isWarnEnabled() && asNumber.isEmpty()) {
+      log.warn("ASN{} has no ips", asNumber.getNumber());
     }
-    return result;
+    return asNumber;
   }
 }

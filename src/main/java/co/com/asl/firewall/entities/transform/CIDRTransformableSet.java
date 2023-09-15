@@ -15,6 +15,8 @@ public class CIDRTransformableSet extends TreeSet<CIDRAddressV4> {
 
   private final transient Logger log = LoggerFactory.getLogger(getClass());
   private final boolean isDebugEnabled = log.isDebugEnabled();
+  private final boolean isInfoEnabled = log.isInfoEnabled();
+
   @Setter
   @Getter
   private String name;
@@ -43,8 +45,8 @@ public class CIDRTransformableSet extends TreeSet<CIDRAddressV4> {
       CIDRCombiner.combine(this);
       changes = initialSize - this.size();
 
-      if (isDebugEnabled && changes > 0) {
-        log.debug("[{}] Transformation: Iteration {}, changes: {}", this.getName(), iteration,
+      if (isInfoEnabled && changes > 0) {
+        log.info("[{}] Transformation: Iteration {}, changes: {}", this.getName(), iteration,
             changes);
         totalChanges += changes;
       }
