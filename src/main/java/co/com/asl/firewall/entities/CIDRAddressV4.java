@@ -14,10 +14,11 @@ public class CIDRAddressV4 implements Comparable<CIDRAddressV4> {
   protected static final short BYTES_PER_GROUP = 8;
   protected static final short NUMBER_OF_GROUPS = TOTAL_BYTES / BYTES_PER_GROUP;
   protected static final int MAX_VALUE = 0xffffffff;
-  public static final String NUMBER_PATTERN = "(\\d|[1-9]\\d|1\\d{2}|2[0-4]\\d|25[0-5])";
+  public static final String NUMBER_PATTERN = "(25[0-5]|2[0-4][0-9]|1([0-9]{2})|[1-9][0-9]|[0-9])";
   public static final String REGEX_PATTERN =
       "^(" + NUMBER_PATTERN + "\\.){3}" + NUMBER_PATTERN + "(\\/(\\d|[1-2]\\d|3[0-2]))?$";
-  public static final Predicate<String> PREDICATE = Pattern.compile(REGEX_PATTERN).asMatchPredicate();
+  public static final Predicate<String> PREDICATE = Pattern.compile(REGEX_PATTERN)
+      .asMatchPredicate();
   private int ip;
   private short mask;
 
@@ -117,7 +118,8 @@ public class CIDRAddressV4 implements Comparable<CIDRAddressV4> {
   public String toString() {
     final StringBuilder sbToString = new StringBuilder();
     for (int i = 0; i < NUMBER_OF_GROUPS; i++) {
-      int number = this.getIp() << (i * BYTES_PER_GROUP) >>> ((NUMBER_OF_GROUPS - 1) * BYTES_PER_GROUP);
+      int number =
+          this.getIp() << (i * BYTES_PER_GROUP) >>> ((NUMBER_OF_GROUPS - 1) * BYTES_PER_GROUP);
       sbToString.append(number);
       if (i < NUMBER_OF_GROUPS - 1) {
         sbToString.append(GROUP_SEPARATOR);
