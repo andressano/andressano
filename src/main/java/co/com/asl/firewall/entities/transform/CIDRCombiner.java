@@ -20,18 +20,17 @@ final class CIDRCombiner {
     if (CollectionUtils.isEmpty(addresses)) {
       return;
     }
-
-    Set<CIDRAddressV4> toAddCidrs = new HashSet<>();
-    Set<CIDRAddressV4> toRemoveCidrs = new HashSet<>();
+    Set<CIDRAddressV4> addList = new HashSet<>();
+    Set<CIDRAddressV4> removeList = new HashSet<>();
 
     CIDRAddressV4 originalCidr = null;
     for (CIDRAddressV4 modifyingCidr : addresses) {
       if (Objects.nonNull(originalCidr) && originalCidr.getMask() == modifyingCidr.getMask()) {
-        Optional<CIDRAddressV4> combinedCidr = originalCidr.combineIfPossible(modifyingCidr);
+        Optional<CIDRAddressV4> combinedCidr = CIDRAddressV4.combine(originalCidr, modifyingCidr);
         if (combinedCidr.isPresent()) {
-          toRemoveCidrs.add(originalCidr);
-          toRemoveCidrs.add(modifyingCidr);
-          toAddCidrs.add(combinedCidr.get());
+          removeList.add(originalCidr);
+          removeList.add(modifyingCidr);
+          addList.add(combinedCidr.get());
           if (log.isDebugEnabled()) {
             log.debug("[{}] IPs {} and {} combined into {}",
                 addresses.getName(),
@@ -43,8 +42,14 @@ final class CIDRCombiner {
       }
       originalCidr = modifyingCidr;
     }
-
-    addresses.removeAll(toRemoveCidrs);
-    addresses.addAll(toAddCidrs);
+    addresses.removeAll(removeList);
+    addresses.addAll(addList);
+    if (log.isInfoEnabled()) {
+      if (!addList.isEmpty()) {
+        log.info("[{}] IPs {} added and {} removed by combination", addresses.getName(),
+            addList.size(),
+            removeList.size());
+      }
+    }
   }
 }

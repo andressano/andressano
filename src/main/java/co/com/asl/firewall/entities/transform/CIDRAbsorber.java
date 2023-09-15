@@ -1,9 +1,8 @@
 package co.com.asl.firewall.entities.transform;
 
 import co.com.asl.firewall.entities.CIDRAddressV4;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.HashSet;
+import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.CollectionUtils;
@@ -11,28 +10,30 @@ import org.springframework.util.CollectionUtils;
 final class CIDRAbsorber {
 
   private static final Logger log = LoggerFactory.getLogger(CIDRAbsorber.class);
-  private static final boolean DEBUG_ENABLED = log.isDebugEnabled();
 
   private CIDRAbsorber() {
   }
 
-  static void absorb(CIDRTransformableSet addresses) {
+  static void doAbsorb(CIDRTransformableSet addresses, CIDRAddressV4 cidr,
+      Set<CIDRAddressV4> removeSet) {
     if (CollectionUtils.isEmpty(addresses)) {
       return;
     }
+    addresses.stream()
+        .filter(c -> c.getMask() > cidr.getMask())
+        .filter(c -> !removeSet.contains(c))
+        .filter(cidr::canAbsorb)
+        .forEach(removeSet::add);
+  }
 
-    List<CIDRAddressV4> toRemoveAddresses = new ArrayList<>();
-    CIDRAddressV4 previousAddress = null;
-    for (CIDRAddressV4 address : addresses) {
-      if (Objects.nonNull(previousAddress) && previousAddress.contains(address)) {
-        toRemoveAddresses.add(address);
-        if (DEBUG_ENABLED) {
-          log.debug("[{}] IP {} absorbed by {}", addresses.getName(), address, previousAddress);
-        }
-        continue;
-      }
-      previousAddress = address;
+  public static void absorb(CIDRTransformableSet cidrs) {
+    Set<CIDRAddressV4> removeSet = new HashSet<>();
+    for (CIDRAddressV4 cidr : cidrs) {
+      doAbsorb(cidrs, cidr, removeSet);
     }
-    addresses.removeAll(toRemoveAddresses);
+    cidrs.removeAll(removeSet);
+    if (log.isInfoEnabled() && !removeSet.isEmpty()) {
+      log.info("[{}] Removing {} addresses by absorption", cidrs.getName(), removeSet.size());
+    }
   }
 }

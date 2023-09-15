@@ -30,7 +30,7 @@ public class ResourceToPathsLoader {
   private static final Predicate<String> PREDICATE = Pattern.compile(REGEX_PATTERN)
           .asMatchPredicate();
 
-  public Stream<String> load(FirewallType firewallType, String setting, FWOperation ufwOperation) {
+  public Stream<String> load(String setting, FWOperation ufwOperation) {
     return fileToLinesResourceLoader
         .load(InputFileType.IP_PATHS, ufwOperation)
         .map(l -> l.replaceFirst("#(.)*", ""))

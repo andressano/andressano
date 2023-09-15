@@ -23,7 +23,7 @@ public class ResourceToASNListLoader {
     this.fileToLinesResourceLoader = fileToLinesResourceLoader;
   }
 
-  public Stream<Integer> load(FirewallType firewallType, String setting, FWOperation ufwOperation) {
+  public Stream<Integer> load(String setting, FWOperation ufwOperation) {
     return fileToLinesResourceLoader
         .load(InputFileType.ASN_FILETYPE, ufwOperation)
         .map(l -> l.replaceFirst("#(.)*", ""))

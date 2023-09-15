@@ -30,7 +30,7 @@ public class ASNResourceToIPListLoader implements IPListLoader {
   public Stream<CIDRAddressV4> load(FirewallType firewallType, String setting, FWOperation ufwOperation) {
     return asnListLoader.load(
             resourceToASNListLoader
-                .load(firewallType, setting, ufwOperation))
+                .load(setting, ufwOperation))
         .flatMap(Collection::stream);
   }
 }
