@@ -5,7 +5,7 @@ https://raw.githubusercontent.com/KodoPengin/GameIndustry-hosts-Template/master/
 https://raw.githubusercontent.com/FiltersHeroes/KADhosts/master/KADhosts.txt
 https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn-social-only/hosts
 https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
-#https://raw.githubusercontent.com/TechnologyClassroom/HOSTS/master/HOSTSFwin.txt
 https://someonewhocares.org/hosts/hosts
+https://raw.githubusercontent.com/TechnologyClassroom/HOSTS/master/filters/game.txt
 #http://winhelp2002.mvps.org/hosts.txt
 #http://www.hostsfile.org/Downloads/hosts.txt
