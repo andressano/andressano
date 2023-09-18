@@ -28,15 +28,16 @@ public class AntiAdsController {
   @Autowired
   private Collection<LinesCreator> linesCreators;
 
-  protected void createHostsFile(String hostsFile, Operation operation) throws IOException {
-    Path hostsFilePath = Path.of(hostsFile);
-
-    Collection<String> fileLines = linesCreators.stream()
+  protected Collection<String> createHostsFile(Operation operation) {
+    return linesCreators.stream()
         .filter(lc -> lc.isOperationAllowed(operation))
         .sorted(Comparator.comparing(LinesCreator::priority))
         .flatMap(lc -> Try.of(lc::create).getOrElse(Stream.empty()))
         .collect(Collectors.toList());
+  }
 
+  protected void writeFile(Collection<String> fileLines, String hostsFile) throws IOException {
+    Path hostsFilePath = Path.of(hostsFile);
     Files.write(hostsFilePath, fileLines, StandardOpenOption.CREATE,
         StandardOpenOption.TRUNCATE_EXISTING);
   }
@@ -46,6 +47,7 @@ public class AntiAdsController {
     Assert.notNull(operation, "Operation required");
 
     log.info("Creating file {}", hostsFile);
-    createHostsFile(hostsFile, operation);
+    Collection<String> lines = createHostsFile(operation);
+    writeFile(lines, hostsFile);
   }
 }
