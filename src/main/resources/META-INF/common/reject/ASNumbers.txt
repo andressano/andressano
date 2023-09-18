@@ -4,6 +4,7 @@
 8441	# OOO NPP Garant Service University
 8945	# Twitter Inc.
 14413	# Linkedin Corporation
+15224 # Adobe Inc.
 15754	# OOO Taxtelecom
 19318	# NEW JERSEY INTERNATIONAL INTERNET EXCHANGE LLC
 21105	# OOO RTK-Primorye
