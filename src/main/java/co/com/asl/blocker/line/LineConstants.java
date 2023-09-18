@@ -1,7 +1,5 @@
 package co.com.asl.blocker.line;
 
-import java.util.stream.Stream;
-
 public class LineConstants {
 
   private static final String IP_NUMBER_PATTERN = "(25[0-5]|2[0-4][0-9]|1([0-9]{2})|[1-9][0-9]|[0-9])";

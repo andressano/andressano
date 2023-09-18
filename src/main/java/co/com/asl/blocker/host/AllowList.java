@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.TreeSet;
 import javax.annotation.PostConstruct;
+import lombok.EqualsAndHashCode;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,10 +14,11 @@ import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.stereotype.Component;
 
 @Component
+@EqualsAndHashCode(callSuper = true)
 public class AllowList extends TreeSet<String> {
 
   @Autowired
-  private ResourcePatternResolver resourcePatternResolver;
+  private transient ResourcePatternResolver resourcePatternResolver;
 
   @Autowired
   private ResourceLinesReader resourceLinesReader;

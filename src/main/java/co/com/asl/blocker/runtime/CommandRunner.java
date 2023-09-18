@@ -1,6 +1,7 @@
 package co.com.asl.blocker.runtime;
 
 import co.com.asl.blocker.line.reader.InputStreamLinesReader;
+import java.nio.charset.Charset;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 import lombok.Getter;
@@ -35,7 +36,7 @@ public class CommandRunner {
         return Stream.empty();
       }
       if (process.exitValue() != 0) {
-        throw new RuntimeException(IOUtils.toString(process.getInputStream()));
+        log.error(IOUtils.toString(process.getInputStream(), Charset.defaultCharset()));
       }
       return inputStreamLinesReader.loadLines(process.getInputStream());
     } catch (Exception e) {

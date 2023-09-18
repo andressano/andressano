@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.TreeSet;
 import java.util.stream.Stream;
 import javax.annotation.PostConstruct;
+import lombok.EqualsAndHashCode;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +21,11 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
+@EqualsAndHashCode(callSuper = true)
 public class HostList extends TreeSet<String> {
 
   @Autowired
-  protected ResourcePatternResolver resourcePatternResolver;
+  protected transient ResourcePatternResolver resourcePatternResolver;
 
   @Autowired
   private ResourceLinesReader resourceLinesReader;

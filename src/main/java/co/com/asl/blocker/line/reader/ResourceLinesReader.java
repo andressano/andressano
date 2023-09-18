@@ -21,12 +21,14 @@ public class ResourceLinesReader implements LinesReader<Resource> {
 
   @Override
   public Stream<String> loadLines(Resource resource) {
-    if(log.isDebugEnabled())
-      log.debug("Reading {}",resource.getFilename());
+    if (log.isDebugEnabled()) {
+      log.debug("Reading {}", resource.getFilename());
+    }
     try (InputStream is = resource.getInputStream()) {
       return linesReader.loadLines(is);
     } catch (IOException e) {
-      throw new RuntimeException(e);
+      log.error(e.getLocalizedMessage(), e);
     }
+    return Stream.empty();
   }
 }

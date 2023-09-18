@@ -1,7 +1,6 @@
 package co.com.asl.blocker.config;
 
 import co.com.asl.blocker.runtime.CommandRunner;
-import java.rmi.Remote;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
