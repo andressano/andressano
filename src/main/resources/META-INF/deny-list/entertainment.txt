@@ -68,7 +68,4 @@ www.vidyard.com
 www.vzaar.com
 www.wistia.com
 www.younow.com
-www.youtube.com
 younow.com
-ytimg.com
-ytimg.l.google.com

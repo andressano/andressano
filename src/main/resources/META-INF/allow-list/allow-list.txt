@@ -28,3 +28,6 @@ twitter.com
 twich.tv
 youtube.com
 youtube-nocookie.com
+
+larepublica.co
+larepublica.com.co

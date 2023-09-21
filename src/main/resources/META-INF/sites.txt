@@ -1,11 +1,9 @@
 http://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext
-#https://github.com/AdguardTeam/cname-trackers
 https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Risk/hosts
-https://raw.githubusercontent.com/KodoPengin/GameIndustry-hosts-Template/master/Gaming-Full-Template/hosts
 https://raw.githubusercontent.com/FiltersHeroes/KADhosts/master/KADhosts.txt
-https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn-social-only/hosts
-https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-social/hosts
 https://someonewhocares.org/hosts/hosts
 https://raw.githubusercontent.com/TechnologyClassroom/HOSTS/master/filters/game.txt
+#https://github.com/AdguardTeam/cname-trackers
 #http://winhelp2002.mvps.org/hosts.txt
 #http://www.hostsfile.org/Downloads/hosts.txt

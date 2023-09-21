@@ -42,6 +42,7 @@ eldiario.com.co
 elespacio.com.co
 elespacio.net.co
 elespectador.com
+elexpediente.co
 elfrente.com.co
 elheraldo.co
 elheraldo.com.co
@@ -52,6 +53,7 @@ elmalpensante.com
 elmeridiano.co
 elmeridianodecordoba.com.co
 elmundo.com
+elnodo.co
 elnuevodia.com.co
 elnuevosiglo.com.co
 elpais.com.co
@@ -87,8 +89,6 @@ lanacion.com.co
 lanotadigital.com
 laopinion.com.co
 lapatria.com
-larepublica.co
-larepublica.com.co
 las2orillas.co
 lasillavacia.com
 latarde.com
@@ -102,6 +102,7 @@ opanoticias.com
 periodicolacampana.com
 periodicolaguajira.com
 play.caracoltv.com
+pluralidadz.com
 portafolio.co
 portafolio.com.co
 primerapagina.com.co
@@ -176,6 +177,7 @@ www.eldiario.com.co
 www.elespacio.com.co
 www.elespacio.net.co
 www.elespectador.com
+www.elexpediente.co
 www.elfrente.com.co
 www.elheraldo.co
 www.elheraldo.com.co
@@ -185,6 +187,7 @@ www.elliberal.com.co
 www.elmalpensante.com
 www.elmeridianodecordoba.com.co
 www.elmundo.com
+www.elnodo.co
 www.elnuevodia.com.co
 www.elnuevosiglo.com.co
 www.elpais.com.co
@@ -219,6 +222,7 @@ www.latarde.com
 www.minuto30.com
 www.periodicolacampana.com
 www.periodicolaguajira.com
+www.pluralidadz.com
 www.portafolio.co
 www.portafolio.com.co
 www.primerapagina.com.co
