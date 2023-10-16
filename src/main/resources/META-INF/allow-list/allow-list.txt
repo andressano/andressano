@@ -11,12 +11,12 @@ amazonaws.com
 brid.tv
 clients2.google.com
 comodo.com
+docs.google.com
 dropbox.com
 finance.google.com
 mega.nz
 norton.com
 on24.com
-docs.google.com
 wix.com
 wixstatic.com
 
@@ -24,6 +24,7 @@ wixstatic.com
 facebook.com
 instagram.com
 music.youtube.com
+twimg.com
 twitter.com
 twich.tv
 youtube.com
