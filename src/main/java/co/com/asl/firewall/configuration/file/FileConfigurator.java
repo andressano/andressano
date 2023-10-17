@@ -33,19 +33,21 @@ public final class FileConfigurator extends AbstractConfigurator {
     super(profile, outputFile);
   }
 
+  protected Collection<String> loadAddressesLines(FWOperation fwOperation) {
+    return asnLoaders.stream().flatMap(al -> al.load(FirewallType.UFW, getProfile(), fwOperation))
+        .sorted()
+        .flatMap(FileLinesUtil::createLines)
+        .collect(Collectors.toList());
+  }
+
   @Override
   protected void writeFile() throws IOException {
     Collection<String> lines = new ArrayList<>();
-    for (FWOperation ufwOperation : FWOperation.values()) {
-      Collection<String> addresses = new ArrayList<>();
-      addresses.addAll(
-          asnLoaders.stream().flatMap(al -> al.load(FirewallType.UFW, getProfile(), ufwOperation))
-              .sorted()
-              .flatMap(FileLinesUtil::createLines)
-              .collect(Collectors.toList()));
+    for (FWOperation fwOperation : FWOperation.values()) {
+      Collection<String> addresses = new ArrayList<>(loadAddressesLines(fwOperation));
 
       if (!CollectionUtils.isEmpty(addresses)) {
-        lines.addAll(List.of("", ufwOperation.name().toUpperCase() + ":"));
+        lines.addAll(List.of("", fwOperation.name().toUpperCase() + ":"));
         lines.addAll(addresses);
       }
     }

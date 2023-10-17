@@ -3,12 +3,11 @@ package co.com.asl.firewall.lines.ufw;
 import co.com.asl.firewall.configuration.FWOperation;
 import co.com.asl.firewall.entities.CIDRAddressV4;
 import java.util.stream.Stream;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class UfwUserRuleLinesUtil {
-
-  private UfwUserRuleLinesUtil() {
-    super();
-  }
 
   public static final Stream<String> execute(CIDRAddressV4 cidrAddressV4, FWOperation operation) {
     return Stream.of(
