@@ -12,7 +12,7 @@ import co.com.asl.firewall.entities.transform.CIDRTransformableSet;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class FileLinesUtil {
 
-  public static final Stream<String> createLines(CIDRTransformableSet transformableSet) {
+  public static Stream<String> createLines(CIDRTransformableSet transformableSet) {
     if (CollectionUtils.isEmpty(transformableSet)) {
       return Stream.empty();
     }

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class UfwUserRuleLinesUtil {
 
-  public static final Stream<String> execute(CIDRAddressV4 cidrAddressV4, FWOperation operation) {
+  public static Stream<String> execute(CIDRAddressV4 cidrAddressV4, FWOperation operation) {
     return Stream.of(
         //"",
         //String.format("### tuple ### %s any any 0.0.0.0/0 any %s in",

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class IpTablesInputUserRuleLinesUtil {
 
-  public static final Stream<String> execute(CIDRAddressV4 cidrAddressV4,
+  public static Stream<String> execute(CIDRAddressV4 cidrAddressV4,
       FWOperation operation) {
     switch (operation) {
       case ACCEPT:
