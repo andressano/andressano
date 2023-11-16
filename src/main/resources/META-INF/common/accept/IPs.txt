@@ -1,3 +1,6 @@
-50.22.76.8		#Revista dinero
-50.97.172.200	#elheraldo.co
+10.0.0.0/8      #Local networks
 23.72.252.0/24	#Akamai - Revista semana
+50.22.76.8	    #Revista dinero
+50.97.172.200	  #elheraldo.co
+172.16.0.0/12   #Local networks
+192.168.0.0/16  #Local networks
