@@ -78,6 +78,7 @@ gol.caracoltv.com
 hjck.com
 hoydiariodelmagdalena.com.co
 hsbnoticias.com
+ifmnoticias.com
 infobae.com
 javerianaestereo.com
 jetset.com.co
@@ -205,6 +206,7 @@ www.gentedecabecera.com
 www.gentedecanaveral.com
 www.hoydiariodelmagdalena.com.co
 www.hsbnoticias.com
+www.ifmnoticias.com
 www.infobae.com
 www.javerianaestereo.com
 www.jetset.com.co

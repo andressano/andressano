@@ -1,6 +1,10 @@
 2048game.com
+archive.org
 beta.apihub.info
 brightcove.com
+blogger.googleusercontent.com
+blogger.l.google.com
+blogspot.l.googleusercontent.com
 collegehumor.com
 dailymotion.com
 dropshots.com
@@ -21,6 +25,7 @@ play2048.app
 play2048.co
 play2048.pro
 pscp.tv
+resources.blogblog.com
 snapchat.com
 sproutvideo.com
 stupidvideos.com
@@ -36,6 +41,9 @@ vidmax.com
 vidyard.com
 vzaar.com
 wistia.com
+youtube.com
+www.archive.org
+www.blogger.com
 www.brightcove.com
 www.collegehumor.com
 www.dailymotion.com
@@ -68,4 +76,5 @@ www.vidyard.com
 www.vzaar.com
 www.wistia.com
 www.younow.com
+www.youtube.com
 younow.com
