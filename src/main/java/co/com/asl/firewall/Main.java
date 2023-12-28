@@ -28,7 +28,7 @@ public class Main implements Callable<Integer> {
       "--log-level"}, description = "Log level for logger", required = false, defaultValue = "info")
   private String logLevel;
 
-  @Option(names = {"-r", "--rules-path"}, description = "Rules path")
+  @Option(names = {"-r", "--rules-path"}, required = true, description = "Rules path")
   private String rulesPath;
 
   public static void main(String[] args) {
