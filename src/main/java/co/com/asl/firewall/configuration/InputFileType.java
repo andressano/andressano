@@ -1,5 +1,8 @@
 package co.com.asl.firewall.configuration;
 
+import lombok.Getter;
+
+@Getter
 public enum InputFileType {
 	ASN_FILETYPE("META-INF/common/%s/ASNumbers.txt"),
 
@@ -15,9 +18,5 @@ public enum InputFileType {
 
 	public String path(FWOperation ufwOperation) {
 		return String.format(pattern, ufwOperation.name().toLowerCase());
-	}
-
-	public String getPattern() {
-		return pattern;
 	}
 }

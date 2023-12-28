@@ -26,7 +26,7 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 public final class FileConfigurator extends AbstractConfigurator {
 
-  private Collection<ASNLoader> asnLoaders;
+  private final Collection<ASNLoader> asnLoaders;
 
   @Autowired
   public FileConfigurator(Collection<ASNLoader> asnLoaders) {

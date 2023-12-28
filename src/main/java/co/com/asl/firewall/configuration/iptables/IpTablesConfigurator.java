@@ -14,6 +14,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
@@ -27,12 +28,12 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public final class IpTablesConfigurator extends AbstractConfigurator {
 
-  private FileToLinesResourceLoader fileToLinesResourceLoader;
-  private ResourcePatternResolver resourcePatternResolver;
-  private Collection<IPListLoader> listLoaders;
+  private final FileToLinesResourceLoader fileToLinesResourceLoader;
+  private final ResourcePatternResolver resourcePatternResolver;
+  private final Collection<IPListLoader> listLoaders;
 
   @Autowired
-  public IpTablesConfigurator(String profile, String outputFile,
+  public IpTablesConfigurator(
       FileToLinesResourceLoader fileToLinesResourceLoader,
       ResourcePatternResolver resourcePatternResolver, Collection<IPListLoader> listLoaders) {
     this.fileToLinesResourceLoader = fileToLinesResourceLoader;
@@ -66,7 +67,7 @@ public final class IpTablesConfigurator extends AbstractConfigurator {
   protected void writeFile() throws IOException {
     Collection<String> lines = new ArrayList<>();
     lines.addAll(readFiles("start.txt"));
-    lines.addAll(List.of("### RULES ###"));
+    lines.add("### RULES ###");
     lines.addAll(readFiles("endRules.txt"));
     lines.addAll(loadRulesLines());
     lines.addAll(readFiles("endRules.txt"));

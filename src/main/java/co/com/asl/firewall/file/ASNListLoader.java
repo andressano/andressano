@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class ASNListLoader {
 
-  private Collection<String> whoisQueries;
+  private final Collection<String> whoisQueries;
 
   @Autowired
   public ASNListLoader(@Qualifier("whoisQueries") Collection<String> whoisQueries) {

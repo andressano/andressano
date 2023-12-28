@@ -14,6 +14,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
@@ -28,9 +29,9 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public final class UFWConfigurator extends AbstractConfigurator {
 
-  private FileToLinesResourceLoader fileToLinesResourceLoader;
-  private ResourcePatternResolver resourcePatternResolver;
-  private Collection<IPListLoader> listLoaders;
+  private final FileToLinesResourceLoader fileToLinesResourceLoader;
+  private final ResourcePatternResolver resourcePatternResolver;
+  private final Collection<IPListLoader> listLoaders;
 
   @Autowired
   public UFWConfigurator(FileToLinesResourceLoader fileToLinesResourceLoader,
@@ -60,7 +61,7 @@ public final class UFWConfigurator extends AbstractConfigurator {
   protected void writeFile() throws IOException {
     Collection<String> lines = new ArrayList<>();
     lines.addAll(readFiles("start.txt"));
-    lines.addAll(List.of("### RULES ###"));
+    lines.add("### RULES ###");
     lines.addAll(readFiles(StringUtils.join(getProfile(), File.separator, "startRules.txt")));
     lines.addAll(loadRulesLines());
     lines.addAll(readFiles(StringUtils.join(getProfile(), File.separator, "endRules.txt")));

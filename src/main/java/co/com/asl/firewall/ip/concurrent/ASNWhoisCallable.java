@@ -5,19 +5,13 @@ import co.com.asl.firewall.entities.ASNumber;
 import co.com.asl.firewall.entities.CIDRAddressV4;
 import java.util.Collection;
 import java.util.concurrent.Callable;
-import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-import org.springframework.util.CollectionUtils;
 
 @Slf4j
 public class ASNWhoisCallable implements Callable<ASNumber> {
 
   private final Integer asn;
-  private Collection<String> whoisQueries;
+  private final Collection<String> whoisQueries;
 
   public ASNWhoisCallable(Integer asn, Collection<String> whoisQueries) {
     this.asn = asn;

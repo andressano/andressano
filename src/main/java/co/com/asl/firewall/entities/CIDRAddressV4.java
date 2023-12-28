@@ -3,9 +3,11 @@ package co.com.asl.firewall.entities;
 import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
+import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.Assert;
 
+@Getter
 public class CIDRAddressV4 implements Comparable<CIDRAddressV4> {
 
   public static final short TOTAL_BYTES = 32;

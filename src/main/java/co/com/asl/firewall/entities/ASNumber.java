@@ -5,10 +5,12 @@ import java.util.Collection;
 import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
+import lombok.Getter;
 import lombok.Setter;
 import org.springframework.util.Assert;
 
 @Setter
+@Getter
 public class ASNumber extends CIDRTransformableSet implements Comparable<ASNumber> {
 
   public static final String REGEX_PATTERN = "(\\d{1,6})";
@@ -26,18 +28,14 @@ public class ASNumber extends CIDRTransformableSet implements Comparable<ASNumbe
     this(number,"AS".concat(Integer.toString(number)));
   }
 
-  public ASNumber(Collection<CIDRAddressV4> addreses) {
-    super(addreses);
+  public ASNumber(Collection<CIDRAddressV4> addresses) {
+    super(addresses);
   }
 
   public ASNumber(String asn, Collection<CIDRAddressV4> addreses) {
     this(addreses);
     setNumber(Integer.parseInt(asn));
     setName(asn);
-  }
-
-  public int getNumber() {
-    return number;
   }
 
   public void setNumber(int number) {

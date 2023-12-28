@@ -15,7 +15,7 @@ import co.com.asl.firewall.resources.FileToLinesResourceLoader;
 @Component
 public class ResourceToIPListLoader implements IPListLoader {
 
-  private FileToLinesResourceLoader fileToLinesResourceLoader;
+  private final FileToLinesResourceLoader fileToLinesResourceLoader;
 
   @Autowired
   public ResourceToIPListLoader(FileToLinesResourceLoader fileToLinesResourceLoader) {

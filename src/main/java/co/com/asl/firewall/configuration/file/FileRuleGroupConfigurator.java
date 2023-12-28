@@ -24,7 +24,7 @@ import co.com.asl.firewall.file.output.ip.IPListLoader;
 @Component
 public final class FileRuleGroupConfigurator extends AbstractConfigurator {
 
-  private Collection<IPListLoader> listLoaders;
+  private final Collection<IPListLoader> listLoaders;
 
   @Autowired
   public FileRuleGroupConfigurator(
