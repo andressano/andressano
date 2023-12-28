@@ -28,15 +28,16 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public final class UFWConfigurator extends AbstractConfigurator {
 
-  @Autowired
   private FileToLinesResourceLoader fileToLinesResourceLoader;
-  @Autowired
   private ResourcePatternResolver resourcePatternResolver;
-  @Autowired
   private Collection<IPListLoader> listLoaders;
 
-  public UFWConfigurator(String profile, String outputFile) {
-    super(profile, outputFile);
+  @Autowired
+  public UFWConfigurator(FileToLinesResourceLoader fileToLinesResourceLoader,
+      ResourcePatternResolver resourcePatternResolver, Collection<IPListLoader> listLoaders) {
+    this.fileToLinesResourceLoader = fileToLinesResourceLoader;
+    this.resourcePatternResolver = resourcePatternResolver;
+    this.listLoaders = listLoaders;
   }
 
   private Collection<String> loadRulesLines() {
@@ -66,7 +67,7 @@ public final class UFWConfigurator extends AbstractConfigurator {
     lines.addAll(List.of("", "### END RULES ###", ""));
     lines.addAll(readFiles("end.txt"));
 
-    final Path userRulesPath = Path.of(getOutputFile());
+    final Path userRulesPath = Path.of(getPath());
     Files.write(userRulesPath, lines, StandardOpenOption.CREATE, StandardOpenOption.WRITE,
         StandardOpenOption.TRUNCATE_EXISTING);
   }

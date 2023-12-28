@@ -14,17 +14,14 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
 @Slf4j
-@Scope("prototype")
-@Component
 public class ASNWhoisCallable implements Callable<ASNumber> {
 
   private final Integer asn;
-  @Autowired
-  @Qualifier("whoisQueries")
   private Collection<String> whoisQueries;
 
-  public ASNWhoisCallable(Integer asn) {
+  public ASNWhoisCallable(Integer asn, Collection<String> whoisQueries) {
     this.asn = asn;
+    this.whoisQueries = whoisQueries;
   }
 
   @Override

@@ -26,11 +26,11 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 public final class FileConfigurator extends AbstractConfigurator {
 
-  @Autowired
   private Collection<ASNLoader> asnLoaders;
 
-  public FileConfigurator(String profile, String outputFile) {
-    super(profile, outputFile);
+  @Autowired
+  public FileConfigurator(Collection<ASNLoader> asnLoaders) {
+    this.asnLoaders = asnLoaders;
   }
 
   protected Collection<String> loadAddressesLines(FWOperation fwOperation) {
@@ -51,7 +51,7 @@ public final class FileConfigurator extends AbstractConfigurator {
         lines.addAll(addresses);
       }
     }
-    final Path userRulesPath = Path.of(outputFile);
+    final Path userRulesPath = Path.of(getPath());
     Files.write(userRulesPath, lines, StandardOpenOption.CREATE, StandardOpenOption.WRITE,
         StandardOpenOption.TRUNCATE_EXISTING);
   }

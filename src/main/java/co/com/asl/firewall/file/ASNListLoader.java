@@ -7,11 +7,9 @@ import java.util.Collection;
 import java.util.Objects;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -20,14 +18,18 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class ASNListLoader {
 
+  private Collection<String> whoisQueries;
+
   @Autowired
-  private BeanFactory beanFactory;
+  public ASNListLoader(@Qualifier("whoisQueries") Collection<String> whoisQueries) {
+    this.whoisQueries = whoisQueries;
+  }
 
   public Stream<ASNumber> load(Stream<Integer> asnList) {
     final int threads = Runtime.getRuntime().availableProcessors();
 
     Collection<ASNWhoisCallable> callables = asnList
-        .map(asn -> beanFactory.getBean(ASNWhoisCallable.class, asn))
+        .map(asn -> new ASNWhoisCallable(asn, whoisQueries))
         .collect(Collectors.toList());
 
     ExecutorService executorService = Executors.newFixedThreadPool(threads);

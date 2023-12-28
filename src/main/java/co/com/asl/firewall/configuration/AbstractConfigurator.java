@@ -2,20 +2,18 @@ package co.com.asl.firewall.configuration;
 
 import java.io.IOException;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.StopWatch;
 
 @Slf4j
+@Getter
 public abstract class AbstractConfigurator {
-  @Getter
-  public final String profile;
-  @Getter
-  public final String outputFile;
-
-  protected AbstractConfigurator(String profile, String outputFile) {
-    this.profile = profile;
-    this.outputFile = outputFile;
-  }
+  @Value("#{profileOption}")
+  protected String profile;
+  @Value("#{rulesPath}")
+  protected String path;
 
   protected abstract void writeFile() throws IOException;
 
@@ -23,10 +21,10 @@ public abstract class AbstractConfigurator {
     StopWatch stopWatch = new StopWatch();
     stopWatch.start();
 
-    log.info("UFW configuration '{}' started", getProfile());
+    log.info("UFW configuration '{}' started", profile);
     writeFile();
     stopWatch.stop();
-    log.info("UFW configuration '{}' finished in {} seconds", getProfile(),
+    log.info("UFW configuration '{}' finished in {} seconds", profile,
         stopWatch.getTotalTimeSeconds());
   }
 }

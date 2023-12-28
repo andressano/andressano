@@ -17,15 +17,15 @@ import picocli.CommandLine.Option;
 public class Main implements Callable<Integer> {
 
   @Option(names = {"-f",
-      "--firewall"}, paramLabel = "ufw|ip-tables|file", description = "Kind of firewall rules", showDefaultValue = Visibility.ALWAYS, required = false, defaultValue = "ufw")
+      "--firewall"}, paramLabel = "ufw|ip-tables|file", description = "Kind of firewall rules", showDefaultValue = Visibility.ALWAYS, defaultValue = "ufw")
   private String firewallOption;
 
   @Option(names = {"-p",
-      "--profile"}, paramLabel = "<profile>", description = "Profile name", showDefaultValue = Visibility.ALWAYS, required = false, defaultValue = "default")
+      "--profile"}, paramLabel = "<profile>", description = "Profile name", showDefaultValue = Visibility.ALWAYS, defaultValue = "default")
   private String profileOption;
 
   @Option(names = {"-ll",
-      "--log-level"}, description = "Log level for logger", required = false, defaultValue = "info")
+      "--log-level"}, description = "Log level for logger", defaultValue = "info")
   private String logLevel;
 
   @Option(names = {"-r", "--rules-path"}, required = true, description = "Rules path")
@@ -41,20 +41,19 @@ public class Main implements Callable<Integer> {
     Configurator.setLevel("co.com.asl.firewall", Level.valueOf(logLevel));
     AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
         Config.class);
+    context.registerBean("profileOption", String.class, profileOption);
+    context.registerBean("rulesPath", String.class, rulesPath);
     context.start();
 
     switch (firewallOption) {
       case "ufw":
-        context.getBean(UFWConfigurator.class, profileOption, rulesPath)
-            .configure();
+        context.getBean(UFWConfigurator.class).configure();
         break;
       case "ip-tables":
-        context.getBean(IpTablesConfigurator.class, profileOption, rulesPath)
-            .configure();
+        context.getBean(IpTablesConfigurator.class).configure();
         break;
       case "files":
-        context.getBean(FileRuleGroupConfigurator.class, profileOption, rulesPath)
-            .configure();
+        context.getBean(FileRuleGroupConfigurator.class).configure();
         break;
       default:
         context.stop();

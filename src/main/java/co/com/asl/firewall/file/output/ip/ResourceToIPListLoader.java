@@ -15,8 +15,12 @@ import co.com.asl.firewall.resources.FileToLinesResourceLoader;
 @Component
 public class ResourceToIPListLoader implements IPListLoader {
 
-  @Autowired
   private FileToLinesResourceLoader fileToLinesResourceLoader;
+
+  @Autowired
+  public ResourceToIPListLoader(FileToLinesResourceLoader fileToLinesResourceLoader) {
+    this.fileToLinesResourceLoader = fileToLinesResourceLoader;
+  }
 
   @Override
   public Stream<CIDRAddressV4> load(FirewallType firewallType, String setting, FWOperation ufwOperation) {
