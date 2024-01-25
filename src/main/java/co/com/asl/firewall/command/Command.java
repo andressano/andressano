@@ -18,8 +18,8 @@ public final class Command {
 
   private static Stream<String> read(InputStream is) throws IOException {
     try (InputStreamReader isr = new InputStreamReader(is)) {
-      String output = IOUtils.toString(isr);
-      return Stream.of(StringUtils.tokenizeToStringArray(output, "\\p{javaWhitespace}+"));
+      String output = IOUtils.toString(isr).replaceAll("\\s+", ",");
+      return Stream.of(StringUtils.tokenizeToStringArray(output, ","));
     }
   }
 

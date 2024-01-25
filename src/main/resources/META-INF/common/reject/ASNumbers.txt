@@ -17,8 +17,6 @@
 34268	# OOO AineT
 34379	# OOO "Telecomunikacionnye Nezavisimye Systemy"
 35257	# OOO "INSTITUTE FOR FINANCIAL STUDIES"
-35410	# OOO Nord-telecom
-35423	# OOO "Serebryannaya Strela"
 35658	# OOO SCIENTIFIC RESEARCH CENTER "Bulat"
 35730	# OOO Organizational Technological Solutions 2000
 39572	# DataWeb Global Group B.V.
@@ -141,7 +139,6 @@
 207970	# LLC VK
 208954	# OOO "UPiterTelecom"
 209546	# NK-NET OOO
-209702	# OOO "Viktoria Baltiya"
 210491	# OOO Quantek
 210706	# OOO "StroyTerminal Center Krasok"
 210725	# OOO Kinostudiya "Zvezda"
