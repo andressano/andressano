@@ -14,7 +14,6 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
@@ -68,7 +67,7 @@ public final class IpTablesConfigurator extends AbstractConfigurator {
     Collection<String> lines = new ArrayList<>();
     lines.addAll(readFiles("start.txt"));
     lines.add("### RULES ###");
-    lines.addAll(readFiles("endRules.txt"));
+    lines.addAll(readFiles("startRules.txt"));
     lines.addAll(loadRulesLines());
     lines.addAll(readFiles("endRules.txt"));
     lines.addAll(List.of("", "### END RULES ###", ""));

@@ -21,6 +21,7 @@
 35423	# OOO "Serebryannaya Strela"
 35658	# OOO SCIENTIFIC RESEARCH CENTER "Bulat"
 35730	# OOO Organizational Technological Solutions 2000
+39572	# DataWeb Global Group B.V.
 41212	# OOO Carcade
 41515	# OOO "MediaSeti"
 41845	# OOO Fun Holding

@@ -7,6 +7,8 @@
 106.0.0.0/8		    #Beijing Blue I.T Technologies Co.,Ltd., CN
 111.0.0.0/10		  #Beijing Baidu Netcom Science and Technology Co., Ltd.,CN
 123.103.0.0/17		#Chinanetcenter Ltd
+156.154.70.2/32   #Neustar DNS
+156.154.71.2/32   #Neustar DNS
 174.36.192.0/18		#SoftLayer Technologies Inc.
 178.63.0.0/16		  #Hetzner Online GmbH
 184.173.0.0/18		#ThePlanet.com Internet Services, Inc.
