@@ -49,7 +49,7 @@ public class Main implements Callable<Integer> {
       case "ufw":
         context.getBean(UFWConfigurator.class).configure();
         break;
-      case "ip-tables":
+      case "iptables":
         context.getBean(IpTablesConfigurator.class).configure();
         break;
       case "files":

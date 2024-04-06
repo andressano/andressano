@@ -16,10 +16,13 @@ public final class Command {
 
   private static final Logger log = LoggerFactory.getLogger(Command.class);
 
-  private static Stream<String> read(InputStream is) throws IOException {
+  private static Stream<String> read(InputStream is, final String commandLine) throws IOException {
     try (InputStreamReader isr = new InputStreamReader(is)) {
       String output = IOUtils.toString(isr).replaceAll("\\s+", ",");
-      return Stream.of(StringUtils.tokenizeToStringArray(output, ","));
+      String[] results = StringUtils.tokenizeToStringArray(output, ",");
+      if(results.length != 0 && output.isBlank())
+        log.warn("Result mismatches using {}", commandLine);
+      return Stream.of(results);
     }
   }
 
@@ -28,7 +31,7 @@ public final class Command {
       String[] commandSyntax = new String[]{"/bin/bash", "-c",
           "timeout 20s ".concat(commandLine)};
       Process process = Runtime.getRuntime().exec(commandSyntax);
-      return read(process.getInputStream());
+      return read(process.getInputStream(), commandLine);
     } catch (Exception e) {
       log.error("Error running {}", commandLine, e);
     }
