@@ -1,6 +1,7 @@
 /home/andressano/Documents/git/blocklist-ipsets/cybercrime.ipset
 /home/andressano/Documents/git/blocklist-ipsets/firehol_level1.netset
-/home/andressano/Documents/git/blocklist-ipsets/iblocklist_yoyo_adservers.netset
+/home/andressano/Documents/git/blocklist-ipsets/hphosts_exp.ipset
+/home/andressano/Documents/git/blocklist-ipsets/hphosts_hjk.ipset
 /home/andressano/Documents/git/blocklist-ipsets/malwaredomainlist.ipset
 /home/andressano/Documents/git/blocklist-ipsets/normshield_all_attack.ipset
 /home/andressano/Documents/git/blocklist-ipsets/ipdeny_country/id_country_by.netset
