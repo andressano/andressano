@@ -1,0 +1,66 @@
+add table ip filter
+add chain ip filter INPUT { type filter hook input priority 0; policy drop; }
+add chain ip filter FORWARD { type filter hook forward priority 0; policy drop; }
+add chain ip filter OUTPUT { type filter hook output priority 0; policy accept; }
+add chain ip filter after-input
+add chain ip filter after-output
+add chain ip filter before-forward
+add chain ip filter before-input
+add chain ip filter before-output
+add chain ip filter not-local
+add chain ip filter reject-input
+add chain ip filter reject-output
+add chain ip filter skip-to-policy-forward
+add chain ip filter skip-to-policy-input
+add chain ip filter skip-to-policy-output
+add chain ip filter user-input
+add chain ip filter user-limit
+add chain ip filter user-limit-accept
+add chain ip filter user-output
+add rule ip filter INPUT counter jump before-input
+add rule ip filter INPUT counter jump after-input
+add rule ip filter INPUT counter jump reject-input
+add rule ip filter FORWARD counter jump before-forward
+add rule ip filter OUTPUT counter jump before-output
+add rule ip filter OUTPUT counter jump after-output
+add rule ip filter OUTPUT counter jump reject-output
+add rule ip filter after-input udp dport 137 counter jump skip-to-policy-input
+add rule ip filter after-input udp dport 138 counter jump skip-to-policy-input
+add rule ip filter after-input tcp dport 139 counter jump skip-to-policy-input
+add rule ip filter after-input tcp dport 445 counter jump skip-to-policy-input
+add rule ip filter after-input udp dport 67 counter jump skip-to-policy-input
+add rule ip filter after-input udp dport 68 counter jump skip-to-policy-input
+add rule ip filter after-input fib daddr type broadcast counter jump skip-to-policy-input
+add rule ip filter before-forward ct state related,established counter accept
+add rule ip filter before-forward icmp type destination-unreachable counter accept
+add rule ip filter before-forward icmp type time-exceeded counter accept
+add rule ip filter before-forward icmp type parameter-problem counter accept
+add rule ip filter before-forward icmp type echo-request counter accept
+add rule ip filter before-input iifname "lo" counter accept
+add rule ip filter before-input ct state related,established counter accept
+add rule ip filter before-input ct state invalid counter drop
+add rule ip filter before-input icmp type destination-unreachable counter accept
+add rule ip filter before-input icmp type time-exceeded counter accept
+add rule ip filter before-input icmp type parameter-problem counter accept
+add rule ip filter before-input icmp type echo-request counter accept
+add rule ip filter before-input udp sport 67 udp dport 68 counter accept
+add rule ip filter before-input counter jump not-local
+add rule ip filter before-input counter jump user-input
+add rule ip filter before-output oifname "lo" counter accept
+add rule ip filter before-output ct state related,established counter accept
+add rule ip filter before-output counter jump user-output
+add rule ip filter not-local fib daddr type local counter return
+add rule ip filter not-local fib daddr type multicast counter return
+add rule ip filter not-local fib daddr type broadcast counter return
+add rule ip filter not-local limit rate 3/minute burst 10 packets counter
+add rule ip filter not-local counter drop
+add rule ip filter skip-to-policy-forward counter drop
+add rule ip filter skip-to-policy-input counter drop
+add rule ip filter skip-to-policy-output counter accept
+add rule ip filter user-input ip protocol tcp tcp dport 20-23 counter drop
+add rule ip filter user-input ip protocol udp udp dport 20-23 counter drop
+add rule ip filter user-limit limit rate 3/minute burst 5 packets counter
+add rule ip filter user-limit counter reject
+add rule ip filter user-limit-accept counter accept
+add rule ip filter user-output ip daddr 192.168.1.1 tcp dport 8000 counter accept
+add rule ip filter user-output ip daddr 192.168.1.1 udp dport 8000 counter accept

@@ -3,8 +3,8 @@ package co.com.asl.firewall;
 import co.com.asl.firewall.configuration.Config;
 import co.com.asl.firewall.configuration.file.FileRuleGroupConfigurator;
 import co.com.asl.firewall.configuration.iptables.IpTablesConfigurator;
+import co.com.asl.firewall.configuration.nftables.NfTablesConfigurator;
 import co.com.asl.firewall.configuration.ufw.UFWConfigurator;
-import java.util.concurrent.Callable;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.core.config.Configurator;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -12,6 +12,8 @@ import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Help.Visibility;
 import picocli.CommandLine.Option;
+
+import java.util.concurrent.Callable;
 
 @Command(name = "firewall")
 public class Main implements Callable<Integer> {
@@ -51,6 +53,9 @@ public class Main implements Callable<Integer> {
         break;
       case "iptables":
         context.getBean(IpTablesConfigurator.class).configure();
+        break;
+      case "nftables":
+        context.getBean(NfTablesConfigurator.class).configure();
         break;
       case "files":
         context.getBean(FileRuleGroupConfigurator.class).configure();

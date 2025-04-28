@@ -5,5 +5,4 @@
 39572	# DataWeb Global Group B.V.
 43350   # NForce Entertainment B.V.
 47846 	# SEDO GmbH
-60068   # Datacamp Limited
 215402  # Asadov Ruslan Rafaelevich
